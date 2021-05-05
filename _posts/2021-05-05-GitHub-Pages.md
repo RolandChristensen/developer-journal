@@ -53,7 +53,7 @@ This documentation is for creating a static web page on GitHub. A quick search w
 ```
 5. Create a blog post.
 	- Create a folder in the root directory titled "_posts" to hold all blog posts.
-	- Each blog post file should follow the naming convention YYYY-MM-DD-title-with-hyphens.md to work with Jekyll. YYYY is the year, MM is the monthe, DD is the day and the title of the page should have hyphens between words, instead of spaces.
+	- Each blog post file should follow the naming convention YYYY-MM-DD-title-with-hyphens.md to work with Jekyll. YYYY year, MM month, DD day, and the title of the page all with hyphens between words, instead of spaces.
 	- The contents of the file should begin with YAML front matter as below.
 	- Follow that with the contents of the blog post.
 		```
