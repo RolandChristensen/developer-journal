@@ -49,7 +49,7 @@ This documentation is for creating a static web page on GitHub. A quick search w
 		show_excerpts: true # set to false to remove excerpts on the homepage
 
 		theme: minima # Search for list of themes, to see what is available. 
-					  # You can also use the theme wizard on GitHub to see what they look like.
+			      # You can also use the theme wizard on GitHub to see what they look like.
 ```
 5. Create a blog post.
 	- Create a folder in the root directory titled "_posts" to hold all blog posts.
