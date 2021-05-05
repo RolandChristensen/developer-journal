@@ -7,10 +7,10 @@ This documentation is for creating a static web page on GitHub. A quick search w
 
 # Quick Guide for Creating a Static Site for a Repo
 1. Edit the settings for the repo.
-	- Click Settings on Top Control for Repo.
-	- Click Pages on Left Hand Control.
+	- Click "Settings" on Top Control for Repo.
+	- Click "Pages" on Left Hand Control.
 	- Select the branch you want to use to publish the site. When you push changes to the branch it will automatically build the site.
-	- Click Save. 
+	- Click "Save." 
 2. Create a file called "index.html" for your site. (index.html, index.md will both work or Readme.md will be used if an index does not exist.)
 	- Create one of the files above in the root of the repo.
 3. Edit the file created above as you would any other static web site.
@@ -18,10 +18,10 @@ This documentation is for creating a static web page on GitHub. A quick search w
 	
 # Quick Guide for Creating a Static Blog
 1. Edit the settings for the repo.
-	- Click Settings on Top Control for Repo.
-	- Click Pages on Left Hand Control.
+	- Click "Settings" on Top Control for Repo.
+	- Click "Pages" on Left Hand Control.
 	- Select the branch you want to use to publish the site. When you push changes to the branch it will automatically build the site.
-	- Click Save. 
+	- Click "Save." 
 2. Create a file called "index.md" for your site. (index.html, index.md will both work or Readme.md will be used if an index does not exist.)
 	- Create one of the files above in the root of the repo.
 3. Edit the file created above and add the following.
