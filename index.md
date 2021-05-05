@@ -1,6 +1,6 @@
---
+---
 title: "This is a Title defined in the YAML Front Matter"
---
+---
 
 # Test Heading to Make Sure There is no Duplicate
 
