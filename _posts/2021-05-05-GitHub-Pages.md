@@ -33,9 +33,9 @@ This documentation is for creating a static web page on GitHub. A quick search w
 		---
 		```
 	- Add the content you want displayed.
-4. Create the Jekyl configuration file. Jekyl is used to generate the web site. A search will give you documentation. All of this will be displayed on the page in predefined areas depending on the theme you define. 
+4. Create the Jekyll configuration file. Jekyll is used to generate the web site. A search will give you documentation. All of this will be displayed on the page in predefined areas depending on the theme you define. 
 	- Save a file as "_config.yml" in the root of the repo.
-	- Add contents as needed. Search for options of Jekyl config file. Below is an example file to get you started.
+	- Add contents as needed. Search for options of Jekyll config file. Below is an example file to get you started.
 ```
 		title: This will be displayed on the top of the blog.
 		author: Your Name 
@@ -48,11 +48,12 @@ This documentation is for creating a static web page on GitHub. A quick search w
 
 		show_excerpts: true # set to false to remove excerpts on the homepage
 
-		theme: minima # Search for list of themes, to see what is available. You can also use the theme wizard on GitHub to see what they look like.
+		theme: minima # Search for list of themes, to see what is available. 
+					  # You can also use the theme wizard on GitHub to see what they look like.
 ```
 5. Create a blog post.
 	- Create a folder in the root directory titled "_posts" to hold all blog posts.
-	- Each blog post file should follow the naming convention YYYY-MM-DD-title-with-hyphens.md to work with Jekyl. YYYY is the year, MM is the monthe, DD is the day and the title of the page should have hyphens between words, instead of spaces.
+	- Each blog post file should follow the naming convention YYYY-MM-DD-title-with-hyphens.md to work with Jekyll. YYYY is the year, MM is the monthe, DD is the day and the title of the page should have hyphens between words, instead of spaces.
 	- The contents of the file should begin with YAML front matter as below.
 	- Follow that with the contents of the blog post.
 		```
@@ -67,5 +68,6 @@ This documentation is for creating a static web page on GitHub. A quick search w
 6. When you merge the changes the site will automatically build for you.
 
 # Pitfalls
-The first problem I had when I created the index.md for a blog, I did not understand where the title and headers would be displayed on the page. You will need to keep the title lengths under a minimum number to display correctly depending on the theme. The YAML Front Matter does not display in the preview of the file when you are editing it, so there is a temptation to add a header to the top of the markdown file created. Resist the temptation. The title key will create a lovely header on the finished web page.
+The first problem I had when I created the index.md for a blog, I did not understand where the title and headers would be displayed on the page. You will need to keep the title lengths under a minimum number to display correctly depending on the theme. The YAML Front Matter does not display in the preview of the file when you are editing it, so there is a temptation to add a header to the top of the markdown file created. Resist the temptation. The title key will create a lovely header on the finished web page. As noted in the screen shot the plug-in "jeckyll-titles-from-headings" is useful, but can cause problems.
+
 ![Example Layout of Minima Theme](2021-05-05-GitHub-Pages.png "Example of YAML Front Matter Title Display")
