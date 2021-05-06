@@ -71,7 +71,7 @@ This documentation is for creating a static web page on GitHub. A quick search w
 ## Use the Title Front Matter Instead of a Header
 The first problem I had when I created the index.md for a blog, I did not understand where the title and headers would be displayed on the page. You will need to keep the title lengths under a minimum number to display correctly depending on the theme. The YAML Front Matter does not display in the preview of the file when you are editing it, so there is a temptation to add a header to the top of the markdown file created. Resist the temptation. The title key will create a lovely header on the finished web page.
 
-![Example Layout of Minima Theme](https://rolandchristensen.github.io/DeveloperJournal/images/2021-05-05-GitHub-Pages.png)
+![Example Layout of Minima Theme](https://rolandchristensen.github.io/DeveloperJournal/images/2021-05-05-GitHub-Pages.png "Example of Using Title in YAML Front Matter and a Heading")
 
 As noted in the screen shot the plug-in "jeckyll-titles-from-headings" is useful, but can cause problems. It will create a duplicate heading and title if you do not include a "title" key in the YAML front matter.
 
@@ -79,6 +79,6 @@ As noted in the screen shot the plug-in "jeckyll-titles-from-headings" is useful
 The documentation found on the Jekyll site or GitHub pages does not seem to work. They say you should add an assets folder with images and reference the image with a relative path from the root directory. That is only half right at the time of writing of this post. Adding a folder to hold any assets you want to link to is correct. However, you need to create a full path to the GitHub project assets folder.
 To get this to work you need to follow this pattern:
 ```
-![Text Reader Text](https://{GitHub User Name}.github.io/{ProjectName}/assets/imageName.png)
+![Text Reader Text](https://{GitHub User Name}.github.io/{ProjectName}/assets/imageName.png "Hover Message")
 ```
 This works for GitHub project sites.
