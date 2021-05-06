@@ -68,9 +68,17 @@ This documentation is for creating a static web page on GitHub. A quick search w
 6. When you merge the changes the site will automatically build for you.
 
 # Pitfalls
+## Use the Title Front Matter Instead of a Header
 The first problem I had when I created the index.md for a blog, I did not understand where the title and headers would be displayed on the page. You will need to keep the title lengths under a minimum number to display correctly depending on the theme. The YAML Front Matter does not display in the preview of the file when you are editing it, so there is a temptation to add a header to the top of the markdown file created. Resist the temptation. The title key will create a lovely header on the finished web page.
 
 ![Example Layout of Minima Theme](https://rolandchristensen.github.io/DeveloperJournal/images/2021-05-05-GitHub-Pages.png)
 
 As noted in the screen shot the plug-in "jeckyll-titles-from-headings" is useful, but can cause problems. It will create a duplicate heading and title if you do not include a "title" key in the YAML front matter.
-From the repo: "If you have a Jekyll page that doesn't have a title specified in the YAML Front Matter, but the first non-whitespace line in the page is a Markdown H1 / H2 / H3, this plugin instructs Jekyll to use that first heading as the page's title."
+
+## How to Add an Image
+The documentation found on the Jekyll site or GitHub pages does not seem to work. They say you should add an assets folder with images and reference the image with a relative path from the root directory. That is only half right at the time of writing of this post. You need to create a full path the the GitHub project assets folder.
+To get this to work you need to follow this pattern:
+```
+![Text Reader Text](https://{GitHub User Name}.github.io/{ProjectName}/assets/imageName.png)
+```
+This works for GitHub project sites.
