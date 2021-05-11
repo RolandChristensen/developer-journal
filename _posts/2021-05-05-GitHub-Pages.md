@@ -73,7 +73,7 @@ The first problem I had when I created the index.md for a blog, I did not unders
 
 ![Example Layout of Minima Theme](https://rolandchristensen.github.io/DeveloperJournal/images/2021-05-05-GitHub-Pages.png "Example of Using Title in YAML Front Matter and a Heading")
 
-As noted in the screen shot the plug-in "jeckyll-titles-from-headings" is useful, but can cause problems. It will create a duplicate heading and title if you do not include a "title" key in the YAML front matter.
+As noted in the screen shot the plug-in "jekyll-titles-from-headings" is useful, but can cause problems. It will create a duplicate heading and title if you do not include a "title" key in the YAML front matter.
 
 ## How to Add an Image
 The documentation found on the Jekyll site or GitHub pages does not seem to work. They say you should add an assets folder with images and reference the image with a relative path from the root directory. That is only half right at the time of writing of this post. Adding a folder to hold any assets you want to link to is correct. However, you need to create a full path to the GitHub project assets folder.
@@ -81,4 +81,4 @@ To get this to work you need to follow this pattern:
 ```
 ![Text Reader Text](https://{GitHub User Name}.github.io/{ProjectName}/assets/imageName.png "Hover Message")
 ```
-This works for GitHub project sites.
+This works for GitHub project sites. This is not ideal. If you found you needed to move this site to another host all of the links to images would break. Relative paths is the best way to go. If this site were to be moved, I would need to find every reference to the images folder and change it to the new location.
