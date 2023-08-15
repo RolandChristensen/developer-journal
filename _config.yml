@@ -6,9 +6,5 @@ description: > # this means to ignore newlines until next key. AKA muliti-line f
   It is mostly for my own edification and to create a searchable index of notes for me to use in the future.
 # social links
 github_username:  RolandChristensen # DO NOT include the @ character, or else the build will fail!
-
-# show_excerpts: true # set to false to remove excerpts on the homepage
-
-remote_theme: pages-themes/architect@v0.2.0
-plugins:
-- jekyll-remote-theme
+show_excerpts: true # set to false to remove excerpts on the homepage
+theme: minima
