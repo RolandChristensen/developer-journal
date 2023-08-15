@@ -1,9 +1,9 @@
 ---
 title: "Developer Notebook"
 ---
-Blog-like note taking to track my computer science related activities.
+Blog-like site for note-taking, tutorial building, and cheatsheet creating.
 
-```
+```javascript
   foreach (var voice in myHead) {
     CodeBy(voice);
   }
