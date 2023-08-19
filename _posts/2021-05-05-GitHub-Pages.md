@@ -71,7 +71,7 @@ This documentation is for creating a static web page on GitHub. A quick search w
 ## Use the Title Front Matter Instead of a Header
 The first problem I had when I created the index.md for a blog, I did not understand where the title and headers would be displayed on the page. You will need to keep the title lengths under a minimum number to display correctly depending on the theme. The YAML Front Matter does not display in the preview of the file when you are editing it, so there is a temptation to add a header to the top of the markdown file created. Resist the temptation. The title key will create a lovely header on the finished web page.
 
-![Example Layout of Minima Theme](https://rolandchristensen.github.io/DeveloperJournal/images/2021-05-05-GitHub-Pages.png "Example of Using Title in YAML Front Matter and a Heading")
+![Example Layout of Minima Theme](https://rolandchristensen.github.io/developer-journal/images/2021-05-05-GitHub-Pages.png "Example of Using Title in YAML Front Matter and a Heading")
 
 As noted in the screen shot the plug-in "jekyll-titles-from-headings" is useful, but can cause problems. It will create a duplicate heading and title if you do not include a "title" key in the YAML front matter.
 
