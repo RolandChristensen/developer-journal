@@ -119,7 +119,7 @@ In real life examples, we would create a "local.settings.json", "dev.settings.js
   "baseUrl": "https://example.cypress.io/"
 }
 ```
-6. Open the "cypress.config.js" file found in the root directory of your cypress test folder. (This was created in step 1 of the [Initial Setup for Tests](#initial-setup-for-tests) section. It will look similar to this:
+5. Open the "cypress.config.js" file found in the root directory of your cypress test folder. (This was created in step 1 of the [Initial Setup for Tests](#initial-setup-for-tests) section. It will look similar to this:
 ```javascript
 const { defineConfig } = require("cypress");
 
@@ -131,7 +131,7 @@ module.exports = defineConfig({
   },
 });
 ```
-5. Add the code shown below in the setupNodeEvents callback code.
+6. Add the code shown below in the setupNodeEvents callback code.
 ```javascript
 const { defineConfig } = require("cypress");
 
@@ -150,18 +150,19 @@ module.exports = defineConfig({
   },
 });
 ```
-6. Save the file.
-7. Go back to the "test-the-kitchen-sink.cy.js" file and change the `cy.visit('https://example.cypress.io')` to `cy.visit('/')` and save the file.
+7. Save the file.
+8. Go back to the "test-the-kitchen-sink.cy.js" file and change the `cy.visit('https://example.cypress.io')` to `cy.visit('/')` and save the file.
     * You should see the URL defined in the "local.settings.json" file in the cypress browser URL field after it gets done refreshing.
-8. To test the "prod.settings.json" we need to close Cypress. Switch to the Cypress Desktop application and click the **Close** button.
+9. To test the "prod.settings.json" we need to close Cypress. Switch to the Cypress Desktop application and click the **Close** button.
     * This will close the Cypress browser
-9. Close the Cypress Desktop application by clicking the 'X'.
-10. Start Cypress again using the prod environment by using the following command: `$ npx cypress open --env environmentName=prod`
+10. Close the Cypress Desktop application by clicking the 'X'.
+11. Start Cypress again using the prod environment by using the following command: `$ npx cypress open --env environmentName=prod`
     * You could add any number of environment files with the naming convention of "environmentName.settings.json"
     * Running the appropriate environment by using the `$ npx cypress open --env environmentName={environmentName}` command.
 12. Click the E2E Testing button.
 13. Select your browser and click the Start E2E Testing in Chrome button.
     * The Cypress browser will open with the URL in the "prod.settings.json" file displayed in the URL field of the browser.
+14. Close everything out and start again using the "local.settings.json" file.
   
 These environment specific files will hold environment specific values. Do not use this file for anything that does not change from environment to environment.
 
