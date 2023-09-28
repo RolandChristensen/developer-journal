@@ -266,11 +266,11 @@ Example: the HTML looks like `<input class="form-control action-email">`, but we
 1. Add a `describe()` to the file with the description "Test the Actions Page".
 1. Add a `it()` to the `describe()` with the description "accepts email address".
 1. Add code to navigate to "https://example.cypress.io/commands/actions" remembering the base URL is already set.
-1. Now add a constant string to hold the email address `const emailAddress = 'testy.testerson@email.com'`.
+5. Now add a constant string to hold the email address `const emailAddress = 'testy.testerson@email.com'`.
     * Define constants for any strings that you are expecting to use more than once in the code. This makes the code more maintainable since you will only need to change the value once and it will be updated everywhere it is used.
     * This will complete the set up of the test (Given / Arrange)
     * The file should look like the following so far:
-    * 
+
 ```javascript
 describe('Test the Actions Page', () => {
   it('accepts email address', () => {
@@ -280,7 +280,7 @@ describe('Test the Actions Page', () => {
 })
 ```
 
-1. Add `cy.get('.action-email')`, which will find the email field on the page.
+6. Add `cy.get('.action-email')`, which will find the email field on the page.
 1. Append `type(emailAddress)` to the `get()` in order to type the email address constant value in the input email field.
 1. Append `should('have.value', emailAddress)` to the `type()` in order to assert that the input email fields *value* property is set to the email entered.
 1. Save the file.
