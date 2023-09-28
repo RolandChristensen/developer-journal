@@ -87,6 +87,7 @@ describe('template spec', () => {
 * The parameters of *it(string, function())* are the string description of the test and the anonymous function that is the action (*act* or *when*) we are testing. Combining the *describe* and the *it* will create a complete description of the test. This is a dumb one that simply says "template spec passes", but we will write better ones.
 * The `cy.visit('https://example.cypress.io')` is a cypress command defined in the [Cypress API](https://example.cypress.io/api/). Anything beginning with cy.* will be a Cypress command.
 * There are a lot of examples on the internet that will suggest the following improvement over hard coding the URL in the tests, which is to add the base URL in the "cypress.config.js" file. 
+
 ```javascript
 const { defineConfig } = require('cypress')
 
