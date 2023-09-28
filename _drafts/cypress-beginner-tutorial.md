@@ -1,5 +1,5 @@
 ---
-title: "Cypress JavaScript Testing"
+title: "Cypress JavaScript Testing Part One"
 date: 2023-08-26
 ---
 
@@ -112,7 +112,7 @@ Use a base URL in an environment specific configuration file for use in the `cy.
 ```
 In real life examples, we would create a "local.settings.json", "dev.settings.json", "stage.settings.json", and "prod.settings.json" for environment testing. This is a bare minimum for modern enterprises and there may be more environments. These files would contain environment specific data. The base URL is just the start.
 
-3. For learning create a second file in the root folder called "prod.settings.json".
+3. For learning, create a second file in the root folder called "prod.settings.json".
 4. Add the following to the file:
 ```json
 {
@@ -236,7 +236,7 @@ describe('Test the Querying Page', () => {
 })
 ```
 
-Finally, lets rename the spec file to make it specific to the test.  
+Finally, let's rename the spec file to make it specific to the test.  
 1. Rename it to "test-querying-page.cy.js" in file explorer or from Visual Studio Code.  
 1. Go back to Cypress and you will see an error that the test could not be found.  
 1. Refresh the page using the browser refresh button and all will be fine again.
@@ -253,7 +253,7 @@ Use the `cy.get()` command to get elements on the page. The parameter used in th
 1. Add a line to get the heading (h1) on the page: `cy.get('h1')`
     * To get tag names simply use the tag name in the quotes. Of course duplicates could exist on a page, but for this page there is only one *h1*.
 1. Next we get the text property of the element using the `.invoke()` method to read the text of the heading. Add the method to invoke text: `cy.get('h1').invoke('text')`
-    * `invoke()` is a connector function, one that invokes a function of the element we got and then we assert something off the results of the invocation.
+    * `invoke()` is a connector function, one that invokes a function of the element we got and then we assert something based on the results of the invocation.
     * The `invoke('text')` command gets the inner text of the element (`<h1>inner text<h1>` in HTML or `h1Element.innerText` in JavaScript)
 1. Next add the assertion that the text should equal what we see on the page: `cy.get('h1').invoke('text').should('equal', 'Querying')`
 
@@ -296,18 +296,5 @@ describe('Test the Actions Page', () => {
 })
 ```
 
-This is a good place to stop and examine Cypress.
+This is a good place to stop. I think a user has enough information to begin to automate things on their desktop and begin UI testing using Cypress. Future posts will build on what was learned here.
 
-# Pitfalls
-The following are things that I found problematic at one point in time or another and the work around used.
-
-## You cannot test multiple browser windows or tabs in the same test
-This will require either ordered tests to overcome some problems where you want to set up the tests using another application before running the tests.
-
-Another situation is where you want to validate that clicking a link opens the correct page. You would need to verify this manually to verify the URL is correct.
-
-Testing chat applications, which require two browsers, could be overcome using stubbing.
-
-## You cannot visit two different domains in the same test
-Even if using the same browser, you cannot navigate to a different domain (google.com to amazon.com).  
-Workaround...
