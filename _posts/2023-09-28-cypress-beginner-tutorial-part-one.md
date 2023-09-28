@@ -121,6 +121,7 @@ In real life examples, we would create a "local.settings.json", "dev.settings.js
 }
 ```
 5. Open the "cypress.config.js" file found in the root directory of your cypress test folder. (This was created in step 1 of the [Initial Setup for Tests](#initial-setup-for-tests) section. It will look similar to this:
+
 ```javascript
 const { defineConfig } = require("cypress");
 
@@ -132,7 +133,9 @@ module.exports = defineConfig({
   },
 });
 ```
+
 6. Add the code shown below in the setupNodeEvents callback code.
+
 ```javascript
 const { defineConfig } = require("cypress");
 
@@ -151,6 +154,7 @@ module.exports = defineConfig({
   },
 });
 ```
+
 7. Save the file.
 8. Go back to the "test-the-kitchen-sink.cy.js" file and change the `cy.visit('https://example.cypress.io')` to `cy.visit('/')` and save the file.
     * You should see the URL defined in the "local.settings.json" file in the cypress browser URL field after it gets done refreshing.
