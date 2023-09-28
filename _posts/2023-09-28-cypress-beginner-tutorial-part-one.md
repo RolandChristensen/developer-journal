@@ -1,6 +1,6 @@
 ---
-title: "Cypress JavaScript Testing Part One"
-date: 2023-08-26
+title: "Cypress Beginner Tutorial Part One"
+date: 2023-09-28
 ---
 
 Cypress.io (Cypress) is a stack agnostic browser testing tool that is free and open source.  
