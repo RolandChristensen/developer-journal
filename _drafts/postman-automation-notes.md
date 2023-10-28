@@ -22,6 +22,12 @@ Client ID can be considered like a user name and client secret is like a passwor
 
 You may decide to keep both the client ID and client secret obfuscated and secured for an additional layer of security.
 
+The bearer token server URL should be environment specific, so that URL will also be kept in the environment variables.
+
+Some services may require other parameters such as *audience* and *scope* be passed to further restrict access.
+
+![Text Reader Text](https://rolandchristensen.github.io/developer-journal/images/2023-10-28-postman-authentication-bearer-tokens.png "Example Postman Environment")
+
 ### Example script in Pre-request of Collection / Folder / Request
 ```Javascript
 // This will get a token if the old one has expired.
@@ -32,7 +38,7 @@ if (pm.environment.get("service_name_bearer_token_expiration")) {
 console.log("Need a new token for service name.");
 
 const tokenRequest = {
-    url: pm.environment.get("BearerTokenUrl"),
+    url: pm.environment.get("bearer_token_url"),
     method: 'POST',
     header: {
         'Content-Type': 'application/x-www-form-urlencoded'
