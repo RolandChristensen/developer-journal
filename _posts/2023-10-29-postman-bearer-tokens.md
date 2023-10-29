@@ -3,7 +3,6 @@ title: "Postman Bearer Tokens"
 date: 2023-10-29
 ---
 
-# Authentication / Authorization
 Each API request will need to use some sort of authentication. Postman has an *Authorization* tab for every collection, folder, or request. 
 
 ![Text Reader Text](https://rolandchristensen.github.io/developer-journal/images/2023-10-28-postman-authentication-collection-folder-authorization-tab.png "Postman Collection Authorization Tab")
