@@ -7,7 +7,7 @@ Each API request will need to use some sort of authentication. Postman has an *A
 
 ![Text Reader Text](https://rolandchristensen.github.io/developer-journal/images/2023-10-28-postman-authentication-collection-folder-authorization-tab.png "Postman Collection Authorization Tab")
 
-It is best to set the authorization type for the services under test in the highest level folder you can use. The collection folder, as shown above is ideal. Then, set the *Authorization Type* drop down of all requests to *Inherit auth from parent* as shown below. This reduces the amount of work that will be needed if/when the authentication method is changed in the future. By default all folders and requests are set to **Inherit auth from parent** meaning you do not need to think about authorization again, once set in the highest level folder you can.
+It is best to set the authorization type for the services under test in the highest level folder you can use. The collection folder, as shown above, is ideal. Then, set the *Authorization Type* drop down of all requests to *Inherit auth from parent* as shown below. This reduces the amount of work that will be needed if/when the authentication method is changed in the future. By default all folders and requests are set to **Inherit auth from parent** meaning you do not need to think about authorization again, once set in the highest level folder you can.
 
 ![Text Reader Text](https://rolandchristensen.github.io/developer-journal/images/2023-10-28-postman-authentication-request-inheriting-from-collection.png "Postman Request Inheriting Collection Authorization")
 
