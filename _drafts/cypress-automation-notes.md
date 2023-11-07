@@ -137,3 +137,192 @@ cy.contains()
 cy.screenshot()
 cy.scrollTo()
 cy.wait()
+
+## Examples
+cy.get("h1").contains("Some Text").click() // finds the H1 with "Some Text" and clicks it.
+
+cy.contains("SomeText").type("I want to type this") // Finds the *label* "SomeText" and types into that field
+
+cy.get("form").submit() // Gets the form on the page and triggers the submit.
+
+cy.contains("Some success message") // This will validate the successful submission.
+
+## Selectors
+Cypress will automatically calculate a unique selector to use targeted element. 
+Primary selectors:
+* data-cy
+* data-test
+* data-testid
+
+Secondary selectors:
+* id
+* class
+* tag
+* attributes
+* nth-child
+
+### Cypress.SelectorPlayground API
+You can change the priority of selectors from the above to a custom strategy. (id's if your devs are conscientious?)
+
+###
+Fragile selectors are those tied to styling, auto generated, or anything subject to change frequently.
+
+Looking for the visible text is a much better option, but duplicates can still exist and the text can change.
+
+data-cy, data-test, data-testid are isolated from changes related to styling and page html. 
+This is developer created and should not change if devs follow best practices. (I thought *id* was the same?)
+This seems designed to ensure vendor lock in with Cypress.
+It also ensures developers will need to do extra work every time the develop, but it is also making sure they follow best practices that allow us automators have an easier time.
+
+cy.get("[data-cy=value]").click
+
+## Assertions
+Cypress bundles Chai assertion library and extensions Sinon, and jQuery.
+
+### Chai
+BDD assertions
+Should are chainers, used on objects obtained from the DOM or elsewhere.
+Expect is like assert, a parent expression
+
+Chainable Getters are used to make expressions more readable: 
+* to
+* be
+* been
+* is
+* that
+* which
+* and
+* has
+* have
+* with
+* at
+* of
+* same
+
+### Chai-jQuery - DOM assertions from jQuery
+cy.get().should(...), cy.contains().should(...), etc..
+expect($el).to.contain('text')
+
+.should('have.attr', 'something')
+expect($el).to.have.attr('key', 'value')
+
+.should('be.visible')
+expect($el).to.be.visible
+
+.should('include', 'string value')
+.should('include', 2) // for an array
+expect([1,2,3]).to.include(2)
+
+.should('have.length', 100) // array or string length
+expect('test').to.have.lengthOf(4)
+
+.should('not.exist')
+expect($el).not.to.exist
+
+### Sinon-Chai
+Chainers used on cy.stub() and cy.spy()
+
+### Multiple Assertions
+.should('...', '...').and('...', '...').and(...)
+
+## Cypress Retry
+The claim is its built in retry feature. Of course, you can easily implement this in any tool with upfront cost.
+* Cypress retries DOM queries
+    * .get()
+    * .find()
+    * .contains()
+* Does not retry .click() or other commands because these change the state of the application.
+* Only the last command before an assertion is retried, so chaining can get you in trouble.
+
+## Aliases
+.as("alias name for future reference") -> .get("@alias name")
+Looks good on the test runner as well.
+
+In a beforeEach (or a POM based file), create get statements with aliases you can reference in the rest of the describe().
+`cy.get("[data-cy=thatButton]").as("ThatButton")`
+
+Then use it like:
+cy.get("@ThatButton")
+
+## API Testing
+Cypress Testing
+* Stub Responses - Mock response from servers
+* Use Server Response - Integration Test
+
+Use stub responses for testing the front end code.
+Use server responses for testing the back end code not handled by unit tests and to ensure the integration works.
+
+The Cypress test runner will display a section for routes and let you know when it has been stubbed.
+
+Don't use stubbed responses for server-side rendering architecture. (PHP that delivers HTML to be rendered on the page.)
+
+Avoid using stubs for critical paths, such as logins.
+
+## Cypress Intercept
+cy.intercept() 
+Used to spy and stub.
+Defines the response body, status code, headers, and other items.
+You can also stub responses from a fixture file *.json
+
+Using an aliased route we can await a response for slow responses.
+You can declaratively wait for requests and responses using cy.wait()
+
+### Spying a Request
+Used during front end testing to wait for the request to finish before moving on to other statements.
+cy.intercept("METHOD", "/endpoint", "hostname") // passively listen for matching routes and apply aliases to them without manipulating the request or its response
+
+It assumes the GET method and the host is also defined in the setup, so both can be left off. 
+cy.intercept("/endpoint") // works for any GET on the expected host.
+
+cy.intercept("/endpoint").as("getSomeData")
+cy.get("@button").click()
+cy.wait("@getSomeData") // Waits before moving to the next line of code
+
+cy.wait("@getSomeData", { requestTimeout: 60000 }) // waits even longer for long running endpoints
+
+### Pattern Matching URLs
+Use ** or * to match any characters in the URL
+Use regex to match characters
+
+### Stubbing a Request
+Use to customize responses from a server
+
+```
+cy.intercept(
+  {
+    method: 'GET',   // Route all GET requests
+    url: '/users/*', // that have a URL that matches
+  []                 // and return an empty array
+  }
+).as('someResponse')
+```
+
+Return specific status codes, bodies, and headers.
+```
+cy.intercept("/someEndpoint",
+  {
+    statusCode: 404,
+    body: "404 Not Found",
+    headers: {
+      "x-not-found": "true"
+    }
+  }
+).as('someResponse')
+```
+
+Using fixtures in the fixtures folder.
+```
+cy.intercept('POST', 'someEndpoint', { fixture: 'response.json' })
+```
+
+### Waiting for Multiple responses
+```cy.wait(["@aliasOne", "@aliasTwo"])```
+
+### Request Command
+cy.request() will try a request once and will time out at the default time.
+
+This can be used for backend testing, but we really should use a tool meant for that.
+
+```cy.request("method", "url").as("alias")```
+
+```cy.get("@alias").should()```
