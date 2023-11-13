@@ -5,6 +5,8 @@ date: 2023-11-13
 
 Notes taken during the conference.
 
+https://www.youtube.com/watch?v=3HG-5qGyJAw
+
 # Pre-conference Preparation
 
 ## Free Code Camp C# Certification
@@ -21,7 +23,7 @@ Notes taken during the conference.
 
 ## Session 3: Web Applications 2 - Building an intelligent app with Blazor and Azure OpenAI
 
-## Session 4: Mobile Applications & Desktop Apps
+## Session 4: Mobile Applications & Desktop Apps - .NET Maui
 
 ## Session 5: Game Development 1 - Games in Godot!
 
