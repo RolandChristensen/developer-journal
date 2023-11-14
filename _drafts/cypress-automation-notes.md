@@ -326,3 +326,70 @@ This can be used for backend testing, but we really should use a tool meant for 
 ```cy.request("method", "url").as("alias")```
 
 ```cy.get("@alias").should()```
+
+## Cypress Screenshots and Video
+`$ npx cypress run` run tests headless and creates a videos folder that holds recordings of the test run.
+
+### Video
+The configuration options in cypress.json allow: 
+
+* Trash videos before run.
+* Compression
+* Folder
+* Capture video or not
+* Upload to dashboard on pass or not. Fails are usually more useful, but...
+
+### Screenshot
+Cypress creates screenshots in a screenshots folder automatically when a test fails, when using the runner.
+
+Configuration for screenshots is also available in the cypress.json
+
+`cy.screenshot()` takes a screenshot in code.
+
+## Custom Commands
+cypress/support/commands.js
+
+```javascript
+// This will return an element by data-cy.
+Cypress.Commands.add("dataCy", (value) => {
+    return cy.get('[data-cy=${value}]')
+});
+```
+
+```javascript
+Cypress.Commands.add("doABunchOfWork", () => {
+    cy.visit("\")
+    cy.get("...")
+    ...
+});
+```
+
+## Cross Browser Support
+There is a full list online.
+Cypress finds the browsers you have installed and gives you a list based on that.
+
+`cypress run --browser firefox` to choose browser.
+
+## Plugins
+Plugins can be written to modify or extend Cypress or to use Node outside of the browser.
+
+* There are a lot available. Find a list on docs.cypress.io/plugins.
+* You can create your own custom code to extend Cypress or tap into Node.
+* Manipulate DBs
+
+Place plugins you want in the cypress/plugins/index.js file.
+
+```javascript
+// on is the event handler bit
+// config comes from the Cypress config file
+module.exports = (on, config) => {
+  on('<event>', (arg1, arg2) => {
+    // plugin stuff here
+  }
+}
+```
+
+## TypeScript
+You can configure Cypress to use Typescript by editing cypress/tsconfig.json file.
+
+TypeScript helps us avoid Types or other runtime errors you will find with JavaScript.
