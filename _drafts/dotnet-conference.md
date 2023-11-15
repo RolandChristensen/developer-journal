@@ -5,7 +5,9 @@ date: 2023-11-13
 
 Notes taken during the conference.
 
-https://www.youtube.com/watch?v=3HG-5qGyJAw
+Student Zone: https://www.youtube.com/watch?v=3HG-5qGyJAw
+
+Day One: https://www.youtube.com/watch?v=xEFO1sQ2bUc
 
 # Pre-conference Preparation
 
