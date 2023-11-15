@@ -10,6 +10,78 @@ Notes while I work to be fleshed out better later.
 # Data Driven Tests
 Passing in a *.csv file of data or a *Theory* in xUnit.
 
+## Looping through CSV in the same ***it*** block.
+`$ npm install neat-csv@5.2.0` to install the Node package. Version 5 is required. Later versions will fail to run.
+
+```javascript
+let csvData
+
+describe('Test using *.csv file', () => {
+  before(() => {
+    cy.fixture('file-name.csv').then((data) => {
+      csvData = data
+    })
+  })
+
+  it('Output rows of CSV', () => {
+    for (let i = 0; i < csvData.length; i++)
+    {
+      cy.log("Iteration " + i + " First column: " + csvData[i]['name_of_column_1']
+      cy.log("Iteration " + i + " Second column: " + csvData[i]['name_of_column_2']
+    }
+  }
+}
+```
+
+## Looping through CSV and run multiple ***it*** blocks on each row in the file
+
+cypress.config.js
+
+```javascript
+const { defineConfig } = require('cypress')
+
+const fs = require('fs')
+const path = require('path')
+const neatCSV = require('neat-csv')
+
+module.exports = defineConfig({
+  e2e: {
+    async setupNodeEvents (on, config) {
+      // Load the CSV file
+      const filename = path.join(__dirname, 'cypress/fixtures/filename.csv')
+      const text = fs.readFileSync(filename, 'utf8')
+      const csv = await neatCSV(text)
+
+      // Make available in the environment via Cypress.env("csvData")
+      config.env.csvData = csv
+
+      return config
+    },
+  },
+})
+```
+
+Spec file:
+
+```javascript
+const csvData = Cypress.env('csvData')
+
+describe('Test reading a csv file', () => {
+  
+  csvData.forEach((row) => {
+    it(`Run example for ${row['column_1']} ${row['column_2']}`, () => {
+      cy.log(`First column: ${row['column_1']}`)
+      cy.log(`Second column: ${row['column_2']}`)
+    })
+
+    it('Run a second test on same data', () => {
+      cy.log("Test 2 First column: " + row['column_1'])
+      cy.log("Test 2 Second column: " + row['column_2'])
+    })
+  })
+})
+```
+
 # PluralSight Course
 Cypress 9 Fundamentals
 
