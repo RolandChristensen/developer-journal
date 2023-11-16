@@ -9,6 +9,8 @@ Student Zone: https://www.youtube.com/watch?v=3HG-5qGyJAw
 
 Day One: https://www.youtube.com/watch?v=xEFO1sQ2bUc
 
+Day Two: https://www.youtube.com/watch?v=LuGkxeKut_M
+
 # Pre-conference Preparation
 
 ## Free Code Camp C# Certification
