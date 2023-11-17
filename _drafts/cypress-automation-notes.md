@@ -7,6 +7,11 @@ Notes while I work to be fleshed out better later.
 
 # Authentication (Get a bearer token first and reuse in all tests, unless it has expired.)
 
+# API Testing
+`$ npm install cypress-plugin-api`
+
+Use cy.api() instead of cy.request().
+
 # Data Driven Tests
 Passing in a *.csv file of data or a *Theory* in xUnit.
 
