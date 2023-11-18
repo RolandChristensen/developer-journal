@@ -16,6 +16,7 @@ Day Three: https://www.youtube.com/watch?v=LuGkxeKut_M
 # Pre-conference Preparation
 
 ## Free Code Camp C# Certification
+Sign up and take the C# path.
 
 ## .NET Beginner Video Series
 
