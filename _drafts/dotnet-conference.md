@@ -11,6 +11,8 @@ Day One: https://www.youtube.com/watch?v=xEFO1sQ2bUc
 
 Day Two: https://www.youtube.com/watch?v=LuGkxeKut_M
 
+Day Three: https://www.youtube.com/watch?v=LuGkxeKut_M
+
 # Pre-conference Preparation
 
 ## Free Code Camp C# Certification
