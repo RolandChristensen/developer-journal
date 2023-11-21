@@ -5,6 +5,8 @@ date: 2023-11-13
 
 Notes taken during the conference.
 
+Conf: https://www.dotnetconf.net/?utm_campaign=savedate&utm_source=dotnetconf&utm_medium=newsletter
+
 Student Zone: https://www.youtube.com/watch?v=3HG-5qGyJAw
 
 Day One: https://www.youtube.com/watch?v=xEFO1sQ2bUc
