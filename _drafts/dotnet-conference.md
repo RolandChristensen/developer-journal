@@ -26,6 +26,11 @@ Sign up and take the C# path.
 
 ## Join Live or Watch Later on YouTube
 
+## Introduction
+Code along https://aka.ms/netconf23/studentrepo Contains 2022 as well as 2023. This is CodeSpaces friendly, so learn about codespaces to continue.
+
+6:50 into the video.
+
 ## Session 1: AI
 
 ## Session 2: Web Applications 1 - Minimal API + SPA
