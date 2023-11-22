@@ -23,8 +23,8 @@ Prerequisites:
 
 ***Notes on this tutorial (Any tutorial really)***
 It should be noted that all tutorials quickly become error-prone as new versions of software are introduced.  
-I will attempt to keep this up-to-date, but if the versions are not as indicated, I cannot guarantee results and you will need to follow along with another source.  
-I am following the guides on docs.cypress.io and they are out-of-date as I write this and I need to use some analytical thinking and a search engine to resolve the discrepancies.
+I will attempt to keep this up-to-date, but if the versions are not as indicated problems may exist.  
+I am following the guides on docs.cypress.io and they are out-of-date as I write this. As always, I follow along and use analytical thinking and a search engine to resolve the discrepancies.
 
 # Initial Setup for Tests
 
