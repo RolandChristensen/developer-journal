@@ -90,18 +90,6 @@ describe('Test reading a csv file', () => {
 # PluralSight Course
 Cypress 9 Fundamentals
 
-## Test Automation Pyramid
-As you ascend the pyramid, the tests become more costly in resources for creation, maintenance, and time and computing resources to run.
-
-1. Unit Test (10000's)
-2. Integration Tests (1000's)
-3. End to End (e2e) (100's)
-
-## Manual Testing
-* Slower than automated
-* Tedious and error prone
-* Costly
-
 ## Cypress Claims / Features
 * Faster than traditional e2e tests to create
 * Easier than tradtional e2e to create
