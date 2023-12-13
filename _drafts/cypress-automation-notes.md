@@ -7,6 +7,64 @@ Notes while I work to be fleshed out better later.
 
 # Authentication (Get a bearer token first and reuse in all tests, unless it has expired.)
 
+# Global Variables
+Frequently, I want to get a value from a service or page that will be needed for multiple tests in a spec file.  
+I want to set this variable in a **begin** block and use it in multiple **it** blocks.  
+Cypress wants you to *chain* everything and expects asynchronous execution, making this not as straight forward as other languages.  
+
+What works:  
+```javascript
+import somePage from "../pages/some-page"
+
+before(() => {
+  somePage.elementValues.someElementValue().then((elementValue) => {
+    cy.wrap(elementValue).as('ValueAlias')
+  })
+})
+
+cy.get('@ValueAlias').then((value) => {
+  cy.log("Aliased Value: " + value)
+})
+```
+
+Example:  
+```javascript
+import somePage from "../pages/some-page"
+
+var someFieldValue = 0 // This does not work when grabbing values off a web page front end.
+
+before(() => {
+  somePage.elementValues.someElementValue().then((elementValue) => {
+    // Try to save a value pulled from a web page to a variable accessible to the entire page
+    // This does not work
+    someFieldValue = elementValue
+    cy.log("someFieldValue inside then block: " + someFieldValue) // this logs correctly inside the block
+
+    // Try environment variables
+    // This does not work
+    Cypress.env("SomeFieldValue", elementValue)
+    cy.log("Environment Variable inside then block: " + Cypress.env("SomeFieldValue") // Output is correct inside the block
+
+    // Using aliases works
+    cy.wrap(elementValue).as('ValueAlias')
+    cy.get('@ValueAlias').then((elementValue) => {
+      cy.log("Aliased Variable Value inside then block: " + elementValue)
+    })
+  })
+})
+
+// Check variable at highest scope
+cy.log("someFieldValue outside of then block: " + someFieldValue) // outputs '0' like it was never set
+
+// Check environment variable
+cy.log("Environment Variable outside of then block: " + Cypress.env("SomeFieldValue")) // outputs 'undefined'
+
+// This works
+cy.get('@ValueAlias').then((value) => {
+  cy.log("Aliased Value outside of the then block: " + value)
+})
+```
+
 # API Testing
 `$ npm install cypress-plugin-api`
 
