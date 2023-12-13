@@ -7,7 +7,21 @@ Notes while I work to be fleshed out better later.
 
 # Authentication (Get a bearer token first and reuse in all tests, unless it has expired.)
 
-# Global Variables
+# Ignore Uncaught Exceptions 
+
+## Ignore Once in Function
+```javascript
+someFunction () {
+  cy.on('uncaught:exception', (err, runnable) => {
+    // Make it specific to the exception you expect
+    // Otherwise, you may ignore exceptions you wish to fail the test
+    if (err.message.includes('412 Precondition Failed'))
+      return false
+  })
+}
+```
+
+# Spec File Fields (Global Spec Variables)
 Frequently, I want to get a value from a service or page that will be needed for multiple tests in a spec file.  
 I want to set this variable in a **begin** block and use it in multiple **it** blocks.  
 Cypress wants you to *chain* everything and expects asynchronous execution, making this not as straight forward as other languages.  
