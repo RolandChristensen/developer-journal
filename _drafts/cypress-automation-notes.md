@@ -26,22 +26,12 @@ Frequently, I want to get a value from a service or page that will be needed for
 I want to set this variable in a **begin** block and use it in multiple **it** blocks.  
 Cypress wants you to *chain* everything and expects asynchronous execution, making this not as straight forward as other languages.  
 
-What works:  
-```javascript
-import somePage from "../pages/some-page"
+I can do this using API, but cannot read a field from a page and set a field for use in the rest of the tests.
 
-before(() => {
-  somePage.elementValues.someElementValue().then((elementValue) => {
-    cy.wrap(elementValue).as('ValueAlias')
-  })
-})
+What works??? 
+Find a good way to do this with page stuff.
 
-cy.get('@ValueAlias').then((value) => {
-  cy.log("Aliased Value: " + value)
-})
-```
-
-Example:  
+Things that ***DO NOT WORK***:  
 ```javascript
 import somePage from "../pages/some-page"
 
@@ -59,13 +49,20 @@ before(() => {
     Cypress.env("SomeFieldValue", elementValue)
     cy.log("Environment Variable inside then block: " + Cypress.env("SomeFieldValue") // Output is correct inside the block
 
-    // Using aliases works
+    // Try using aliases
+    // This does not work, but it appears to work because the first "it" block reads it, but subsequent "its" do not
     cy.wrap(elementValue).as('ValueAlias')
     cy.get('@ValueAlias').then((elementValue) => {
       cy.log("Aliased Variable Value inside then block: " + elementValue)
     })
   })
 })
+
+// Advice found on the internet tells you to try the following to t
+beforeEach(() => {
+  // This is needed to preserve alias between multiple "it" blocks
+  cy.wrap(this.ValueAlias).as('ValueAlias')
+}
 
 // Check variable at highest scope
 cy.log("someFieldValue outside of then block: " + someFieldValue) // outputs '0' like it was never set
