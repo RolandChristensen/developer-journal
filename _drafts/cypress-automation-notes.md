@@ -5,51 +5,6 @@ date: 2023-10-30
 
 Notes while I work to be fleshed out better later.
 
-# Nesting / Aliasing
-By default, Cypress uses chaining and arrow notation to gather values needed for testing.
-
-```javascript
-cy.get('[data-cy="first-name"]').invoke('text').then((firstNameText) => {
-  cy.get('[data-cy="middle-name"]').invoke('text').then((middleNameText) => {
-    cy.get('[data-cy="last-name"]').invoke('text').then((lastNameText) => {
-      cy.get('#full-name').invoke('text').then((fullNameText) => {
-        expect(firstNameText + ' ' + middleNameText + ' ' + lastNameText).to.equal(fullNameText)
-      })
-    })
-  })
-})
-```
-If you come from an object oriented or procedural programming approach, where you would gather data using functions and return them to a variable, you will find this frustrating.  
-
-Alternative to nesting is to use aliases simulating a procedural approach.  
-
-```javascript
-cy.get('[data-cy="first-name"]).invoke('text').as('firstNameText')
-cy.get('[data-cy="middle-name"]).invoke('text').as('middleNameText')
-cy.get('[data-cy="last-name"]).invoke('text').as('lastNameText')
-
-// Note that "function" is used instead of arrow notation.
-// Arrow notation would mean that the "this" keyword would follow all nested arrows until it reached the outermost scope, where it would not find the alias.
-cy.get('#full-name').invoke('text').as('fullNameText').then(function () {
-  expect(this.firstNameText + ' ' + this.middleNameText + ' ' + this.lastNameText).to.equal(this.fullNameText)
-})
-```
-
-Takeaway: get used to using both ways.
-Pros to nesting:
-* You get the value right before you use it and it is less likely to be unintentionally changed before you use it.
-
-Cons to nesting:
-* Excessive nesting is generally viewed as a code quality problem. It is assumed to reduce readability, leading to an increase in defects and longer maintenance times (increased technical debt).
-
-Pros to aliases: 
-* Reduced Nesting
-* Fewer lines of code (mostly closing brackets and parentheses)
-
-Cons to aliases:
-* Aliases increase complexity. You need to use functions to set and get the variable and then chain off the result. Increased complexity is said to decrease code quality in the long run, increasing technical debt.
-* Aliases are not as easily tracked in the IDE as a variable is in modern IDEs. IntelliSense and code navigation in VS Code makes finding references to variables and when they are set easy. Searching for alias names is a little more difficult.
-
 # Authentication (Get a bearer token first and reuse in all tests, unless it has expired.)
 
 # Ignore Uncaught Exceptions 
