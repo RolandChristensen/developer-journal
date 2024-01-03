@@ -22,9 +22,9 @@ Coming from a structured procedural programming approach, where you gather data 
 To avoid nesting use aliases simulating a procedural approach.
 
 ```javascript
-cy.get('[data-cy="first-name"]).invoke('text').as('firstNameText')
-cy.get('[data-cy="middle-name"]).invoke('text').as('middleNameText')
-cy.get('[data-cy="last-name"]).invoke('text').as('lastNameText')
+cy.get('[data-cy="first-name"]').invoke('text').as('firstNameText')
+cy.get('[data-cy="middle-name"]').invoke('text').as('middleNameText')
+cy.get('[data-cy="last-name"]').invoke('text').as('lastNameText')
 
 // Note that "function" is used instead of arrow notation.
 // Arrow notation would mean that the "this" keyword would follow all nested arrows until it reached the outermost scope, where it would not find the alias.
@@ -36,6 +36,8 @@ cy.get('#full-name').invoke('text').as('fullNameText').then(function () {
 
 **Takeaway**: get used to using both ways.  
 Reduce nesting when it improves readability, but use closures to ensure integrity of variable values.  
+
+The internet has a lot of strong opinions, often with no data or logic to back it. There is no consensus.
 
 Pros to closures:
 * You get the value right before you use it and it is less likely to be unintentionally changed before you use it.
