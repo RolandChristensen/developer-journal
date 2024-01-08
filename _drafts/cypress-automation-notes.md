@@ -5,6 +5,21 @@ date: 2023-10-30
 
 Notes while I work to be fleshed out better later.
 
+# Cypress ESLint
+https://medium.com/@anandganesh1811/cypress-automation-code-quality-with-cypress-eslint-prettier-plugins-daa45db65234
+https://github.com/chinchiheather/cypress-eslint-preprocessor
+https://github.com/cypress-io/eslint-plugin-cypress/tree/0c5f68bae3ffa5911bebb559e7d4200de5c3f694
+
+Check GitHub repo for "esling-plugin-cypress" for full instructions to install.  
+Check GitHub repo for "cypress-eslint-preprocessor" for that installation.
+
+Below are general instructions
+
+1. npm install --save-dev @cypress/browserify-preprocessor
+2. npm install eslint-plugin-cypress
+3. npm install -g eslint
+4. Add a file named
+
 # Authentication (Get a bearer token first and reuse in all tests, unless it has expired.)
 
 # Ignore Uncaught Exceptions 
