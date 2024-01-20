@@ -24,3 +24,50 @@ As you ascend the pyramid, the tests become more costly in resources for creatio
 * Slower than automated
 * Tedious and error prone
 * Costly
+* Essential :)
+
+### Testing Fundamentals
+* **Testing Early**: Prevent defects by testing the story requirements (Acceptance Criteria) before work is begun. Finding defects after the coding is done is *reactive* rather than *preventative*.
+* **Verification**: Verify whether all specified requirements (AC) have been fulfilled. (Not to be confused with **Validation**.)
+* **Validation**: what the client actually wants, not neccessarily what the requirements gave them. If the AC do not match what the client asked for then verification can pass, but validation will fail.
+* **Risk Assessment**: provide detailed test reports to allow stakeholders sufficient information to make informed decisions about releases.
+    * Organize defects and apply severity level to each.
+    * Delivering software with minor issues on time, is better than delivering late.
+    * Delivering software with severe issues is never a good idea regardless of time constraints.
+    * Perfectionists never finish a project. Know when it is good enough. (Try to find ways to fix minor issues next time you touch a piece of code. TODOs in code will help the next developer to find them.)
+* **Compliance**: Verify all legal and regulatory standards are met.
+* **Subject Matter Expert**: Strive to become a subject matter expert in your domain to provide clear test evidence that the company is complying with regulations.
+* **Debugging**: Finding root causes. (Testing is not debugging)
+
+## ISTQB Foundation Levbel Syllabus v4.0
+Keywords
+* coverage: 
+* debugging:
+* defect:
+* error:
+* failure:
+* quality:
+* quality assurance:
+* root cause:
+* test analysis:
+* test basis:
+* test case:
+* test completion:
+* test condition:
+* test control:
+* test data:
+* test design:
+* test execution:
+* test implementation:
+* test monitoring:
+* test object:
+* test objective:
+* test planning:
+* test procedure:
+* test result:
+* testing:
+* testware:
+* validation:
+* verification:
+
+Corresponds to the syllabus "1.1 What is Testing?"
