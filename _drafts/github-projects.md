@@ -15,6 +15,8 @@ https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-a
 
 Project Management Light (But Being Developed)
 
+Project management concepts are not discussed in the docs. Basic knowledge is a pre-requisite or the willingness to learn independently.
+
 * You can add custom fields (Metadata) to items such as:
     * Date fields
     * Number fields
@@ -30,7 +32,11 @@ Project Management Light (But Being Developed)
 2. Click "Your Profile" in menu
 3. Click "Projects" in the list of tabs near the top of the page.
      * This will list any projects you currently have created.
-5. Click "New Project" button
-6. Select a project template or "start from scratch" and select either **Table**, **Board**, or **Roadmap**.
+4. Click "New Project" button
+5. Select a project template or "start from scratch" and select either **Table**, **Board**, or **Roadmap**.
      * Choosing a template will not commit you yet. Click the tile and you will see an example of what it looks like.
-8. 
+     * I am going to use *Kanban* to begin.
+6. Choose project name
+7. Click "Create Project" button
+
+# Describe the Purpose of your Repo
