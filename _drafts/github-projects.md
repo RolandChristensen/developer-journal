@@ -80,5 +80,24 @@ You should also begin to create cards with reasonable sizes that can be moved fo
    * Create a new issue by clicking the **+ Create new issue** button.
    * You can select multiple items by selecting the **Add items from {repo name} ->** button.
 
+# Add an iteration field
+Kanban does not use iterations. Come back to this whey you practice scrum.  
+Kanban expects iterative improvements to happen at their own time. Your team will find it's own cadence.
+
+# Creating a field to track priority
+The Kanban template has a priority field out-of-the-box, so you just need to select priorities on issues to see the priority swimlanes appear.
+
+## Kanban Swimlane Divergence
+Kanban uses priority swimlanes to organize the most important work, from top to bottom.  
+Three priorites (low, medium, high or p2, p1, p0) are the usual way to organize your work.  
+Medium is the default.  
+High is reserved for hot-fixes and projects that have a tight deadline.  
+Low is for work that is on the roadmap, but not the immediate destination.
+
+# Grouping Issues by Priority
+Kanban, by default, groups priorities into swimlanes.  
+On the **Priority board** tab click the down arrow to view the properties of the view.  
+In the list is the **Group by** property with **Priority** as the grouping.
+
 
 
