@@ -39,4 +39,46 @@ Project management concepts are not discussed in the docs. Basic knowledge is a 
 6. Choose project name
 7. Click "Create Project" button
 
+## Kanban Divergence 
+Kanban is Japanese for "Visual Signal"
+
+Kanban lets you see your work clearly so the team can all stay on the same page.
+
+Bare necessities:
+* Kanban Board
+* Kanban Cards
+* Work in Progress Limit
+
+Basic Board:
+
+|Backlog|Ready|Doing|Blocked|Review|Done|
+|-------|-----|-----|-------|------|----|
+|Story 1|     |     |       |    |  |
+
+**workflow**: the left to right flow of a story to the **Done** state.  
+Each time a card makes it to **Done** you are able to pick up a new story and pull it into the **Today** (Working/Doing/In Progress/...) column.  
+As stories build up in one column or another, you will identify bottlenecks.  
+You should also begin to create cards with reasonable sizes that can be moved forward in a timely manner.  
+**Lead Time**: The time taken from the time you start working on it to the time its done (in production).  
+
 # Describe the Purpose of your Repo
+1. Click the **...** (Elipsis menu of your project)
+2. Click the **Settings** (Gear Icon)
+3. Add a description in the **Short Description** field
+4. Add a README
+
+# Adding Draft Issues to your project
+1. In the **Backlog** click the **+ Add item** button
+2. Start to type a name for the draft
+3. Press Enter
+
+# Add issues to your project
+1. In the **Backlog** click the **+ Add item** button
+2. Type "#" and wait for the list of items to appear.
+3. Select the repository you are using. Wait for the list of work items to appear.
+4. You can select a work item from the list
+   * Create a new issue by clicking the **+ Create new issue** button.
+   * You can select multiple items by selecting the **Add items from {repo name} ->** button.
+
+
+
