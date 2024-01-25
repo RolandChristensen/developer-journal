@@ -35,7 +35,7 @@ Project management concepts are not discussed in the docs. Basic knowledge is a 
 4. Click "New Project" button
 5. Select a project template or "start from scratch" and select either **Table**, **Board**, or **Roadmap**.
      * Choosing a template will not commit you yet. Click the tile and you will see an example of what it looks like.
-     * I am going to use *Kanban* to begin.
+     * I am going to use *Kanban* to begin. ***Because I use the Kanban template much of the rest of the Quickstart will be useless***
 6. Choose project name
 7. Click "Create Project" button
 
@@ -81,7 +81,7 @@ You should also begin to create cards with reasonable sizes that can be moved fo
    * You can select multiple items by selecting the **Add items from {repo name} ->** button.
 
 # Add an iteration field
-Kanban does not use iterations. Come back to this whey you practice scrum.  
+Kanban does not use iterations. Come back to this when you practice scrum.  
 Kanban expects iterative improvements to happen at their own time. Your team will find it's own cadence.
 
 # Creating a field to track priority
@@ -95,9 +95,25 @@ High is reserved for hot-fixes and projects that have a tight deadline.
 Low is for work that is on the roadmap, but not the immediate destination.
 
 # Grouping Issues by Priority
-Kanban, by default, groups priorities into swimlanes.  
+The Kanban template, by default, groups priorities into swimlanes.  
 On the **Priority board** tab click the down arrow to view the properties of the view.  
 In the list is the **Group by** property with **Priority** as the grouping.
 
+# Adding a Board Layout
+Board layout organizes items by their status, so you can view their progress.  
+The Kanban template has a couple tabs that use the **Board** layout by default, "Backlog", and "Priority Board".  
+Click the down arrow on the **Backlog** tab to see the **Layout** group.  
+There are three layouts **Table**, **Board**, and **Roadmap**.  
 
+# Configure Built-in Automation
+1. Click the "..." elipsis menu on your project
+2. Select **Workflows** from the menu (A list of default workflows appears)
+3. From the list select **Auto-add to project**
+4. Click the **Edit** button in the top right
+5. Under filters choose the repository you want the workflow to apply to
+6. The filters that where automatically added by the Kanban template are good enough
+     * The **Automating Projects > Adding Items Automatically** section goes into more detail
+     * The default will automatically add pull requests and open bugs onto the board
+  
 
+  
