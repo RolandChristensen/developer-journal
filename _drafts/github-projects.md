@@ -115,5 +115,36 @@ There are three layouts **Table**, **Board**, and **Roadmap**.
      * The **Automating Projects > Adding Items Automatically** section goes into more detail
      * The default will automatically add pull requests and open bugs onto the board
   
+# Best Practices for Projects
+## Break Down Large Issues into Smaller Issues
+Breaking down stories into smaller pieces:  
 
+Pros
+* Makes the individual stories more manageable
+* Allows multiple developers to work in parallel
+* Makes each pull request easier to review
+* Makes the scope of testing manageable
+
+Cons
+* Increases the complexity of managing the stories
+* Increases the complexity of coordinating the merging of stories
   
+To track the issues:  
+* Use Task Lists
+* Use Milestones
+* Use Labels
+
+## Task Lists
+I think this has not yet been enabled for me. It says it is in Beta and I do not have a "+ Add Tasklist" button.  
+
+You can however create a check list in an issue description using markdown.  
+- [ ] Code
+- [ ] Review
+- [ ] Test
+
+`- [ ] Code` etc..
+
+You can link to other issues, pull requests, or bugs in your tasklist using full urls, or the #{issue-number} (`#14` => #14) shorthand syntax.  
+After you type the "#" a list of issues will appear to select from.  
+
+## Milestones
