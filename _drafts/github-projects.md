@@ -116,35 +116,94 @@ There are three layouts **Table**, **Board**, and **Roadmap**.
      * The default will automatically add pull requests and open bugs onto the board
   
 # Best Practices for Projects
+* Break down large issues into smaller issues
+* Communicate
+* Make use of description, README, and status updates
+* Use views
+* Have a single source of truth
+* Use automation
+* Use different field types
+
 ## Break Down Large Issues into Smaller Issues
-Breaking down stories into smaller pieces:  
+Breaking down stories into smaller pieces, rather than combining all work needed into a large one:  
 
 Pros
-* Makes the individual stories more manageable
-* Allows multiple developers to work in parallel
+* Makes the individual issues more manageable
+* Allows multiple people to work in parallel
 * Makes each pull request easier to review
-* Makes the scope of testing manageable
+* Makes the scope of testing more manageable
 
 Cons
-* Increases the complexity of managing the stories
-* Increases the complexity of coordinating the merging of stories
+* Increases the complexity of managing the issues
+* Increases the complexity of coordinating the merging of pull requests (if working on the same repo)
   
-To track the issues:  
+To track the smaller issues:  
 * Use Task Lists
 * Use Milestones
 * Use Labels
 
-## Task Lists
-I think this has not yet been enabled for me. It says it is in Beta and I do not have a "+ Add Tasklist" button.  
+### Use Task Lists to organize multiple smaller stories
+I think this has not yet been enabled for me. It says it is in Beta and I do not have a "+ Add Tasklist" button.
 
+Use task lists to coordinate multiple smaller issues.  
 You can however create a check list in an issue description using markdown.  
-- [ ] Code
-- [ ] Review
-- [ ] Test
+- [X] Code
+- [ ] Documentation
+- [ ] Backend work done
+- [ ] Run script to update DB
+- [ ] ...
 
-`- [ ] Code` etc..
+Markdown example:
+```markdown
+- [X] Code
+- [ ] Documentation
+```
 
 You can link to other issues, pull requests, or bugs in your tasklist using full urls, or the #{issue-number} (`#14` => #14) shorthand syntax.  
 After you type the "#" a list of issues will appear to select from.  
 
-## Milestones
+### Use Milestones to organize multiple smaller stories
+You can create a **Milestone** (an expected due date) that you can apply to multiple issues and pull requests.  
+1. Navigate to repository
+2. Click either **Issues** or **Pull Requests**
+3. Click **Milestones** (THe **Milestones** page appears)
+4. Click **New Milestone** button
+5. Give it a Title, Due Date, and Description
+6. Click **Save Changes** button
+
+Associate issues and pull requests to the milestones:  
+1. Navigate to the **Issues** or **Pull Requests** of a repo
+2. Use the checkmarks to select multiple items
+3. Click the **Milestone** dropdown (Not the **MIlestones** button next to the filters)
+4. In the **Filter milestones** you can filter to easily find your milestone
+
+From the **Milestones** tab you can view the progress of your **Milestone**  
+Follow the instructions above to get to your **Milestone** and click on the link to view:
+* Description
+* Issues and pull requests associated with it and their status
+* Due date
+* Completion percentage
+
+You can prioritize items in the list by grabbing the left-most handle and dragging the issues into an order from top (most important) to bottom.
+
+From the **Roadmap** tab on the Kanban template you can add a marker to see the due date of the **Milestone**
+
+### Use Labels to organize multiple smaller stories
+Create a new label with a unique identifier to group stories together:  
+1. Navigate to the **Issues** or **Pull Requests** of a repo
+2. Click the **Labels** button beside the filters
+3. Click **New Label** button
+4. Add a name, description, and a color
+5. Click **Create label** button
+
+Add the label to issues:  
+1. Navigate to an issue, pull request, or discussion
+2. Click the **Labels** button in the right side bar
+3. Select the label(s) to apply to the item
+
+Filter by the label:  
+1. Navigate to the **Issues** or **Pull Requests** of a repo
+2. Click the **Label** dropdown (Not the **Labels** button by the filters)
+3. Select the label to display from the dropdown
+
+## Communicate
