@@ -147,10 +147,10 @@ I think this has not yet been enabled for me. It says it is in Beta and I do not
 
 Use task lists to coordinate multiple smaller issues.  
 You can however create a check list in an issue description using markdown.  
-- [X] Code
-- [ ] Documentation
-- [ ] Backend work done
-- [ ] Run script to update DB
+- [X] Code (This Issue)
+- [ ] Documentation (#100)
+- [ ] Backend work done (#101)
+- [ ] Run script to update DB (#103)
 - [ ] ...
 
 Markdown example:
