@@ -207,3 +207,58 @@ Filter by the label:
 3. Select the label to display from the dropdown
 
 ## Communicate
+Use @mentions to keep them in the loop.  
+Assign issues to people so everyone knows their responsibilities.
+
+## Make use of the description, README, and status updates
+Clearly describe the project.  
+* Describe the project
+* Describe the project views and how you use them
+* Provide links to additional documentation
+* Provide contact information 
+    * RACI (Responsible, Accountable, Consulted, Informed)
+    * Responsible individuals are responsible for the tasks and deliverables.
+        * Developers, Project Managers, Business Analysts, ...
+    * Accountable to project deadlines and eventually for project completion (Frequently also Informed.)
+        * Product Owners, Key Stakeholders, Business Owners, ...
+    * Consulted individuals' opinions are crucial and their guidance is a prerequisite to other project tasks.
+        * Legal experts, Cybersecurity experts, Compliance consultants, ...
+    * Informed individuals are not consulted during decision-making, but are informed of all project updates. Often they are also accountable for the project.
+        * Business owneres, external stakeholders, ...
+    * RACI Matrix
+* Share project updates
+
+## Use Views
+Use project views to see all the angles of the project.  
+* Filter by all unstarted items
+* Group by priority to see all high priority items
+* Sort by ship date to see the earliest target ship date
+
+## Have a Single Source of Truth
+Maintain a single field for important data such as target ship dates. Do not put it in descriptions or comments.  
+Projects automatically stay up-to-date with GitHub data, such as assignees, milestones, and labels.  
+
+## Use Automation
+* Use Built-in Automations
+* GitHub Actions
+* GraphQL API enables you to automate routine project management tasks.
+
+### Using Built-in Automations
+Update the **Status** of items based on certain events. 
+* Set status to **Todo** when an item is added to your project
+* Set status to **Done** when an issue is closed
+* When pull requests are merged, their status is set to **Done**
+* Automatically archive items when certain criteria is met
+
+There are two built-in automations enabled at project creation
+1. When issues are closed their status is set to **Done**
+2. When pull requests are merged their status is set to **Done**
+
+To enable or disable built-in workflows
+1. Click the elipsis "**...**" menu on your project on the top right
+2. Click **Workflows**
+3. Under **Default workflows** click the workflow that you want to edit
+4. Click the **Edit** button
+5. Select whether the workflow should apply to issues, pull requests, or both
+6. Under "set value, choose the value that you want to set the status to (Backlog, Ready, In progress, In review, or Done)
+7. Save 
