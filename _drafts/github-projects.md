@@ -6,7 +6,7 @@ date: 2024-01-22
 Notes taken setting up a project to uee to track my learning objectives.
 
 Sample Projects:
-* Regions Edu
+* Career Development
 * Make it Stick
 * Portfolio
 
@@ -262,3 +262,18 @@ To enable or disable built-in workflows
 5. Select whether the workflow should apply to issues, pull requests, or both
 6. Under "set value, choose the value that you want to set the status to (Backlog, Ready, In progress, In review, or Done)
 7. Save 
+
+### Archiving Items Automatically
+There is a 1,200 item limit for projects. Archive to keep that limit from being reached.  
+There is a 10,000 total item limit, so you will also want to permanently delete items regularly.  
+
+1. Click the elipsis "**...**" menu on your project on the top right
+2. Click **Workflows**
+3. Under **Default workflows** click **Auto-archive items**
+4. Click **Edit** button on the top right
+5. Choose the filter criteria used to automatically archive an item
+     * The default filter is `is:issue is:closed updated:<@today-2w`, which will archive issues that are closed for 2 weeks.
+     * This says all issues (`is:issue`), will be archived if they are closed (`is:closed`) for 2 weeks (`updated:<@today-2w`)
+     * GitHub says this workflow will run every 12 hours
+  
+### Adding Items Automatically
