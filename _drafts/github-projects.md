@@ -277,3 +277,23 @@ There is a 10,000 total item limit, so you will also want to permanently delete 
      * GitHub says this workflow will run every 12 hours
   
 ### Adding Items Automatically
+The free tier limits you to 1. Pro would get you 5.  
+You can add a work item when you add something to a repo.  
+
+1. Click the **...** menu in your project
+2. Click the **Workflows** menu item
+3. Click the **Auto-add to project** tab on the left side bar
+4. Click the **Edit** button
+5. Select the repo to use
+6. Create a filter for the auto-add
+     * The default filter is: `is:issue,pr is:open label:bug`
+     * This will add a work item to the board when you add a issue or pull request, which is open, and labeled bug.
+7. Click **Save**
+
+You can duplicate an auto-add to monitor up to four different repositories.  
+1. Click the **...** menu on the **Auto-add to project** tab on the left side bar
+2. Click the **Duplicate workflow** button
+3. Change the repo
+4. Save with the name you enter
+
+### Automating Projects using Actions
