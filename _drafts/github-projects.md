@@ -297,3 +297,40 @@ You can duplicate an auto-add to monitor up to four different repositories.
 4. Save with the name you enter
 
 ### Automating Projects using Actions
+Example action: automatically add a pull request to the project board with a **Status** of **Todo** with a **Date Posted** field set to today, when you mark a PR as **Ready for review**  
+The workflow is specific to a repository, so each repo in a project will need to be set up.
+
+#### Quickstart for GitHub Actions
+1. Go to the root of some repository
+2. Create a file with the full path `.guthub/workflows/{github-actions-filename}.yml`
+     * The file name will be the name of the Git Action: **GitHub Actions Filename** would be the name on the workflow.
+4. The contents here are found in the GitHub quickstart guide:
+```yaml
+   name: GitHub Actions Demo
+   run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+   on: [push]
+   jobs:
+     Explore-GitHub-Actions:
+       runs-on: ubuntu-latest
+       steps:
+         - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+         - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+         - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+         - name: Check out repository code
+           uses: actions/checkout@v4
+         - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+         - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+         - name: List files in the repository
+           run: |
+             ls ${{ github.workspace }}
+         - run: echo "🍏 This job's status is ${{ job.status }}."
+```
+5. Commit the file by creating a new branch and start a pull request
+6. Navigate to the main page of your repository
+7. Click **Actions** on the top row of tabs
+8. Click the name of the workflow you created in step 2
+9. Click the run you want to view `{username} is testing out GitHub Actions` if you did not change it.
+10. Click the **Explore GitHub Actions** button
+11. Drill down into any step
+
+##### More Starter Workflows
