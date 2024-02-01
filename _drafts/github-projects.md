@@ -304,7 +304,7 @@ The workflow is specific to a repository, so each repo in a project will need to
 1. Go to the root of some repository
 2. Create a file with the full path `.guthub/workflows/{github-actions-filename}.yml`
      * The file name will be the name of the Git Action: **GitHub Actions Filename** would be the name on the workflow.
-4. The contents here are found in the GitHub quickstart guide:
+3. Add the contents found in the GitHub quickstart guide:
 ```yaml
    name: GitHub Actions Demo
    run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
@@ -325,12 +325,36 @@ The workflow is specific to a repository, so each repo in a project will need to
              ls ${{ github.workspace }}
          - run: echo "🍏 This job's status is ${{ job.status }}."
 ```
-5. Commit the file by creating a new branch and start a pull request
-6. Navigate to the main page of your repository
-7. Click **Actions** on the top row of tabs
-8. Click the name of the workflow you created in step 2
-9. Click the run you want to view `{username} is testing out GitHub Actions` if you did not change it.
-10. Click the **Explore GitHub Actions** button
-11. Drill down into any step
+4. Commit the file on a new branch and start a pull request
 
-##### More Starter Workflows
+#### Viewing Workflow Results
+1. Navigate to the main page of your repository
+2. Click **Actions** on the top row of tabs
+3. Click the name of the workflow you created in step 2
+4. Click the run you want to view `{username} is testing out GitHub Actions` if you did not change it.
+5. Click the **Explore GitHub Actions** button
+6. Drill down into any step
+
+#### More Starter Workflows
+Creating your own Continuous Integration (CI) workflows is easy using the *starter workflows* provided:  
+https://github.com/actions/starter-workflows
+
+GitHub analyzes and suggests starter workflows based on the code base.  
+* **Continusous Deployment (CD)**: automate seting up environment and deploy built executables to the environment.
+* **Security**: Static analysis scanning
+* **Continuous Integration (CI)**: small frequent changes, merged, static analysis scanned, built, tests run, and if all gates passed deploy.
+* **Automation**: manage pull requests, automatically applying labels based on paths modified, greeting first-time contributors, ...
+* **Custom Workflows**: create your own workflows that will be displayed beside the GitHub starter workflows.
+
+Choosing a starter workflow:  
+1. Navigate to the main page of a repository
+2. Click **Actions** tab from the top row
+3. Click **New Workflow** button in the left pane
+     * If you don't have any workflows, you will be met with the "Choose a workflow" page
+     * Otherwise, clicking the **New Workflow** button takes you to the "Choose a workflow" page
+     * The "Choose a workflow" page contains suggested starter workflows based on the contents of the repo
+4. Find a starter workflow and click the **Configure** button
+5. The workflow *.yml will appear and any documentation associated with the workflow.
+6. If the workflow needs secrets (`repo-token: "${{ secrets.GITHUB_TOKEN }}"`), you will need to include the secret in your repository
+     * Secrets
+8. 
