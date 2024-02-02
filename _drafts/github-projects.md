@@ -354,7 +354,23 @@ Choosing a starter workflow:
      * Otherwise, clicking the **New Workflow** button takes you to the "Choose a workflow" page
      * The "Choose a workflow" page contains suggested starter workflows based on the contents of the repo
 4. Find a starter workflow and click the **Configure** button
-5. The workflow *.yml will appear and any documentation associated with the workflow.
-6. If the workflow needs secrets (`repo-token: "${{ secrets.GITHUB_TOKEN }}"`), you will need to include the secret in your repository
-     * Secrets
-8. 
+     * There is a workflow called "manual" under the **Automation** section that is a simple *hello world* example to get started
+6. The workflow *.yml will appear and any documentation associated with the workflow.
+7. If the workflow needs secrets (`repo-token: "${{ secrets.GITHUB_TOKEN }}"`), you will need to include the secret in your repository
+     1. Navigate to your repository main page
+     2. Click **Settings** in the top row of tabs
+     3. In the **Security** section on the left side panel, click **Secrets and Variables** dropdown
+     4. Select **Actions** from the dropdown menu
+     5. On the **Secrets** tab click the **New Repository Secret** button
+     6. Type in the name and secret (user / pass) for the secret
+     7. Click the **Add Secret** button
+8. If you added a secret, change the secret in the *.yml file to match the name you provided in the secret (`repo-token: "${{ secrets.SECRET_NAME }}"`)
+9. Read the file and change as desired
+10. Commit your changes
+11. If you used the "manual" workfow, you will see a **Manual workflow** button on the left side panel
+      1. Click the **Manual workflow** button
+      2. Click the **Run Workflow** dropdown
+      3. Click the **Run workflow** button
+           * A completed workflow row will appear, which you can dive down into to see each step performed
+        
+#### Next Steps
