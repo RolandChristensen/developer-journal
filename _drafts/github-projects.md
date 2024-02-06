@@ -242,7 +242,7 @@ Projects automatically stay up-to-date with GitHub data, such as assignees, mile
 * Use Built-in Automations
     * Archiving items automatically
     * Adding items automatically
-* GitHub Actions
+* GitHub Actions: https://docs.github.com/en/actions
 * GraphQL API enables you to automate routine project management tasks.
 
 ### Using Built-in Automations
@@ -377,8 +377,14 @@ Choosing a starter workflow:
         
 ### Use the GraphQL API to Manage Projects
 You can use it to manage a project and in a GitHub Actions workflow.  
-https://docs.github.com/en/issues/planning-and-tracking-with-projects/automating-your-project/using-the-api-to-manage-projectsGoo
+https://docs.github.com/en/issues/planning-and-tracking-with-projects/automating-your-project/using-the-api-to-manage-projects
 
 Example: setting a pull request to "ready for review" adds a new task with **Status** field set to **Todo** and the current date is added to a custom **Date Posted** field.  
 https://docs.github.com/en/issues/planning-and-tracking-with-projects/automating-your-project/automating-projects-using-actions  
 
+### Use Different Field Types
+Use a single select field to enforce specific values.  
+* This makes filters reliable and easy
+* You can also group by the specific values easily
+
+# Finding Your Projects
