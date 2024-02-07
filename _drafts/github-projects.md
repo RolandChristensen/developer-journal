@@ -3,7 +3,7 @@ title: "GitHub Projects"
 date: 2024-01-22
 ---
 
-Notes taken setting up a project to uee to track my learning objectives.
+Notes taken setting up a project to use to track my learning objectives.
 
 Sample Projects:
 * Career Development
@@ -388,3 +388,57 @@ Use a single select field to enforce specific values.
 * You can also group by the specific values easily
 
 # Finding Your Projects
+1. Click your profile picture on the top right
+2. Click **Projects**
+
+or
+
+1. Click the "Hamburger" menu in the upper left corner of any GitHub page after logging in
+2. Click the **Projects** menu option
+     * The default view is the **Recently Viewed**, so you may not see old projects there
+     * Select **Created by Me** on the left side to see all projects you have created
+4. From the **Projects** page you can filter to find one in a long list
+
+### Syntax for Filtering a List of Projects
+`is:open`: projects that are open
+`is:closed`: duh
+`is:template`: marked as template
+    * You can create your own templates, much like the built-in templates you are greeted with when you create a new project
+`is:private`: private repos
+`creator:USERNAME`: GitHub username to find them
+
+Change the sort order
+`sort:title-asc`: by title ascending
+`sort:updated-asc`: last updated ascending
+`sort:updated-desc`: descending
+`sort:created-asc` or `sort:created-desc`
+
+## Adding Your Project to a Repository
+1. Navigate to the repo
+2. Click **Projects**
+3. Click **Link a Project**
+4. Select the **Project** from the list
+     * A Check mark appears next to the linked project
+
+## Finding Projects Linked to a Repository
+1. Navigate to the repo
+2. Click **Projects**
+     * You may need to search for it
+3. Click the project name to open it
+
+## For Organizations and Teams
+Learn if needed
+
+# Sharing Project Updates
+Keep a team up to date with high-level overviews.  
+Statuses: "On Track", "At Risk"  
+You can also set start dates and target dates.  
+
+Status updates appear on your project's side panel and the project's header with a full list of all updates.
+
+## Add a Status Update
+1. Navigate to the project
+2. In the top right click the **Add status button** or the "slide out panel" button to open the side panel
+3. Click the **Add update** button
+4. Use the markdown text panel to add an update
+5. Click the **Save update** button
