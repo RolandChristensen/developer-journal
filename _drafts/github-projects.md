@@ -3,34 +3,30 @@ title: "GitHub Projects"
 date: 2024-01-22
 ---
 
-Notes taken setting up a project to use to track my learning objectives.  
-
-I prefer a project board to visualize work over a traditional todo list and calendar/reminders. There is a reason why modern software development has evolved to use a project board.  
-Using boards for everything from goal management to family daily chores is a good way to organize yourself and your team. A hand drawn task board with sticky notes works.  
-
-Being in technology, I create a task board for my career development and add tasks for learning new technology and keeping up with newer versions of the old technologies.  
+Notes taken setting up a project to use to track my learning objectives. 
 
 Sample Projects:
 * Career Development
 * Make it Stick
 * Portfolio
 
-# GitHub Docs > GitHub Issues > Projects (Free)
+---------  All of the above should be left out of the actual post  -----------------
+
+I prefer a project board to visualize work over a traditional todo list and calendar/reminders. There is a reason why modern software development has evolved to use a project board.  
+Using boards for everything from goal management to family chores is a good way to organize yourself and your team. I like having a hand drawn task board with sticky notes around the home office and on the refrigerator.
+
+Being in technology, I created a task board for my career development and add issues for:
+* Learning the business rules for the product being developed for my current project
+* Reading the documentation of my current project
+* Reading the code of my current project
+* Learning new technology
+* Keeping up to date with newer versions of the old technologies I use
+
+
+# GitHub Docs > GitHub Issues > Projects (Free version)
 https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects
 
-Project Management Light (But Being Developed)
-
 Project management concepts are not discussed in the docs. Basic knowledge is a pre-requisite or the willingness to learn independently.
-
-* You can add custom fields (Metadata) to items such as:
-    * Date fields
-    * Number fields
-    * Select fields
-    * Text fields
-    * Iteration field
-* Automations to do things on field changes, via the API, or using GitHub Actions
-* Tasklists allow you to create issue hierarchies, sub-tasks, and relations between issues.
-* Create *views* to query project and save for future use.
 
 # Create New Personal User Project
 1. Click Profile Picture
@@ -71,6 +67,17 @@ You should also begin to create cards with reasonable sizes that can be moved fo
 2. Click the **Settings** (Gear Icon)
 3. Add a description in the **Short Description** field
 4. Add a README
+
+# Adding Metadata to Your Items
+* You can add custom fields (Metadata) to items such as:
+    * Date fields
+    * Number fields
+    * Select fields
+    * Text fields
+    * Iteration field
+* Automations to do things on field changes, via the API, or using GitHub Actions
+* Tasklists allow you to create issue hierarchies, sub-tasks, and relations between issues.
+* Create *views* to query project and save for future use.
 
 # Adding Draft Issues to your project
 1. In the **Backlog** click the **+ Add item** button
