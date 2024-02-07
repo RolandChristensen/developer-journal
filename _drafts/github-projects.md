@@ -3,14 +3,19 @@ title: "GitHub Projects"
 date: 2024-01-22
 ---
 
-Notes taken setting up a project to use to track my learning objectives.
+Notes taken setting up a project to use to track my learning objectives.  
+
+I prefer a project board to visualize work over a traditional todo list and calendar/reminders. There is a reason why modern software development has evolved to use a project board.  
+Using boards for everything from goal management to family daily chores is a good way to organize yourself and your team. A hand drawn task board with sticky notes works.  
+
+Being in technology, I create a task board for my career development and add tasks for learning new technology and keeping up with newer versions of the old technologies.  
 
 Sample Projects:
 * Career Development
 * Make it Stick
 * Portfolio
 
-# GitHub Docs > Projects
+# GitHub Docs > GitHub Issues > Projects (Free)
 https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects
 
 Project Management Light (But Being Developed)
