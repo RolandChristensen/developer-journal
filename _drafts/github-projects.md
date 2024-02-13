@@ -12,21 +12,19 @@ Sample Projects:
 
 ---------  All of the above should be left out of the actual post  -----------------
 
-I prefer a project board to visualize work over a traditional todo list and calendar/reminders. There is a reason why modern software development has evolved to use a project board.  
-Using boards for everything from goal management to family chores is a good way to organize yourself and your team. I like having a hand drawn task board with sticky notes around the home office and on the refrigerator.
+I prefer a project board to visualize work over a traditional "to do list" and calendar/reminders. There is a reason modern software development has evolved to use a project board.  
+Using boards for everything from goal management to family chores is effective to organize yourself and your team. A hand drawn task board with sticky notes around the home office and on the refrigerator could be good.
 
-Being in technology, I created a task board for my career development and add issues for:
+Being in technology, I created a task board for my career development and add issues to it for:
 * Learning the business rules for the product being developed for my current project
 * Reading the documentation of my current project
 * Reading the code of my current project
-* Learning new technology
+* Learning new innovative technology
 * Keeping up to date with newer versions of the old technologies I use
 
 
 # GitHub Docs > GitHub Issues > Projects (Free version)
 https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects
-
-Project management concepts are not discussed in the docs. Basic knowledge is a pre-requisite or the willingness to learn independently.
 
 # Create New Personal User Project
 1. Click Profile Picture
@@ -41,9 +39,8 @@ Project management concepts are not discussed in the docs. Basic knowledge is a 
 7. Click "Create Project" button
 
 ## Kanban Divergence 
-Kanban is Japanese for "Visual Signal"
-
-Kanban lets you see your work clearly so the team can all stay on the same page.
+Kanban is Japanese for "Visual Signal"  
+Kanban lets you see your work clearly so you and the team can all stay on the same page.
 
 Bare necessities:
 * Kanban Board
@@ -57,13 +54,14 @@ Basic Board:
 |Story 1|     |     |       |    |  |
 
 **workflow**: the left to right flow of a story to the **Done** state.  
-Each time a card makes it to **Done** you are able to pick up a new story and pull it into the **Today** (Working/Doing/In Progress/...) column.  
+Each time a card makes it to **Done** you then pick up a new story and pull it into the **Today** (Working/Doing/In Progress/...) column.  
 As stories build up in one column or another, you will identify bottlenecks.  
-You should also begin to create cards with reasonable sizes that can be moved forward in a timely manner.  
-**Lead Time**: The time taken from the time you start working on it to the time its done (in production).  
+You should also begin to create cards with reasonable sizes. Split up complex tasks into smaller ones that can be moved forward in a reasonable amount of time.  
+**Lead Time**: The time taken from the time you start working on it to the time it's done (in production).  
+**Cycle Time**: The time from when it is placed into the **Doing** (Today/Working/In Progress/...) column to the time it's done.  
 
 # Describe the Purpose of your Repo
-1. Click the **...** (Elipsis menu of your project)
+1. Click the **...** (Ellipsis  menu of your project) in the top right corner
 2. Click the **Settings** (Gear Icon)
 3. Add a description in the **Short Description** field
 4. Add a README
@@ -75,8 +73,9 @@ You should also begin to create cards with reasonable sizes that can be moved fo
     * Select fields
     * Text fields
     * Iteration field
-* Automations to do things on field changes, via the API, or using GitHub Actions
+* Once defined you can create automations to do things on field changes, via the API, or using GitHub Actions
 * Tasklists allow you to create issue hierarchies, sub-tasks, and relations between issues.
+    * The feature is not availabel to me that I can see, but I can create markdown check lists to simulate this.
 * Create *views* to query project and save for future use.
 
 # Adding Draft Issues to your project
