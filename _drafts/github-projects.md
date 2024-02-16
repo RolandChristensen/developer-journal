@@ -29,18 +29,19 @@ https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-a
 # Create New Personal User Project
 1. Click Profile Picture
 2. Click "Your Profile" in menu
-3. Click "Projects" in the list of tabs near the top of the page.
-     * This will list any projects you currently have created.
+3. Click "Projects" in the list of tabs near the top of the page
+     * This will list any projects you currently have created
 4. Click "New Project" button
-5. Select a project template or "start from scratch" and select either **Table**, **Board**, or **Roadmap**.
-     * Choosing a template will not commit you yet. Click the tile and you will see an example of what it looks like.
-     * I am going to use *Kanban* to begin. ***Because I use the Kanban template much of the rest of the Quickstart will be useless***
+5. Select a project template or "start from scratch" and select either **Table**, **Board**, or **Roadmap**
+     * Choosing a template will not commit you yet. Click the tile and you will see an example of what it looks like
+     * I am going to use *Kanban* to begin
 6. Choose project name
 7. Click "Create Project" button
 
 ## Kanban Divergence 
-Kanban is Japanese for "Visual Signal"  
-Kanban lets you see your work clearly so you and the team can all stay on the same page.
+Kanban is Japanese for "Visual Signal".  
+Kanban lets you see your work clearly so you and the team can all stay on the same page.  
+Kanban does not use iterations. Kanban expects iterative improvements to happen at their own pace. Your team will find its own cadence.
 
 Bare necessities:
 * Kanban Board
@@ -66,7 +67,7 @@ You should also begin to create cards with reasonable sizes. Split up complex ta
 3. Add a description in the **Short Description** field
 4. Add a README
 
-# Adding Metadata to Your Items
+# Adding Metadata (Custom Fields) to Your Items
 * You can add custom fields (Metadata) to items such as:
     * Date fields
     * Number fields
@@ -74,33 +75,31 @@ You should also begin to create cards with reasonable sizes. Split up complex ta
     * Text fields
     * Iteration field
 * Once defined you can create automations to do things on field changes, via the API, or using GitHub Actions
-* Tasklists allow you to create issue hierarchies, sub-tasks, and relations between issues.
-    * The feature is not availabel to me that I can see, but I can create markdown check lists to simulate this.
-* Create *views* to query project and save for future use.
+* Tasklists allow you to create issue hierarchies, sub-tasks, and relations between issues
+    * The feature is not available to me that I can see, but I can create markdown check lists to simulate this
+* Create *views* to query project and save for future use
 
 # Adding Draft Issues to your project
+You can quickly add a **draft issue** to outline work and then go back later to create **issues** from your drafts.
 1. In the **Backlog** click the **+ Add item** button
-2. Start to type a name for the draft
+2. Type a name for the draft
 3. Press Enter
 
-# Add issues to your project
+# Add Issues to your Project
+You can add existing **issues** in a repo or create new **issues** that will appear in your repo from the project board.
 1. In the **Backlog** click the **+ Add item** button
-2. Type "#" and wait for the list of items to appear.
-3. Select the repository you are using. Wait for the list of work items to appear.
-4. You can select a work item from the list
+2. Type "#" and wait for the list of items to appear
+3. Select the repository you are using. Wait for the list of work items to appear
+4. You can select a work item from the list or create a new **issue**
    * Create a new issue by clicking the **+ Create new issue** button.
-   * You can select multiple items by selecting the **Add items from {repo name} ->** button.
-
-# Add an iteration field
-Kanban does not use iterations. Come back to this when you practice scrum.  
-Kanban expects iterative improvements to happen at their own time. Your team will find it's own cadence.
+   * You can select multiple items by selecting the **Add items from {repo name} ->** button
 
 # Creating a field to track priority
 The Kanban template has a priority field out-of-the-box, so you just need to select priorities on issues to see the priority swimlanes appear.
 
 ## Kanban Swimlane Divergence
 Kanban uses priority swimlanes to organize the most important work, from top to bottom.  
-Three priorites (low, medium, high or p2, p1, p0) are the usual way to organize your work.  
+Three priorities (low, medium, high or p2, p1, p0) are the usual way to organize your work.  
 Medium is the default.  
 High is reserved for hot-fixes and projects that have a tight deadline.  
 Low is for work that is on the roadmap, but not the immediate destination.
