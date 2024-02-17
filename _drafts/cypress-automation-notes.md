@@ -5,6 +5,37 @@ date: 2023-10-30
 
 Notes while I work to be fleshed out better later.
 
+# Cypress Performance Testing with Lighthouse
+https://www.browserstack.com/guide/performance-testing-with-cypress
+
+`$ npm i -D cypress @cypress-audit/lighthouse`
+
+In cypress.config.js
+```
+const { lighthouse, prepareAudit } = require("@cypress-audit/lighthouse");
+// const { pa11y } = require("@cypress-audit/pa11y");
+
+module.exports = defineConfig({
+  e2e: {
+    ...
+    async setupNodeEvents(on, config) {
+      on("before:browser:launch", (browser = {}, launchOptions) => {
+        prepareAudit(launchOptions);
+      });
+      on("task", {
+        lighthouse: lighthouse(),
+        // pa11y: pa11y(console.log.bind(console)),
+      });
+    },
+  },
+};
+```
+
+In command.js file
+`import '@cypress-audit/lighthouse/commands'`
+
+
+
 # Cypress ESLint
 https://medium.com/@anandganesh1811/cypress-automation-code-quality-with-cypress-eslint-prettier-plugins-daa45db65234
 https://github.com/chinchiheather/cypress-eslint-preprocessor
