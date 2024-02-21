@@ -114,9 +114,11 @@ Board layout organizes items by their status, so you can view their progress.
 The Kanban template has a couple tabs that use the **Board** layout by default, "Backlog", and "Priority Board".  
 Click the down arrow on the **Backlog** tab to see the **Layout** group.  
 There are three layouts **Table**, **Board**, and **Roadmap**.  
+    * The **Table** layout is used on the **Team Items** board.
+    * Of course, you can see the **Roadmap** layout on the **Roadmap** board.
 
 # Configure Built-in Automation
-1. Click the "..." elipsis menu on your project
+1. Click the "..." ellipsis menu on your project
 2. Select **Workflows** from the menu (A list of default workflows appears)
 3. From the list select **Auto-add to project**
 4. Click the **Edit** button in the top right
