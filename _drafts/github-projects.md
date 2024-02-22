@@ -160,7 +160,7 @@ I think this has not yet been enabled for me. It says it is in Beta and I do not
 Use task lists to coordinate multiple smaller issues.  
 You can however create a check list in an issue description using markdown.  
 - [X] Code (This Issue)
-- [ ] Documentation (#100)
+- [ ] Documentation (#100) ("#" shorthand syntax creates a link to an issue)
 - [ ] Backend work done (#101)
 - [ ] Run script to update DB (#103)
 - [ ] ...
@@ -171,46 +171,55 @@ Markdown example:
 - [ ] Documentation
 ```
 
-You can link to other issues, pull requests, or bugs in your tasklist using full urls, or the #{issue-number} (`#14` => #14) shorthand syntax.  
+You can link to other issues, pull requests, or bugs in your task list using full URLs, or the #{issue-number} shorthand syntax.  
 After you type the "#" a list of issues will appear to select from.  
 
 ### Use Milestones to organize multiple smaller stories
 You can create a **Milestone** (an expected due date) that you can apply to multiple issues and pull requests.  
 1. Navigate to repository
 2. Click either **Issues** or **Pull Requests**
-3. Click **Milestones** (THe **Milestones** page appears)
-4. Click **New Milestone** button
-5. Give it a Title, Due Date, and Description
-6. Click **Save Changes** button
+3. Click **Milestones** button (Confusingly, there is a drop down with the same name, but push the button)
+     * The **Milestones** page appears
+5. Click **New Milestone** button
+6. Give it a Title, Due Date, and Description
+7. Click **Save Changes** button
 
 Associate issues and pull requests to the milestones:  
 1. Navigate to the **Issues** or **Pull Requests** of a repo
 2. Use the checkmarks to select multiple items
-3. Click the **Milestone** dropdown (Not the **MIlestones** button next to the filters)
+3. Click the **Milestone** dropdown (Not the **Milestones** button next to the filters)
 4. In the **Filter milestones** you can filter to easily find your milestone
+5. Select the milestone you want to apply
+     * The milestone will appear underneath the issue or pull request title
 
 From the **Milestones** tab you can view the progress of your **Milestone**  
-Follow the instructions above to get to your **Milestone** and click on the link to view:
+1. Follow the instructions above to get to your **Milestone**
+2. Click on the title of the milestone (link)
+The following can be examined from the milestone page:
 * Description
-* Issues and pull requests associated with it and their status
+* A list of Issues and pull requests associated with the milestone and their status
+    * You can prioritize items in the list by grabbing the left-most handle and dragging the issues into an order from top (most important) to bottom
 * Due date
 * Completion percentage
 
-You can prioritize items in the list by grabbing the left-most handle and dragging the issues into an order from top (most important) to bottom.
-
 From the **Roadmap** tab on the Kanban template you can add a marker to see the due date of the **Milestone**
+1. Navigate to the **Roadmap** of your project
+2. Click the **Markers** dropdown just below the filter row (You can also use the arrow drop down beside the title on the tab)
+3. Select **Milestones** from the dropdown
+     * The milestones appear with a label in your timeline
 
 ### Use Labels to organize multiple smaller stories
 Create a new label with a unique identifier to group stories together:  
 1. Navigate to the **Issues** or **Pull Requests** of a repo
-2. Click the **Labels** button beside the filters
+2. Click the **Labels** button beside the filters (Not the labels dropdown filter)
 3. Click **New Label** button
 4. Add a name, description, and a color
 5. Click **Create label** button
+     * The label will appear beside the title of the issue or PR
 
 Add the label to issues:  
 1. Navigate to an issue, pull request, or discussion
-2. Click the **Labels** button in the right side bar
+2. Click the **Labels** button in the right-side bar
 3. Select the label(s) to apply to the item
 
 Filter by the label:  
