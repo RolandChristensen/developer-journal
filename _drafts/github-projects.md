@@ -240,24 +240,27 @@ Clearly describe the project.
     * RACI (Responsible, Accountable, Consulted, Informed)
     * Responsible individuals are responsible for the tasks and deliverables.
         * Developers, Project Managers, Business Analysts, ...
-    * Accountable to project deadlines and eventually for project completion (Frequently also Informed.)
+    * Accountable to project deadlines and eventually for project completion (Frequently also Informed).
         * Product Owners, Key Stakeholders, Business Owners, ...
     * Consulted individuals' opinions are crucial and their guidance is a prerequisite to other project tasks.
         * Legal experts, Cybersecurity experts, Compliance consultants, ...
-    * Informed individuals are not consulted during decision-making, but are informed of all project updates. Often they are also accountable for the project.
-        * Business owneres, external stakeholders, ...
+    * Informed individuals are not consulted during decision-making but are informed of all project updates. Often, they are also accountable for the project.
+        * Business owners, external stakeholders, ...
     * RACI Matrix
-* Share project updates
+* Share project updates by using status updates.
 
 ## Use Views
 Use project views to see all the angles of the project.  
-* Filter by all unstarted items
-* Group by priority to see all high priority items
-* Sort by ship date to see the earliest target ship date
+* From the **Backlog** you can see all issues that are not started as well as what is in progress
+* The **Priority board** shows you all the high priority items at the top to help you decide what comes next
+* The **Team Items** shows you team members and what they are working on as well as unassigned items
+* The **Roadmap** shows you milestones you are trying to meet
+* The **In Review** board shows you items that are nearing completion, but need review by other team members
+* The **My items** board will show you items assigned to you
 
 ## Have a Single Source of Truth
 Maintain a single field for important data such as target ship dates. Do not put it in descriptions or comments.  
-Projects automatically stay up-to-date with GitHub data, such as assignees, milestones, and labels.  
+Projects automatically stay up to date with GitHub data, such as assignees, milestones, and labels.  
 
 ## Use Automation
 * Use Built-in Automations
@@ -267,30 +270,32 @@ Projects automatically stay up-to-date with GitHub data, such as assignees, mile
 * GraphQL API enables you to automate routine project management tasks.
 
 ### Using Built-in Automations
-Update the **Status** of items based on certain events. 
-* Set status to **Todo** when an item is added to your project
+Update the **Status** of items based on certain events.  
+* Set status to **Backlog** when an item is added to your project
+    * The status is automatically set when you add issues or drafts from the backlog view
+    * It is best to turn on the default workflow as described below
 * Set status to **Done** when an issue is closed
 * When pull requests are merged, their status is set to **Done**
-* Automatically archive items when certain criteria is met
+* Automatically archive items when certain criteria are met
 
-There are two built-in automations enabled at project creation
+There are two built-in automations enabled at project creation.
 1. When issues are closed their status is set to **Done**
 2. When pull requests are merged their status is set to **Done**
 
-To enable or disable built-in workflows
-1. Click the elipsis "**...**" menu on your project on the top right
+To enable or disable built-in workflows.
+1. Click the ellipsis "**...**" menu on your project on the top right
 2. Click **Workflows**
 3. Under **Default workflows** click the workflow that you want to edit
 4. Click the **Edit** button
 5. Select whether the workflow should apply to issues, pull requests, or both
 6. Under "set value, choose the value that you want to set the status to (Backlog, Ready, In progress, In review, or Done)
-7. Save 
+7. Save
 
 ### Archiving Items Automatically
-There is a 1,200 item limit for projects. Archive to keep that limit from being reached.  
+There is a 1,200-item limit for projects. Archive to keep that limit from being reached.  
 There is a 10,000 total item limit, so you will also want to permanently delete items regularly.  
 
-1. Click the elipsis "**...**" menu on your project on the top right
+1. Click the ellipsis "**...**" menu on your project on the top right
 2. Click **Workflows**
 3. Under **Default workflows** click **Auto-archive items**
 4. Click **Edit** button on the top right
@@ -310,7 +315,7 @@ You can add a work item when you add something to a repo.
 5. Select the repo to use
 6. Create a filter for the auto-add
      * The default filter is: `is:issue,pr is:open label:bug`
-     * This will add a work item to the board when you add a issue or pull request, which is open, and labeled bug.
+     * This will add a work item to the board when you add an issue or pull request, which is open, and labeled bug.
 7. Click **Save**
 
 You can duplicate an auto-add to monitor up to four different repositories.  
@@ -318,6 +323,8 @@ You can duplicate an auto-add to monitor up to four different repositories.
 2. Click the **Duplicate workflow** button
 3. Change the repo
 4. Save with the name you enter
+
+Check the other default workflows to see what works for you.
 
 ### Automating Projects using Actions
 Example action: automatically add a pull request to the project board with a **Status** of **Todo** with a **Date Posted** field set to today, when you mark a PR as **Ready for review**  
