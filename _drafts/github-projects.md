@@ -330,9 +330,9 @@ Check the other default workflows to see what works for you.
 Example action: automatically add a pull request to the project board with a **Status** of **Todo** with a **Date Posted** field set to today, when you mark a PR as **Ready for review**  
 The workflow is specific to a repository, so each repo in a project will need to be set up.
 
-#### Quickstart for GitHub Actions
-1. Go to the root of some repository
-2. Create a file with the full path `.guthub/workflows/{github-actions-filename}.yml`
+#### QuickStart for GitHub Actions
+1. Go to the root of one of your repositories
+2. Create a file with the full path `.github/workflows/{github-actions-filename}.yml`
      * The file name will be the name of the Git Action: **GitHub Actions Filename** would be the name on the workflow.
 3. Add the contents found in the GitHub quickstart guide:
 ```yaml
@@ -357,6 +357,8 @@ The workflow is specific to a repository, so each repo in a project will need to
 ```
 4. Commit the file on a new branch and start a pull request
 
+Note: search for github emojis to find lists of available emojis.
+
 #### Viewing Workflow Results
 1. Navigate to the main page of your repository
 2. Click **Actions** on the top row of tabs
@@ -367,10 +369,14 @@ The workflow is specific to a repository, so each repo in a project will need to
 
 #### More Starter Workflows
 Creating your own Continuous Integration (CI) workflows is easy using the *starter workflows* provided:  
-https://github.com/actions/starter-workflows
+https://github.com/actions/starter-workflows  
+Sample workflows exist for:
+* Continuous Integration (CI)
+* Deployments to the major cloud service providers
+* Code Scanning using many static analyses code scanners
 
 GitHub analyzes and suggests starter workflows based on the code base.  
-* **Continusous Deployment (CD)**: automate seting up environment and deploy built executables to the environment.
+* **Continusous Deployment (CD)**: automate setting up environment and deploy built executables to the environment.
 * **Security**: Static analysis scanning
 * **Continuous Integration (CI)**: small frequent changes, merged, static analysis scanned, built, tests run, and if all gates passed deploy.
 * **Automation**: manage pull requests, automatically applying labels based on paths modified, greeting first-time contributors, ...
@@ -397,7 +403,7 @@ Choosing a starter workflow:
 8. If you added a secret, change the secret in the *.yml file to match the name you provided in the secret (`repo-token: "${{ secrets.SECRET_NAME }}"`)
 9. Read the file and change as desired
 10. Commit your changes
-11. If you used the "manual" workfow, you will see a **Manual workflow** button on the left side panel
+11. If you used the "manual" workflow, you will see a **Manual workflow** button on the left side panel
       1. Click the **Manual workflow** button
       2. Click the **Run Workflow** dropdown
       3. Click the **Run workflow** button
@@ -435,7 +441,7 @@ or
 `is:private`: private repos
 `creator:USERNAME`: GitHub username to find them
 
-Change the sort order
+Change the sort order.
 `sort:title-asc`: by title ascending
 `sort:updated-asc`: last updated ascending
 `sort:updated-desc`: descending
@@ -453,9 +459,6 @@ Change the sort order
 2. Click **Projects**
      * You may need to search for it
 3. Click the project name to open it
-
-## For Organizations and Teams
-Learn if needed
 
 # Sharing Project Updates
 Keep a team up to date with high-level overviews.  
