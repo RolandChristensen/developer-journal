@@ -1,9 +1,9 @@
-title: Developer Journal (Tracking the voices in my head)
+title: Developer Journal
 author: Roland Christensen
 email: CodingByVoices@gmail.com
 description: > # this means to ignore newlines until next key. AKA muliti-line formatting.
-  This is a blog-like site to track all things software developer that I do daily.
-  It is mostly for my own edification and to create a searchable index of notes for me to use in the future.
+  This is a blog-like site to take notes on all the things technological I learn.
+  It is mostly for my own edification and to create a searchable index of notes for reference.
 # social links
 github_username:  RolandChristensen # DO NOT include the @ character, or else the build will fail!
 show_excerpts: true # set to false to remove excerpts on the homepage
