@@ -156,6 +156,8 @@ You can however create a check list in an issue description using markdown.
 - [ ] Run script to update DB (#103)
 - [ ] ...
 
+Note: due to the markdown to HTML conversion the above checklist is displayed with bullets, but will not display that way in GitHub projects.
+
 Markdown example:
 ```markdown
 - [X] Code
