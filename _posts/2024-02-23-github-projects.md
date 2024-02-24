@@ -146,7 +146,9 @@ To track the smaller issues:
 * Use Labels
 
 ### Use Task Lists to organize multiple smaller stories
-I think this has not yet been enabled for me. It says it is in Beta and I do not have a "+ Add Tasklist" button.
+There is a task list feature under development, in beta, that is in the documentation, but I don't have access to.  
+
+Below creates a task list in an issue and will be recognized as a list of tasks in the information displayed about the issue.
 
 Use task lists to coordinate multiple smaller issues.  
 You can however create a check list in an issue description using markdown.  
