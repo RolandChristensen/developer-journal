@@ -371,7 +371,7 @@ Sample workflows exist for:
 * Code Scanning using many static analyses code scanners
 
 GitHub analyzes and suggests starter workflows based on the code base.  
-* **Continusous Deployment (CD)**: automate setting up environment and deploy built executables to the environment.
+* **Continuous Deployment (CD)**: automate setting up environment and deploy built executables to the environment.
 * **Security**: Static analysis scanning
 * **Continuous Integration (CI)**: small frequent changes, merged, static analysis scanned, built, tests run, and if all gates passed deploy.
 * **Automation**: manage pull requests, automatically applying labels based on paths modified, greeting first-time contributors, ...
