@@ -40,7 +40,7 @@ This documentation is for creating a static web page on GitHub. A quick search w
 		title: This will be displayed on the top of the blog.
 		author: Your Name 
 		email: YourEmail@example.com
-		description: > # this means to ignore newlines until next key. AKA muliti-line formatting in YAML.
+		description: > # this means to ignore newlines until next key. AKA multi-line formatting in YAML.
 			This is a sentence.
 			This is another sentence.
 		# social links (Google for list of all social media types)
