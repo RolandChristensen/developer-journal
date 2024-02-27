@@ -17,7 +17,7 @@ The following was all performed on Windows 11.
 Prerequisites:
 1. Node.js: download and install Node.js from Nodejs.org (v18.16.1 was used during the initial writing of this).
 1. NPM (version 9.8.1) npm was installed when installing Node.js.
-1. Cypress (version 12.17.3) Installation is done in the tutorial below, so you don't need to install this now, but the tutorial is using v12.17.3 and is not guaranteed to be compatible as future releases change.
+1. Cypress (version 13.6.6) Installation is done in the tutorial below, so you don't need to install this now, but the tutorial is using v12.17.3 and is not guaranteed to be compatible as future releases change.
 1. JavaScript (ES6) proficiency or the willingness to do the research.
 1. Basic knowledge of HTML and browser developer tools (Chrome Dev Tools to be able to read the Document Object Model (DOM) and get elements.
 
