@@ -141,6 +141,7 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
+    async setupNodeEvents(on, config) {
       // The environment will default to 'local' if you do not set the environmentName when starting cypress
       // Start cypress using: $ npx cypress open --env environmentName={dev|stage|prod}
       const environmentName = config.env.environmentName || 'local' 
@@ -149,6 +150,13 @@ module.exports = defineConfig({
       if (settings.baseUrl) {
         config.baseUrl = settings.baseUrl
       }
+      if (settings.env) {
+        config.env = {
+          ...config.env,
+          ...settings.env
+        }
+      }
+
       return config
     },
   },
