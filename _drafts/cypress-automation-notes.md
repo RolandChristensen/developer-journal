@@ -125,7 +125,9 @@ cy.get('@ValueAlias').then((value) => {
 # API Testing
 `$ npm install cypress-plugin-api`
 
-Use cy.api() instead of cy.request().
+Use `cy.api()` instead of `cy.request()`.
+
+In your cypress\support\commands.js file add `import 'cypress-plugin-api'`
 
 # Data Driven Tests
 Passing in a *.csv file of data or a *Theory* in xUnit.
