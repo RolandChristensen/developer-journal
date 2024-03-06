@@ -1,5 +1,16 @@
 GIT and GitHub related notes
 
+# Git for Local Development
+Git is awesome for source control and is essential to working in a group, but it is also extremely helpful for local development.
+
+Reasons for source control 
+* You can see a diff of any changes made, to prevent accidental changes
+* You can create a branch to experiment and if you do not like the results, you can simply undo all changes in a single step
+
+https://www.youtube.com/watch?v=a3Qhon09JEw
+
+
+
 ## Git Fork
 Use `git fork` when you do not have permission to contribute to the repository.
 
