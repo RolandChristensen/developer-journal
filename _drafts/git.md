@@ -11,10 +11,12 @@ Assumptions:
 You already have Git installed and a folder of source code, currently not under source control, that you can use to experiment with.  
 The version of Git I currently have installed is 2.44.0.windows.1.  
 I an using Windows, but Git on the command line works the same for Linux and Mac.  
-If you are nervous, you can copy an existing folder for experimentation.
+
+Scenario: 
+You begin a project by installing all dependencies and stubbing out files and classes and then want to introduce source control to track any future changes.
 
 # Initialize a New Git Repo
-To begin using Git to track local changes made to a folder (Assuming you did not clone another repo):  
+To begin using Git to track local changes to an existing project folder (Assuming you did not clone another repo):  
 1. Navigate to the folder with source code you will be using and open a command prompt in the root directory. (Windows: Shift+Right click root folder and select Git Bash from the menu.)
 2. `$ git init`
      A hidden folder called .git will be created in the folder.
@@ -40,6 +42,16 @@ Regardless, it is a good idea to carefully monitor all the files using `$git sta
 Look for files that have a noticable pattern you can ignore instead of each file individually, such as files that have a UUID or date as part of the filename.  
 
 Once done do another `$git status` and see the difference between the last status and this one.
+
+# Git Add
+This command will add files to the staging area (a.k.a. this command will stage files).  
+In other words each file added or staged is ready to be committed, which means that it will be ready to be pushed to a remote server.
+Try each one of these commands in order and do a `$ git status` after each one to see the difference.  
+`$ git add {filename.ext}` or `$ git add {path/To/File.ext}`: to add a single file.  
+`$ git add {path/To/Directory/}`: to add a directory.  
+
+You can add everything in the untracked files list in one go using `$ git add .`  
+This can be a problem when you are dealing with a lot of files, and you should always mindfully check that each file was intentionally changed and should be pushed to the remote server.  
 
 
 
