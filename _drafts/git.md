@@ -21,15 +21,27 @@ To begin using Git to track local changes made to a folder (Assuming you did not
      If you made a mistake and the .git folder is not in the root folder, you can simply delete the .git folder and try again.
      Another problem you may encounter is if you added a Git repo under an existing Git repo. Do not nest repos.  
 
-This post is just about local development using Git, so I will not discuss adding a remote repo yet.  
+This post is just about local development using Git, so I will not discuss adding a remote repo yet or add a README file.   
 
 # Git Status 
-To see what files have been changed or added to the repo since the last commit.  
+To see what files have been changed or added to the repo since the last commit:  
 
 `$ git status`
 
 All the files that have been added or modified are displayed. Since you used existing source, you should see every file and folder in the root folder you added.  
-Files and folders that are untracked
+You will most likely have files that you do not want care to track or push to a remote repository, so we will want to add a .gitignore file.  
+
+# Add .gitignore file
+I recommend adding a .gitignore file now, since we are using existing source.  
+The easiest approach is to search the internet for a .gitignore file for the type of project you are using and add the .gitignore file to the root folder.  
+Otherwise, do some research to figure out how to write your own and carefully add each file, folder, or file pattern you want to ignore now.  
+
+Regardless, it is a good idea to carefully monitor all the files using `$git status` afte any change and ignore any files that are not necessary and waste space.  
+Look for files that have a noticable pattern you can ignore instead of each file individually, such as files that have a UUID or date as part of the filename.  
+
+Once done do another `$git status` and see the difference between the last status and this one.
+
+
 
 
 https://www.youtube.com/watch?v=a3Qhon09JEw
