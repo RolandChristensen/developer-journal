@@ -47,12 +47,29 @@ Once done do another `$git status` and see the difference between the last statu
 This command will add files to the staging area (a.k.a. this command will stage files).  
 In other words each file added or staged is ready to be committed, which means that it will be ready to be pushed to a remote server.
 Try each one of these commands in order and do a `$ git status` after each one to see the difference.  
-`$ git add {filename.ext}` or `$ git add {path/To/File.ext}`: to add a single file.  
-`$ git add {path/To/Directory/}`: to add a directory.  
+`$ git add {filename.ext}` or `$ git add {path/to/file.ext}`: to add a single file.  
+`$ git add {path/to/directory/}`: to add a directory.  
 
 You can add everything in the untracked files list in one go using `$ git add .`  
 This can be a problem when you are dealing with a lot of files, and you should always mindfully check that each file was intentionally changed and should be pushed to the remote server.  
 
+## CRLF line endings or LF line endings
+If you are a Windows programmer, you will inevitably run into a warning when you add files that "CRLF will be replaced by LF".  
+This is a good thing, if you ever work with devs using Linux or Mac.  
+This means that your configuration setting for Git are working right, if you are on Windows. Just ignore the message and move on with your coding.  
+
+The following commands will set the core.autocrlf setting to the appropriate value for your OS:  
+Windows: `$ git config --global core.autocrlf true`. Alternatively, you can set your IDE to use LF line endings.  
+Linux or Mac: `$ git config --global core.autocrlf input`  
+
+If you work on Windows and will **never** interact with any OS other than Windows, you may want to turn off autocrlf to not have to see that warning.  
+`$ git config --global core.autocrlf false`
+
+# Git Commit
+Once you have all of your changes *staged* you are ready to *commit* them.  
+As the word implies *commits* are a way of saying you are confident and ready to commit to the change you made.  
+To avoid complexity, it is recommended to change things in small bite-sized chunks that are as self contained as possible and commit these pieces as they are done one at a time.  
+Planning your changes in advance before diving into coding will help you organize your work and plan your *commits* well.  
 
 
 
