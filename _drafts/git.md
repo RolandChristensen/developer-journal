@@ -54,10 +54,6 @@ Try each one of these commands in order and do a `$ git status` after each one t
 You can add everything in the untracked files list in one go using `$ git add .`  
 This can be a problem when you are dealing with a lot of files, and you should always mindfully check that each file was intentionally changed and should be pushed to the remote server.  
 
-## Removing staged files
-If you made a mistake and want to remove a file from stage.  
-`$ git rm {filename.ext}`
-
 ## CRLF line endings or LF line endings
 If you are a Windows programmer, you will inevitably run into a warning when you add files that "CRLF will be replaced by LF".  
 This is a good thing, if you ever work with devs using Linux or Mac.  
