@@ -1,7 +1,8 @@
 GIT and GitHub related notes
 
 # Git for Local Development
-Git is awesome for source control and is essential to working in a group, but it is also extremely helpful for local development.
+Git is awesome for source control and is essential to working in a group, but it is also extremely helpful for local development.  
+This documents the command line, but describes basic skills that are important regardless of the tool you use to to interface with Git.
 
 Reasons for using a good local source control strategy
 * You can see a diff of any changes made, to prevent accidental changes before pushing to server
@@ -53,6 +54,10 @@ Try each one of these commands in order and do a `$ git status` after each one t
 You can add everything in the untracked files list in one go using `$ git add .`  
 This can be a problem when you are dealing with a lot of files, and you should always mindfully check that each file was intentionally changed and should be pushed to the remote server.  
 
+## Removing staged files
+If you made a mistake and want to remove a file from stage.  
+`$ git rm {filename.ext}`
+
 ## CRLF line endings or LF line endings
 If you are a Windows programmer, you will inevitably run into a warning when you add files that "CRLF will be replaced by LF".  
 This is a good thing, if you ever work with devs using Linux or Mac.  
@@ -71,13 +76,29 @@ As the word implies *commits* are a way of saying you are confident and ready to
 To avoid complexity, it is recommended to change things in small bite-sized chunks that are as self contained as possible and commit these pieces as they are done one at a time.  
 Planning your changes in advance before diving into coding will help you organize your work and plan your *commits* well.  
 
+Commits should contain a message that helps you remember and lets others know what you did without reading the entire diff.  
+In the commit add a useful message by adding the `-m` flag to the commit.  
+`$ git commit -m "Initial commit"`
+
+`$ git status` will show that there are no staged files after the commit.
+
+Note: you can skip the `$ git add ...` part if you dealing with a manageable nunber if changes by using the `-a` flag in the commit command.  
+`$git commit -a -m "Story 101: Added special.svg for download icon."`
+
+# Git Log
 
 
 https://www.youtube.com/watch?v=a3Qhon09JEw
 
+# Rewritng History
+`$ git reflog show HEAD`  
+Pick a place to back up to.  
+`$ git reset --hard {hash}` Example: `$ git reset --hard bf9e7a8`  
+`$ git reset --hard HEAD@{#}`
 
+https://www.atlassian.com/git/tutorials/rewriting-history
 
-## Git Fork
+# Git Fork
 Use `git fork` when you do not have permission to contribute to the repository.
 
 A *clone* of a repository assumes you can create a pull request and modify the original repo, while a *fork* assumes you will be taking a fork in the road and all subsequent changes are separate from the parent repo. "Thanks for the start, I really appreciate it, but I want to take this in my own direction."
