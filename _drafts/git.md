@@ -82,17 +82,113 @@ Note: you can skip the `$ git add ...` part if you dealing with a manageable nun
 `$git commit -a -m "Story 101: Added special.svg for download icon."`
 
 # Git Log
+`$ git log`: Lists the commits and looks something like this:  
+
+```
+$ git log
+commit 278d94fc06df6555dfb9cf0cc9ce94824e361811 (HEAD -> main)
+Author: Roland Christensen <CodingByVoices@gmail.com>
+Date:   Thu Mar 14 21:00:42 2024 -0600
+
+    Commented on the test actions page
+
+commit bf9e7a85f94ac80efb7bbb58df192787a26ce599
+Author: Roland Christensen <CodingByVoices@gmail.com>
+Date:   Wed Mar 13 09:32:37 2024 -0600
+
+    Initial commit
+```
+The most recent commit is on top marked by (HEAD -> main) That is the HEAD of the main branch.  
+The line `commit 278d94fc06df6555dfb9cf0cc9ce94824e361811` with the hash is important for using `$ git reset` to get back to a specific commit if you made a mistake.  
+The commit message is displayed below the rest and is the best indicator of what you are resetting. This is why a good commit message is important.  
+
+Just to test things out, make a small change to any file and repeat the add and commit procedure outlined above.  
+When you `$ git log` again you will see two commits, each with a unique descriptive name.  
+
+Maybe even repeat the process a couple more times, so you can learn about undoing things.  
+
+# Rewritng History
+You can move everything back to a specific commit at any time.  
+
+Remember: Don't Panic!!! You can always undo anything.  
+
+## Reset using hashes found in Git log
+Using the above git log I can use the hash found in the "Initial commit" to go all the way back to that commit.  
+`$ git reset --hard {hash}`  
+Example `$ git reset --hard bf9e7a85f94ac80efb7bbb58df192787a26ce599`  
+```
+$ git reset --hard bf9e7a85f94ac80efb7bbb58df192787a26ce599
+HEAD is now at bf9e7a8 Initial commit
+```
+
+After executing the above command you will find the file(s) you changed in the subsequent commits *reset* back to the original.  
+Another git log will show only the original commit.  
+```
+$ git log
+commit bf9e7a85f94ac80efb7bbb58df192787a26ce599 (HEAD -> main)
+Author: Roland Christensen <CodingByVoices@gmail.com>
+Date:   Wed Mar 13 09:32:37 2024 -0600
+
+    Initial commit
+```
+
+## Git Reflog (Reference logs)
+`$ git reflog` shows the logs of any changes to the tip or HEAD of the branch including *resets*.  
+Note: `$ git reflog` is equivalent to `$ get reflog show HEAD` as *show* and *HEAD* are the default values.  
+```
+$ git reflog
+bf9e7a8 (HEAD -> main) HEAD@{0}: reset: moving to bf9e7a85f94ac80efb7bbb58df192787a26ce599
+278d94f HEAD@{1}: commit: Commented on the test actions page
+bf9e7a8 (HEAD -> main) HEAD@{2}: commit (initial): Initial commit
+```
+
+## Reset back to a specific commit using Git reflog
+Add another commit by quickly adding a comment or something trivial to a file to test Git reflog and reset.  
+
+```
+$ git reflog
+f925f8f (HEAD -> main) HEAD@{0}: commit: Added another comment to make a change.
+bf9e7a8 HEAD@{1}: reset: moving to bf9e7a85f94ac80efb7bbb58df192787a26ce599
+278d94f HEAD@{2}: commit: Commented on the test actions page
+bf9e7a8 HEAD@{3}: commit (initial): Initial commit
+```  
+You can get back to any place in the log by noting the HEAD@{#}  
+`$ git reset --hard HEAD@{#}`  
+Example: `$ git reset --hard HEAD@{1}` to get back to the point where you reset the last commit.  
+```
+$ git reset --hard HEAD@{1}
+HEAD is now at bf9e7a8 Initial commit
+```
+
+Git log will only show the intial commit:  
+```
+$ git log
+commit bf9e7a85f94ac80efb7bbb58df192787a26ce599 (HEAD -> main)
+Author: Roland Christensen <CodingByVoices@gmail.com>
+Date:   Wed Mar 13 09:32:37 2024 -0600
+
+    Initial commit
+
+```
+
+Git reflog will show all the changes of the HEAD pointer.  
+```
+$ git reflog
+bf9e7a8 (HEAD -> main) HEAD@{0}: reset: moving to HEAD@{1}
+f925f8f HEAD@{1}: commit: Added another comment to make a change.
+bf9e7a8 (HEAD -> main) HEAD@{2}: reset: moving to bf9e7a85f94ac80efb7bbb58df192787a26ce599
+278d94f HEAD@{3}: commit: Commented on the test actions page
+bf9e7a8 (HEAD -> main) HEAD@{4}: commit (initial): Initial commit
+```
+
+# Using branches
 
 
 https://www.youtube.com/watch?v=a3Qhon09JEw
 
-# Rewritng History
-`$ git reflog show HEAD`  
-Pick a place to back up to.  
-`$ git reset --hard {hash}` Example: `$ git reset --hard bf9e7a8`  
-`$ git reset --hard HEAD@{#}`
-
 https://www.atlassian.com/git/tutorials/rewriting-history
+
+
 
 # Git Fork
 Use `git fork` when you do not have permission to contribute to the repository.
