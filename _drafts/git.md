@@ -17,6 +17,9 @@ This post covers the basics of:
 `$ git reflog`  
 `$ git reset`  
 `$ git branch`  
+`$ git checkout`  
+
+Scenarios: 
 
 
 Assumptions:  
@@ -289,9 +292,9 @@ Once you have merged or decided you will not accept the changes made on a branch
 
 `$ git branch -d branch-name`: deletes the branch.
 
-Go ahead and delete any extra brnaches now and do a Git branch between them to verify they are gone.  
+Go ahead and delete any extra braches now and do a Git branch between them to verify they are gone.  
 
-https://www.youtube.com/watch?v=a3Qhon09JEw
+
 
 https://www.atlassian.com/git/tutorials/rewriting-history
 
