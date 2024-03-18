@@ -19,7 +19,9 @@ This post covers the basics of:
 `$ git branch`  
 `$ git checkout`  
 
-Scenarios: 
+Scenarios covered:  
+* Starting a git repo with existing code
+* 
 
 
 Assumptions:  
