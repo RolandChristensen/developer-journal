@@ -8,6 +8,17 @@ Reasons for using a good local source control strategy
 * You can see a diff of any changes made, to prevent accidental changes before pushing to server
 * You can create a branch to experiment and if you do not like the results, you can simply undo all changes in a single step
 
+This post covers the basics of:  
+`$ git init`  
+`$ git status`  
+`$ git add`  
+`$ git commit`  
+`$ git log`  
+`$ git reflog`  
+`$ git reset`  
+`$ git branch`  
+
+
 Assumptions:  
 You already have Git installed and a folder of source code, currently not under source control, that you can use to experiment with.  
 The version of Git I currently have installed is 2.44.0.windows.1.  
@@ -107,7 +118,7 @@ When you `$ git log` again you will see two commits, each with a unique descript
 
 Maybe even repeat the process a couple more times, so you can learn about undoing things.  
 
-# Rewritng History
+# Time Traveling in Git
 You can move everything back to a specific commit at any time.  
 
 Remember: Don't Panic!!! You can always undo anything.  
@@ -181,8 +192,104 @@ bf9e7a8 (HEAD -> main) HEAD@{2}: reset: moving to bf9e7a85f94ac80efb7bbb58df1927
 bf9e7a8 (HEAD -> main) HEAD@{4}: commit (initial): Initial commit
 ```
 
-# Using branches
+# Rewriting History (Amending the last Commit)
+Often, you just want to add an additional comment or one last unit test to a previous commit.  
+You can always add another commit with the changes, but that can become problematic. If you want to reset to a specific commit later as shown above, you may end up overrwriting that last little commit with the updated comments or unit test because the log is not clear when the feature was done.  
 
+Best Practices:  
+* Divide your work into logical pieces that are self-contained units to be *committed* in one logical commit.
+* Clearly name your *commits* so you and others know what was done.
+
+Now, to ammend the last commit:  
+`$ git commit --amend` will add recent changes staged into the last commit as if the previous commit never happened.  
+
+***Warning***: This should not be done if you have pushed it to a public server others may have pulled from.  
+This approach is used to update local changes only!  
+
+1. Find a place to add a harmless, but useful comment in the code.
+2. Update the last commit with something like: `$ git commit --amend -m "Some new commit message"
+
+Below is the output of Git log for my example repo, still only showing one commit, but containing the comment change with the new commit message.  
+```
+$ git log
+commit b9c9dd7c2a1a3f5afaebffdf2138ead7f244663a (HEAD -> main)
+Author: Roland Christensen <CodingByVoices@gmail.com>
+Date:   Wed Mar 13 09:32:37 2024 -0600
+
+    Issue 19: Initial commit
+
+```
+
+Note: you can use *amend* to update the message only.  
+`$ git commit --amend -m "Initial commit"`
+```
+$ git log
+commit b580f83e01153cffbaa145d7bc37548885e500f8 (HEAD -> main)
+Author: Roland Christensen <CodingByVoices@gmail.com>
+Date:   Wed Mar 13 09:32:37 2024 -0600
+
+    Initial commit
+```
+
+You can use the `--no-edit` flag to amend a commit without changing the message.  
+`$ git commit --amend --no-edit`
+
+Add another harmless, but useful comment and try it out.  
+
+# Using branches
+Use branches to separate work into logical changes (issues/stories/features).  
+You can also use branches in local development to try out different approaches to the same issue, keeping both isolated from each other. Once you make a decision, you can remove one branch easily keeping the best solution untouched.  
+
+`$ git branch`: lists all branches. (Equivalent to `$ git branch --list` since `--list` is the default flag.  
+
+## Creating Branches
+A branch takes all the code you are currently working with and split it into two identical branches.  
+You then switch to the new branch to make changes, leaving the original intact for safety.  
+
+`$ git branch branch-name`: creates a new branch named "branch-name" based on the branch you are currently on.  
+`$ git checkout branch-name`: switches to the branch, so all changes will be recorded on that branch going forward.  
+`$ git checkout -b branch-name-alt`: creates a new branch with "branch-name" and switches to that branch in one command.  
+
+Example: after using the commands above to create two branches named "test-branch" and "test-branch-alt".  
+Executing `$ git branch` displays all the branches including *main*.  The asterisk lets you know which branch you are currently working on. 
+
+```
+$ git branch
+  main
+  test-branch
+* test-branch-alt
+```
+
+1. To test how this works add a comment or other trivial code to a file in the current branch, such as "\\ This is a comment on branch branch-name".
+2. `$ git add .` and `$ git commit -m "Add comment to branch branch-name"` 
+3. Use `$ git branch checkout branch-name` to switch to another branch and when you check the code you should see the comment disappear.
+4. `$ git log` to see the commits. You should see commits from *main* up to the point you checked out the branch, but not see any commits on other branches like the one you just checked out.
+5. Checkout the other *test branch* and add another comment to practice.
+
+## Merging Branches
+Eventually, you will decide that one of these branches is the solution you want to go with and the other can be discarded.  
+
+1. `$ git checkout main`: to merge you go to the branch you want to merge changes into.
+```
+$ git checkout main
+Switched to branch 'main'
+```
+2. `$ git merge test-branch`: merge the
+```
+$ git merge test-branch
+Updating 899b6ac..1ddb9d2
+Fast-forward
+ cypress/e2e/test-querying-page.cy.js | 3 +++
+ 1 file changed, 3 insertions(+)
+```
+3. `$ git log` to see the changes on the main branch now include the changes we made on the branch.
+
+## Deleting Branches
+Once you have merged or decided you will not accept the changes made on a branch you will want to delete them to clean up.  
+
+`$ git branch -d branch-name`: deletes the branch.
+
+Go ahead and delete any extra brnaches now and do a Git branch between them to verify they are gone.  
 
 https://www.youtube.com/watch?v=a3Qhon09JEw
 
