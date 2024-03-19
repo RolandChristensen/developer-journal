@@ -1,12 +1,15 @@
-GIT and GitHub related notes
+Git and GitHub related notes
 
 # Git for Local Development
 Git is awesome for source control and is essential to working in a group, but it is also extremely helpful for local development.  
-This documents the command line, but describes basic skills that are important regardless of the tool you use to to interface with Git.
+This documents the command line, but describes basic skills that are important regardless of the tool you use to interface with Git.  
+I work on Windows professionally, so use Visual Studio Code or Visual Studio which have great extensions for Git.  
 
 Reasons for using a good local source control strategy
-* You can see a diff of any changes made, to prevent accidental changes before pushing to server
 * You can create a branch to experiment and if you do not like the results, you can simply undo all changes in a single step
+* You can incrementally make small changes and back up to any step along the way on a test branch
+* You can see a diff of any changes made, to prevent accidental changes before pushing to the server
+
 
 This post covers the basics of:  
 `$ git init`  
@@ -18,6 +21,7 @@ This post covers the basics of:
 `$ git reset`  
 `$ git branch`  
 `$ git checkout`  
+`$ git diff`
 
 Scenarios covered:  
 * Starting a git repo with existing code
@@ -94,8 +98,8 @@ In the commit add a useful message by adding the `-m` flag to the commit.
 
 `$ git status` will show that there are no staged files after the commit.
 
-Note: you can skip the `$ git add ...` part if you dealing with a manageable nunber if changes by using the `-a` flag in the commit command.  
-`$git commit -a -m "Story 101: Added special.svg for download icon."`
+Note: you can skip the `$ git add ...` part if you dealing with a manageable nunber of changes by using the `-a` flag in the commit command.  
+`$git commit -a -m "Story 101: Added special.svg for download icon."`: Adds and commits all changes.
 
 # Git Log
 `$ git log`: Lists the commits and looks something like this:  
@@ -296,7 +300,16 @@ Once you have merged or decided you will not accept the changes made on a branch
 
 Go ahead and delete any extra braches now and do a Git branch between them to verify they are gone.  
 
+# Git Diff (Double check your work)
+My favorite algebra teacher instilled in me the need for double checking my work. Use Git Diff to see the changes in files not yet "staged" for commit.  
 
+To try it out add a comment somewhere, delete a comment somewhere, and change a comment somewhere.  
+Before adding the changes, do a diff to make sure there where no accidental changes made.  
+`$ git diff`: displays a diff of the changes made to files.  
+```
+
+
+```
 
 https://www.atlassian.com/git/tutorials/rewriting-history
 
