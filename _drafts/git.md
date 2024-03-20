@@ -23,9 +23,18 @@ This post covers the basics of:
 `$ git checkout`  
 `$ git diff`
 
-Scenarios covered:  
+Scenarios:  
 * Starting a git repo with existing code
-* 
+    1. `$ git init` to initialize a new repo
+    2. `.gitignore` to keep unneccessary files and secrets out of source control
+    3. `$ git add .`, `$ git add file-name`, `$ git add directory-name` to stage files to be tracked
+    4. `$ git commit -m "First commit of existing code"`
+* Creating a branch in order to keep new work separate from the main branch before it has been thoroughly tested (double checked)
+* Renaming a branch
+    * `$ git branch -m master main`
+* Making changes and viewing the changes in the file to double check your work before commiting it
+* Dividing your work into small manageable and unit testable changes (Commits) to log the changes of new work 
+* Using branches to try out different algorithms 
 
 
 Assumptions:  
@@ -95,6 +104,10 @@ Planning your changes in advance before diving into coding will help you organiz
 Commits should contain a message that helps you remember and lets others know what you did without reading the entire diff.  
 In the commit add a useful message by adding the `-m` flag to the commit.  
 `$ git commit -m "Initial commit"`
+
+Note: you may find that you need to configure your email and name.  
+`$ git config --global user.email "Email@email.com"`  
+`$ git config --global user.name "FName LName"`  
 
 `$ git status` will show that there are no staged files after the commit.
 
