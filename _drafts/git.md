@@ -23,15 +23,30 @@ This post covers the basics of:
 `$ git checkout`  
 `$ git diff`
 
-Scenarios:  
+Quick Start Scenarios:  
 * Starting a git repo with existing code
     1. `$ git init` to initialize a new repo
     2. `.gitignore` to keep unneccessary files and secrets out of source control
     3. `$ git add .`, `$ git add file-name`, `$ git add directory-name` to stage files to be tracked
     4. `$ git commit -m "First commit of existing code"`
-* Creating a branch in order to keep new work separate from the main branch before it has been thoroughly tested (double checked)
 * Renaming a branch
     * `$ git branch -m master main`
+* Creating a branch in order to keep new work isolated from the main branch before it has been thoroughly tested (double checked)
+    1. `$ git status` to verify you are on main branch. if not `$ git checkout main`.
+    2. `$ git branch -b new-branch-name` creates a new branch identical to the current branch and 'checks out' that new branch
+* View the changes (diff) between files changed before "staging" to double check your work
+    1. `$ git diff`
+* View the changes between staged files and the last commit
+    1. `$ git diff --staged` or `$ git diff --cached`
+* Committing staged changes to the branch
+    1. `$ git commit -m "Useful commit message, so you can find these changes in the future"`
+* Ammending a previous commit
+    1. `$ git commit -a -m "Commit message that encompasses all changes, not just the amended changes"`
+* Viewing all commits
+    1. `$ git log`
+* View all commits on branch, since you created the branch
+    1. `$ git log --oneline main..branch-name`
+
 * Making changes and viewing the changes in the file to double check your work before commiting it
 * Dividing your work into small manageable and unit testable changes (Commits) to log the changes of new work 
 * Using branches to try out different algorithms 
@@ -319,9 +334,36 @@ My favorite algebra teacher instilled in me the need for double checking my work
 To try it out add a comment somewhere, delete a comment somewhere, and change a comment somewhere.  
 Before adding the changes, do a diff to make sure there where no accidental changes made.  
 `$ git diff`: displays a diff of the changes made to files.  
+
+The Git Terminal uses color coding and is easier to read than this.  
+Deletions are in red and are preceeded by a '-' sign.  
+Additions are in green and are preceeded by a '+' sign.  
+Any lines that are modified have two lines the line that was replaced beginning with a '-' and the line that replaces it preceeded by a '+'.  
+Lines that do not begin with either a '-' or '+' are untouched.  
+
 ```
+$ git diff
+diff --git a/cypress.config.js b/cypress.config.js
+index de886c6..a13c7f0 100644
+--- a/cypress.config.js
++++ b/cypress.config.js
+@@ -3,8 +3,10 @@ const { defineConfig } = require("cypress");
+ module.exports = defineConfig({
+   e2e: {
+     setupNodeEvents(on, config) {
+-      // The environment will default to 'local' if you do not set the environmentName when starting cypress
++      // The environment will default to 'local' if environmentName is not set when starting cypress
+       // Start cypress using: $ npx cypress open --env environmentName={dev|stage|prod}
++      // Secrets are stored in (local.settings.json, dev.settings.json, etc..)
++      // Make sure to add settings files with secrets into .gitignore file.
+       const environmentName = config.env.environmentName || 'local'
+       const environmentFilename = `./${environmentName}.settings.json`
+       const settings = require(environmentFilename)
+@@ -13,10 +15,6 @@ module.exports = defineConfig({
+       }
+       return config
 
-
+-      // Remember to add any secrets file to your .gitignore file
 ```
 
 https://www.atlassian.com/git/tutorials/rewriting-history
