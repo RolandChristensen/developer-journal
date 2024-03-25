@@ -35,17 +35,37 @@ Quick Start Scenarios:
     1. `$ git status` to verify you are on main branch. if not `$ git checkout main`.
     2. `$ git branch -b new-branch-name` creates a new branch identical to the current branch and 'checks out' that new branch
 * View the changes (diff) between files changed before "staging" to double check your work
-    1. `$ git diff`
+    * `$ git diff`
 * View the changes between staged files and the last commit
-    1. `$ git diff --staged` or `$ git diff --cached`
-* Committing staged changes to the branch
-    1. `$ git commit -m "Useful commit message, so you can find these changes in the future"`
+    * `$ git diff --staged` or `$ git diff --cached`
+* Committing staged changes to the branch. Make commits self-contained, testable units
+    * `$ git commit -m "Useful commit message, so you can find these changes in the future"`
 * Ammending a previous commit
-    1. `$ git commit -a -m "Commit message that encompasses all changes, not just the amended changes"`
+    * `$ git commit -a -m "Commit message that encompasses all changes, not just the amended changes"`
 * Viewing all commits
-    1. `$ git log`
-* View all commits on branch, since you created the branch
-    1. `$ git log --oneline main..branch-name`
+    * `$ git log` view the commits with the author and date of change
+    * `$ git log --oneline` the commits are abbreviated on one line
+* View only the commits on the branch since it was created
+    * `$ git log --oneline main..branch-name` displays only commits
+* Merge branch into *main*
+    * `$ git checkout main` switch to the branch you want to merge the changes into
+    * `$ git merge branch-name` merge the branch into the current branch you are on
+    * `$ git branch -d branch-name`
+* You forgot to checkout a new branch and started working on a new feature while still on *main*
+    * As long as you have not commited any changes you can simply checkout a new branch.
+        * `$ git checkout -b new-branch-name`
+    * If you have committed changes follow the directions below to *reset* the HEAD with the `--soft` flag to the point where you started making changes.
+        1. `$ git log` or `$ git reflog` to get the hash of the commit to go back to
+        2. `$ git reset --soft {hash}`
+* You cannot continue working on a feature/branch due to a blocking issue or because a hotfix demands your attention
+    * All commits will remain on this branch when you change branches, so you do not need to worry about them
+    * Any uncommited changes need to be *stashed*
+        1. `$ git stash`
+        2. Switch to a new branch and complete the new feature or hotfix knowing all your hard work is waiting for you on the previous branch
+        3. When ready to resume work on the original branch you abandoned to work on the other feature
+        4. `$ git checkout original-branch-name`
+        5. `$ git stash pop` to get the last stash pulled off the top of the stack
+* 
 
 * Making changes and viewing the changes in the file to double check your work before commiting it
 * Dividing your work into small manageable and unit testable changes (Commits) to log the changes of new work 
