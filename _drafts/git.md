@@ -60,7 +60,7 @@ Quick Start Scenarios:
 * You cannot continue working on a feature/branch due to a blocking issue or because a hotfix demands your attention
     * All commits will remain on this branch when you change branches, so you do not need to worry about them
     * Any uncommited changes need to be *stashed*
-        1. `$ git stash`
+        1. `$ git stash` to stash files that are currently tracked. If you need to include untracked files, which is probably a good idea to avoid checking it into another branch inadvertantly `$ git stash --include-untracked`
         2. Switch to a new branch and complete the new feature or hotfix knowing all your hard work is waiting for you on the previous branch
         3. When ready to resume work on the original branch you abandoned to work on the other feature
         4. `$ git checkout original-branch-name`
