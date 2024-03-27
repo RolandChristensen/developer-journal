@@ -26,7 +26,7 @@ This post covers the basics of:
 Quick Start Scenarios:  
 * Starting a git repo with existing code
     1. `$ git init` to initialize a new repo
-    2. `.gitignore` to keep unneccessary files and secrets out of source control
+    2. `.gitignore` to keep unnecessary files and secrets out of source control
     3. `$ git add .`, `$ git add file-name`, `$ git add directory-name` to stage files to be tracked
     4. `$ git commit -m "First commit of existing code"`
 * Renaming a branch
