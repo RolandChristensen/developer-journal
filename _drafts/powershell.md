@@ -65,6 +65,15 @@ There is a `$Profile` variable that points to the path where each profile should
 $PSHOME is the installation directory for PowerShell  
 $HOME is the current user's home directory  
 
+Note: There may be additional profiles. If you use Visual Studio Code, for example, you will also have a profiles specific to it Running `$Profile | Select-Object *` in VS Code produces.  
+
+```
+AllUsersAllHosts       : C:\Program Files\PowerShell\7\profile.ps1
+AllUsersCurrentHost    : C:\Program Files\PowerShell\7\Microsoft.VSCode_profile.ps1
+CurrentUserAllHosts    : C:\Users\Username\Documents\PowerShell\profile.ps1
+CurrentUserCurrentHost : C:\Users\Username\Documents\PowerShell\Microsoft.VSCode_profile.ps1
+```
+
 To create a profile:
 1. Decide the level the profile should encompass using: `$Profile | Select-Object *`
     * The output will help you create the path.  
@@ -75,10 +84,12 @@ You will need to restart any existing sessions for the change to take place.
 
 Example:  
 ```
-New-Item -ItemType "file" -Value 'Write-Host "Hello human, welcome back" -foregroundcolor Green ' -Path $Profile.CurrentUserCurrentHost -Force
+New-Item -ItemType "file" -Value 'Write-Host "Hello human slave, welcome back" -foregroundcolor Green ' -Path $Profile.CurrentUserCurrentHost -Force
 ```
 
 `-Force` switch overwrites any existing content, so use with care.  
+
+Note: running the above from Visual Studio Code will create a profile specific to VS Code only in Microsoft.VSCode_profile.ps1.  
 
 ## Azure Cloud Shell
 `pwsh` launches a PowerShell terminal  
