@@ -94,3 +94,6 @@ Note: running the above from Visual Studio Code will create a profile specific t
 ## Azure Cloud Shell
 `pwsh` launches a PowerShell terminal  
 
+## Creating a File from PowerShell Terminal
+To create a script named "file-name.ps1" in the current directory denoted by the dot operator ".":  
+`New-Item -Path . -Name "file-name.ps1" -ItemType "file"`  
