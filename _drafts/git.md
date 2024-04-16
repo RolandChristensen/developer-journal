@@ -33,7 +33,7 @@ Quick Start Scenarios:
     * `$ git branch -m master main`
 * Creating a branch in order to keep new work isolated from the main branch before it has been thoroughly tested (double checked)
     1. `$ git status` to verify you are on main branch. if not `$ git checkout main`.
-    2. `$ git branch -b new-branch-name` creates a new branch identical to the current branch and 'checks out' that new branch
+    2. `$ git checkout -b new-branch-name` creates a new branch identical to the current branch and 'checks out' that new branch
 * View the changes (diff) between files changed before "staging" to double check your work
     * `$ git diff`
 * View the changes between staged files and the last commit
@@ -65,11 +65,37 @@ Quick Start Scenarios:
         3. When ready to resume work on the original branch you abandoned to work on the other feature
         4. `$ git checkout original-branch-name`
         5. `$ git stash pop` to get the last stash pulled off the top of the stack
-* 
+* A/B Local Testing Using Branches. (Using branches to try out different algorithms)
+    * If you want to try two different approaches to the same problem, create two branches off the same branch then try out each approach and gather data to decide.
+        1. `git status` to verify you are on main branch. If not, `$ git checkout main`.
+        1. `git checkout -b new-feature-name` creates a new branch identical to the current branch and 'checks out' that new branch
+        1. `git checkout new-feature-name` to switch to the new branch
+        1. `git branch new-feature-a` to create the A branch
+        1. `git branch new-feature-b` to create the B branch
+        1. `git branch` to list all the branches to double check your work
+        1. `git checkout new-feature-a` to check out the A branch to make changes based on plan A
+        1. Add the following line to *dummy-file-1.md*: "This represents code for a new feature using plan A of two plans."
+        1. `git add dummy-file-1.md`
+        1. `git commit -m "Testing plan A"`
+        1. `git checkout new-feature-b` to check out the B branch to make changes based on plan B
+        1. Look at *dummy-file-1.md* to verify the line you added is not there in this branch.
+        1. Add the following line to *dummy-file-1.md*: "This represents code for a new feature using plan B of two plans."
+        1. `git add dummy-file-1.md`
+        1. `git commit -m "Testing plan B"`
+        1. At this point you would test the changes on each branch to decide which one performs best or the one that best fits your design. For this demonstration, we are going to assume we chose plan B.
+        1. `git checkout new-feature-name` to get to the parent branch of the A/B branches created.
+        1. Look at *dummy-file-1.md* to verify the line you added is not there in this branch.
+        1. `git merge new-feature-b` to accept plan B.
+        1. Look at *dummy-file-1.md* to verify the line you added is now in the parent branch.
+        1. `git branch -d new-feature-a` will not delete the branch, because Git is trying to prevent you from making a mistake because you have changes that have not been merged.
+        1. `git branch -D new-feature-a` to delete plan A. Using the `-D` flag will force delete the branch.
+        1. `git branch -d new-feature-b` to delete the branch you merged into *new-feature-name* branch.
+        1. At this point we would continue to work on the new feature or push the branch to the remote server and create a pull request. For this tutorial feel free to checkout main and delete the *new-feature-name* branch to return to the place you started from.
+
 
 * Making changes and viewing the changes in the file to double check your work before commiting it
 * Dividing your work into small manageable and unit testable changes (Commits) to log the changes of new work 
-* Using branches to try out different algorithms 
+
 
 
 Assumptions:  
