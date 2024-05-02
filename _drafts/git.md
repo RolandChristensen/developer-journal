@@ -1,43 +1,41 @@
 Git and GitHub related notes
 
-# Git for Local Development
-Git is awesome for source control and is essential to working in a group, but it is also extremely helpful for local development.  
-This documents the command line, but describes basic skills that are important regardless of the tool you use to interface with Git.  
-I work on Windows professionally, so use Visual Studio Code or Visual Studio which have great extensions for Git.  
+# Git Source Control Practice Exercises
+Source control is essential for any serious programmer and Git combined with GitHub is a great solution.  
+Below are common scenarios I use regularly. Use this page as a quick reference for well used scenarios.
 
-Reasons for using a good local source control strategy
-* You can create a branch to experiment and if you do not like the results, you can simply undo all changes in a single step
-* You can incrementally make small changes and back up to any step along the way on a test branch
-* You can see a diff of any changes made, to prevent accidental changes before pushing to the server
+This (repository)[https://github.com/RolandChristensen/git-guided-examples] can be used to practice these scenarios.
+If you find yourself in trouble and can't figure out how to undo it, this repo is a great place to reproduce the problem and learn to undo it in a safe place.
 
+This page documents the command line, but the skills outlined can be reproduced by any tool you use to interface with Git.  
+I work on Windows professionally, so use Visual Studio Code or Visual Studio which have great extensions for Git. That said, I still go to the command line frequently.  
 
-This post covers the basics of:  
-`$ git init`  
-`$ git status`  
-`$ git add`  
-`$ git commit`  
-`$ git log`  
-`$ git reflog`  
-`$ git reset`  
-`$ git branch`  
-`$ git checkout`  
-`$ git diff`
-
-Quick Start Scenarios:  
-* Starting a git repo with existing code
+# Quick Start Scenarios:  
+## Starting a git repo with existing code
     1. `$ git init` to initialize a new repo
     2. `.gitignore` to keep unnecessary files and secrets out of source control
     3. `$ git add .`, `$ git add file-name`, `$ git add directory-name` to stage files to be tracked
     4. `$ git commit -m "First commit of existing code"`
-* Renaming a branch
-    * `$ git branch -m master main`
-* Creating a branch in order to keep new work isolated from the main branch before it has been thoroughly tested (double checked)
+
+## Renaming a branch
+`$ git branch -m oldName newName` - Example: `$ git branch -m master main`
+
+## Creating a branch in order to keep new work isolated from the main branch before it has been thoroughly tested (double checked)
     1. `$ git status` to verify you are on main branch. if not `$ git checkout main`.
     2. `$ git checkout -b new-branch-name` creates a new branch identical to the current branch and 'checks out' that new branch
-* View the changes (diff) between files changed before "staging" to double check your work
-    * `$ git diff`
-* View the changes between staged files and the last commit
+
+## View the changes (diff) between files changed before "staging" to double check your work
+    1. `$ git diff`
+This assumes you use the *vimdiff* tool: 
+
+    1. Arrow down, arrow up, page down, page up to navigate changes from all files.
+    2. Q to exit.
+
+The diff in the command line is useful, but there are much better tools for viewing diffs (Visual Studio Git extension for one)
+
+## View the changes between staged files and the last commit
     * `$ git diff --staged` or `$ git diff --cached`
+
 * Committing staged changes to the branch. Make commits self-contained, testable units
     * `$ git commit -m "Useful commit message, so you can find these changes in the future"`
 * Ammending a previous commit
