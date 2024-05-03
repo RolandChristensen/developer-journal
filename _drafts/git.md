@@ -4,58 +4,106 @@ Git and GitHub related notes
 Source control is essential for any serious programmer and Git combined with GitHub is a great solution.  
 Below are common scenarios I use regularly. Use this page as a quick reference for well used scenarios.
 
-This (repository)[https://github.com/RolandChristensen/git-guided-examples] can be used to practice these scenarios.
+This [repository](https://github.com/RolandChristensen/git-guided-examples) can be used to practice these scenarios.
 If you find yourself in trouble and can't figure out how to undo it, this repo is a great place to reproduce the problem and learn to undo it in a safe place.
 
 This page documents the command line, but the skills outlined can be reproduced by any tool you use to interface with Git.  
 I work on Windows professionally, so use Visual Studio Code or Visual Studio which have great extensions for Git. That said, I still go to the command line frequently.  
 
-# Quick Start Scenarios:  
+# Quick Start Scenarios
+The following scenarios follow the general workflow of creating a new repo from scratch and then working with others to build up an application.  
+
+[Starting a git repo with existing code](#Starting-a-git-repo-with-existing-code)  
+[Renaming a branch](#Renaming-a-branch)  
+[Push local branch to a remote repository](#Push-local-branch-to-a-remote-repository)  
+[Creating a feature branch in order to keep new work isolated from the main branch](#Creating-a-feature-branch-in-order-to-keep-new-work-isolated-from-the-main-branch)  
+[View the difference between files changed on this branch before staging](#View-the-difference-between-files-changed-on-this-branch-before-staging)  
+[View the changes between staged files and the last commit](#View-the-changes-between-staged-files-and-the-last-commit)  
+
+
 ## Starting a git repo with existing code
-    1. `$ git init` to initialize a new repo
-    2. `.gitignore` to keep unnecessary files and secrets out of source control
-    3. `$ git add .`, `$ git add file-name`, `$ git add directory-name` to stage files to be tracked
-    4. `$ git commit -m "First commit of existing code"`
+1. `git init` to initialize a new repo
+2. `.gitignore` to keep unnecessary files and secrets out of source control
+3. `git add .`, `$ git add file-name`, `$ git add directory-name` to stage files to be tracked
+4. `git commit -m "First commit of existing code"`
 
 ## Renaming a branch
-`$ git branch -m oldName newName` - Example: `$ git branch -m master main`
+`$ git branch -m oldName newName` - Example: `git branch -m master main`
 
-## Creating a branch in order to keep new work isolated from the main branch before it has been thoroughly tested (double checked)
-    1. `$ git status` to verify you are on main branch. if not `$ git checkout main`.
-    2. `$ git checkout -b new-branch-name` creates a new branch identical to the current branch and 'checks out' that new branch
+## Push local branch to a remote repository
+The following instructions are for your very first push to a new repo from your local.  
+1. Navigate to the GitHub repo you want to push changes to, such as: h__ps://github.com/{your-github-username}/{repo-name}
+1. Copy the URL to the repo
+1. `git remote add origin {The URL you copied}`: lets Git know where to direct any "push", "pull", or "fetch".
+1. `git push -u origin {branch-name}`: pushes the branch to the remote repository. Example: `git push -u origin main` (As a general rule, you should not push directly to the "main" branch, but instead create a feature branch to work from. The initial push is the only exception to this rule.)
 
-## View the changes (diff) between files changed before "staging" to double check your work
-    1. `$ git diff`
-This assumes you use the *vimdiff* tool: 
+If you have previously issued the "git remote add origin" command then you simply need to push:  
+`git push -u origin {branch-name}`
 
-    1. Arrow down, arrow up, page down, page up to navigate changes from all files.
-    2. Q to exit.
+## Creating a feature branch in order to keep new work isolated from the main branch
+1. `git status` to verify you are on main branch. if not `$ git checkout main`.
+1. `git fetch`: to fetch any changes on the remote repo.
+1. `git log origin/main`: to see the commits and decide if you want to merge the remote changes in your local main branch. Note: to quit the log screen press ":q" and press *Enter* repeatedly to scroll through the commits.
+1. `git diff ..origin/main`: to see the diff between your main branch and the remote main branch in detail. Note: there are diff tools that are easier to work with than the command line. The VS Code extension for Git is great.
+1. `git merge origin/main`: to merge the changes into your local *main*. If you were careful when checking the log and diff you should not find yourself surprised by any merge conflicts. 
+1. `git checkout -b new-branch-name` creates a new branch identical to the current branch and 'checks out' that new branch
+
+## View the difference between files changed on this branch before staging
+Double check your work before you add it to the "staging" area.  
+`$ git diff`  
+
+The following assumes you use the *vimdiff* tool:  
+1. Arrow down, arrow up, page down, page up to navigate changes from all files.
+2. Enter "q" to exit the diff tool.
 
 The diff in the command line is useful, but there are much better tools for viewing diffs (Visual Studio Git extension for one)
 
 ## View the changes between staged files and the last commit
-    * `$ git diff --staged` or `$ git diff --cached`
+`git diff --staged` or `$ git diff --cached`
 
-* Committing staged changes to the branch. Make commits self-contained, testable units
-    * `$ git commit -m "Useful commit message, so you can find these changes in the future"`
-* Ammending a previous commit
-    * `$ git commit -a -m "Commit message that encompasses all changes, not just the amended changes"`
-* Viewing all commits
-    * `$ git log` view the commits with the author and date of change
-    * `$ git log --oneline` the commits are abbreviated on one line
-* View only the commits on the branch since it was created
-    * `$ git log --oneline main..branch-name` displays only commits
-* Merge branch into *main*
-    * `$ git checkout main` switch to the branch you want to merge the changes into
-    * `$ git merge branch-name` merge the branch into the current branch you are on
-    * `$ git branch -d branch-name`
-* You forgot to checkout a new branch and started working on a new feature while still on *main*
-    * As long as you have not commited any changes you can simply checkout a new branch.
-        * `$ git checkout -b new-branch-name`
-    * If you have committed changes follow the directions below to *reset* the HEAD with the `--soft` flag to the point where you started making changes.
-        1. `$ git log` or `$ git reflog` to get the hash of the commit to go back to
-        2. `$ git reset --soft {hash}`
-* You cannot continue working on a feature/branch due to a blocking issue or because a hotfix demands your attention
+## Committing staged changes to the branch 
+Make commits self-contained, testable units.  
+`git commit -m "Useful commit message, so you can find these changes in the future"`
+
+## Ammending a previous commit
+`git commit -a -m "Commit message that encompasses all changes, not just the amended changes"`
+
+## Viewing all commits
+* `git log` view the commits with the author and date of change
+* `git log --oneline` the commits are abbreviated on one line
+
+## View only the commits on the branch since it was created
+* `git log --oneline main..branch-name` displays only commits
+
+## Merge branch into another branch
+1. `git checkout main` switch to the branch you want to merge the changes into
+1. `git merge branch-name` merge the branch into the current branch you are on
+1. `git branch -d branch-name` delete the branch now that you are done with it
+
+## You forgot to delete branches and can't remember if you have merged them
+You don't want to delete the branch unless you are sure you have merged them.
+1. `git branch` to see all the branches on your local
+2. `git checkout {parent-branch-name}` to checkout the parent branch you should have merged the feature branch into
+    * This guide assumes you have pulled all changes from the remote into your local parent branch. Elsewhere on this page, you will find instructions to do this, if you haven't already.
+4. `git branch --merged` to see all the branches that have been merged into the current checked out branch
+    * Depending on your workflow and the branch in question, it could be that after merging you did additional work, so you may need to check the branch to see if you have any changes on it.
+5. `git log parent-branch-name..feature-branch-name` to see any commits on the feature branch that are not on the parent branch
+    * If the output is empty you have merged everthing into the parent branch and you can delete the branch in question.
+6. `git branch -d {feature-branch-name}`
+
+## You forgot to checkout a new branch and started working on a new feature while still on *main*
+As long as you have not commited any changes you can simply checkout a new branch.
+`git checkout -b new-branch-name`
+
+If you have committed changes follow the directions below to *reset* the HEAD with the `--soft` flag to the point where you started making changes.  
+`--soft` will keep your changes. If you use the `--hard` flag all changes will be forever lost                              I.
+1. `git log` or `$ git reflog` to get the hash of the commit to go back to in the *log*, or note the HEAD@{#} to go back in the *reflog*
+    * Press 'q' to quit the log
+2. `git reset --soft {hash}` or `git reset --soft HEAD@{#}` to back the commit to *stage*
+    * Verify the changed files are *staged* by using `git status`
+3. `git checkout -b new-branch-name` to 
+
+## You cannot continue working on a feature/branch due to a blocking issue or because a hotfix demands your attention
     * All commits will remain on this branch when you change branches, so you do not need to worry about them
     * Any uncommited changes need to be *stashed*
         1. `$ git stash` to stash files that are currently tracked. If you need to include untracked files, which is probably a good idea to avoid checking it into another branch inadvertantly `$ git stash --include-untracked`
