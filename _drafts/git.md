@@ -1,7 +1,7 @@
 Git and GitHub related notes
 
 # Git Source Control Practice Exercises
-Source control is essential for any serious programmer and Git combined with GitHub is a great solution.  
+Source control is essential for programming and Git combined with GitHub is a great solution.  
 Below are common scenarios I use regularly. Use this page as a quick reference for well used scenarios.
 
 This [repository](https://github.com/RolandChristensen/git-guided-examples) can be used to practice these scenarios.
@@ -11,7 +11,7 @@ This page documents the command line, but the skills outlined can be reproduced 
 I work on Windows professionally, so use Visual Studio Code or Visual Studio which have great extensions for Git. That said, I still go to the command line frequently.  
 
 # Quick Start Scenarios
-The following scenarios follow the general workflow of creating a new repo from scratch and then working with others to build up an application.  
+Below are common scenarios used in day to day development.  
 
 [Starting a git repo with existing code](#Starting-a-git-repo-with-existing-code)  
 [Renaming a branch](#Renaming-a-branch)  
@@ -22,13 +22,31 @@ The following scenarios follow the general workflow of creating a new repo from 
 
 
 ## Starting a git repo with existing code
+For an in depth tutorial, see the "***create-repo.md***"file in this [repository](https://github.com/RolandChristensen/git-guided-examples).  
+
 1. `git init` to initialize a new repo
-2. `.gitignore` to keep unnecessary files and secrets out of source control
+2. Add `.gitignore` file to keep unnecessary files and secrets out of source control
 3. `git add .`, `$ git add file-name`, `$ git add directory-name` to stage files to be tracked
 4. `git commit -m "First commit of existing code"`
 
+### The Three States
+For an in depth tutorial, see the "***three-states.md***" file in this [repository](https://github.com/RolandChristensen/git-guided-examples)..  
+
+There are three states of tracked files. The ***Working Directory***, the ***Staging Area***, and the code ***Repository***.
+
+1. ***Working Directory***: When you modify a file that is tracked by git, it will add it to the ***modified*** or ***working directory*** of its database. 
+    * Use the `git status` command to see the files tracked in the ***working directory***
+    * Adding the "***.gitignore***" file is the way to stop tracking any file you do not want in source control and will remove it from the ***working directory***
+2. ***Staging Area***: Using the `git add {operand}` command will move files to the ***staging area*** or ***index*** of Git's database. 
+    * Use `git status` to see files added to the ***staging area***
+3. ***Repository***: Using the `git commit -m "Useful message` command indicates that you are very confident the changes work as expected and adds the files to the ***repository*** or ***.git directory*** under the current ***branch*** you have checked out. 
+    * Use "***git log***" or "***git reflog***" to see files that have been committed to the currently checked out ***branch*** of the ***repository*** 
+
 ## Renaming a branch
-`$ git branch -m oldName newName` - Example: `git branch -m master main`
+`$ git branch -m oldName newName`  
+
+Example: Many prefer to use *main* instead of *master* for the top-most branch, to be empathetic.  
+`git branch -m master main`
 
 ## Push local branch to a remote repository
 The following instructions are for your very first push to a new repo from your local.  
@@ -111,7 +129,8 @@ If you have committed changes follow the directions below to *reset* the HEAD wi
         3. When ready to resume work on the original branch you abandoned to work on the other feature
         4. `$ git checkout original-branch-name`
         5. `$ git stash pop` to get the last stash pulled off the top of the stack
-* A/B Local Testing Using Branches. (Using branches to try out different algorithms)
+
+## A/B Local Testing Using Branches. (Using branches to try out different algorithms)
     * If you want to try two different approaches to the same problem, create two branches off the same branch then try out each approach and gather data to decide.
         1. `git status` to verify you are on main branch. If not, `$ git checkout main`.
         1. `git checkout -b new-feature-name` creates a new branch identical to the current branch and 'checks out' that new branch
@@ -139,8 +158,9 @@ If you have committed changes follow the directions below to *reset* the HEAD wi
         1. At this point we would continue to work on the new feature or push the branch to the remote server and create a pull request. For this tutorial feel free to checkout main and delete the *new-feature-name* branch to return to the place you started from.
 
 
-* Making changes and viewing the changes in the file to double check your work before commiting it
-* Dividing your work into small manageable and unit testable changes (Commits) to log the changes of new work 
+## Making changes and viewing the changes in the file to double check your work before commiting it
+
+## Dividing your work into small manageable and unit testable changes (Commits) to log the changes of new work 
 
 
 
@@ -330,13 +350,13 @@ Best Practices:
 * Clearly name your *commits* so you and others know what was done.
 
 Now, to ammend the last commit:  
-`$ git commit --amend` will add recent changes staged into the last commit as if the previous commit never happened.  
+`git commit --amend` will add recent changes staged into the last commit as if the previous commit never happened.  
 
 ***Warning***: This should not be done if you have pushed it to a public server others may have pulled from.  
 This approach is used to update local changes only!  
 
 1. Find a place to add a harmless, but useful comment in the code.
-2. Update the last commit with something like: `$ git commit --amend -m "Some new commit message"
+2. Update the last commit with something like: `$ git commit --amend -m "Some new commit message"`
 
 Below is the output of Git log for my example repo, still only showing one commit, but containing the comment change with the new commit message.  
 ```
