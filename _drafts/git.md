@@ -2,19 +2,23 @@ Git and GitHub related notes
 
 # Git Source Control Practice Exercises
 Source control is essential for programming and Git combined with GitHub is a great solution.  
-Below are common scenarios I use regularly. Use this page as a quick reference for well used scenarios.
+Below are common scenarios used regularly. Use this page as a quick reference for well used scenarios.
 
-This [repository](https://github.com/RolandChristensen/git-guided-examples) can be used to practice these scenarios.
-If you find yourself in trouble and can't figure out how to undo it, this repo is a great place to reproduce the problem and learn to undo it in a safe place.
+Use this page as a quick reference for well used scenarios.  
 
-This page documents the command line, but the skills outlined can be reproduced by any tool you use to interface with Git.  
-I work on Windows professionally, so use Visual Studio Code or Visual Studio which have great extensions for Git. That said, I still go to the command line frequently.  
+Use this [repository](https://github.com/RolandChristensen/git-guided-examples) to practice these scenarios.  
+The repo contains ***additional tutorial files*** going into more detail on source control topics.  
+If you find yourself in trouble and can't figure out how to undo it, this repo is also a good place to reproduce the problem and learn to undo it in a safe place.
+
+This documents Git using the command line, but the skills outlined can be reproduced by other tools you use to interface with Git.  
+I work on Windows professionally, so use Visual Studio Code or Visual Studio which have great extensions for Git. That said, I still go to the command line frequently. 
 
 # Quick Start Scenarios
 Below are common scenarios used in day to day development.  
 
 [Starting a git repo with existing code](#Starting-a-git-repo-with-existing-code)  
 [Renaming a branch](#Renaming-a-branch)  
+[Create GitHub repo](#Create-GitHub-repo)  
 [Push local branch to a remote repository](#Push-local-branch-to-a-remote-repository)  
 [Creating a feature branch in order to keep new work isolated from the main branch](#Creating-a-feature-branch-in-order-to-keep-new-work-isolated-from-the-main-branch)  
 [View the difference between files changed on this branch before staging](#View-the-difference-between-files-changed-on-this-branch-before-staging)  
@@ -48,12 +52,21 @@ There are three states of tracked files. The ***Working Directory***, the ***Sta
 Example: Many prefer to use *main* instead of *master* for the top-most branch, to be empathetic.  
 `git branch -m master main`
 
+## Create GitHub repo
+For an in depth tutorial, see the "***create-repo.md***". 
+
+1. Navigate your browser to: h__ps://github.com/{YourGitHubUserName}
+1. Click the *Repositories* tab at the top of the page.
+1. Click the *New* button. 
+1. Fill in the rest of the form as needed. 
+1. Push the *Create Repository* button.
+
 ## Push local branch to a remote repository
 The following instructions are for your very first push to a new repo from your local.  
 1. Navigate to the GitHub repo you want to push changes to, such as: h__ps://github.com/{your-github-username}/{repo-name}
 1. Copy the URL to the repo
 1. `git remote add origin {The URL you copied}`: lets Git know where to direct any "push", "pull", or "fetch".
-1. `git push -u origin {branch-name}`: pushes the branch to the remote repository. Example: `git push -u origin main` (As a general rule, you should not push directly to the "main" branch, but instead create a feature branch to work from. The initial push is the only exception to this rule.)
+1. `git push -u origin {branch-name}`: pushes the branch to the remote repository. Example: `git push -u origin main` (As a rule, when working with others, you should not push directly to the "main" branch, but instead create a feature branch to work from.)
 
 If you have previously issued the "git remote add origin" command then you simply need to push:  
 `git push -u origin {branch-name}`
