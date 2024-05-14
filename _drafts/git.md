@@ -6,7 +6,7 @@ Below are common scenarios used regularly. Use this page as a quick reference fo
 
 Use this page as a quick reference for well used scenarios.  
 
-Use this [repository](https://github.com/RolandChristensen/git-guided-examples) to practice these scenarios.  
+Use this linked [repository](https://github.com/RolandChristensen/git-guided-examples) to practice these scenarios.  
 The repo contains ***additional tutorial files*** going into more detail on source control topics.  
 If you find yourself in trouble and can't figure out how to undo it, this repo is also a good place to reproduce the problem and learn to undo it in a safe place.
 
@@ -20,7 +20,7 @@ Below are common scenarios used in day to day development.
 [Renaming a branch](#Renaming-a-branch)  
 [Create GitHub repo](#Create-GitHub-repo)  
 [Push local branch to a remote repository](#Push-local-branch-to-a-remote-repository)  
-[Creating a feature branch in order to keep new work isolated from the main branch](#Creating-a-feature-branch-in-order-to-keep-new-work-isolated-from-the-main-branch)  
+[Creating a feature branch](#Creating-a-feture-branch)  
 [View the difference between files changed on this branch before staging](#View-the-difference-between-files-changed-on-this-branch-before-staging)  
 [View the changes between staged files and the last commit](#View-the-changes-between-staged-files-and-the-last-commit)  
 
@@ -62,22 +62,25 @@ For an in depth tutorial, see the "***create-repo.md***".
 1. Push the *Create Repository* button.
 
 ## Push local branch to a remote repository
-The following instructions are for your very first push to a new repo from your local.  
+If you have previously issued the "git remote add origin" command then you simply need to push.  
+
+`git push -u origin {branch-name}`: pushes your local branch (branch-name) to the remote repository (origin).
+
+If this is your first push to the remote repo follow these instructions:  
+
 1. Navigate to the GitHub repo you want to push changes to, such as: h__ps://github.com/{your-github-username}/{repo-name}
 1. Copy the URL to the repo
 1. `git remote add origin {The URL you copied}`: lets Git know where to direct any "push", "pull", or "fetch".
-1. `git push -u origin {branch-name}`: pushes the branch to the remote repository. Example: `git push -u origin main` (As a rule, when working with others, you should not push directly to the "main" branch, but instead create a feature branch to work from.)
+1. `git push -u origin {branch-name}`: pushes your local branch (branch-name) to the remote repository (origin). Example: `git push -u origin main` (As a rule, when working with others, you should not push directly to the "main" branch, but instead create a feature branch to work from.)
 
-If you have previously issued the "git remote add origin" command then you simply need to push:  
-`git push -u origin {branch-name}`
+## Creating a branch for new work
+Isolate your new code from the shared branch everyone is working from, until the new branch has been thoroughly tested.  
+This assumes you are going to merge into a branch named ***dev***, but you can substitute ***dev*** for any branch name such as ***uat***, or even ***main*** (if you are absolutely sure).  
 
-## Creating a feature branch in order to keep new work isolated from the main branch
-1. `git status` to verify you are on main branch. if not `$ git checkout main`.
-1. `git fetch`: to fetch any changes on the remote repo.
-1. `git log origin/main`: to see the commits and decide if you want to merge the remote changes in your local main branch. Note: to quit the log screen press ":q" and press *Enter* repeatedly to scroll through the commits.
-1. `git diff ..origin/main`: to see the diff between your main branch and the remote main branch in detail. Note: there are diff tools that are easier to work with than the command line. The VS Code extension for Git is great.
-1. `git merge origin/main`: to merge the changes into your local *main*. If you were careful when checking the log and diff you should not find yourself surprised by any merge conflicts. 
-1. `git checkout -b new-branch-name` creates a new branch identical to the current branch and 'checks out' that new branch
+1. `git status` to verify you are on dev branch. If not, `$ git checkout dev`.
+1. `git fetch`: to see any changes from the remote repo before creating your new branch. The default remote to fetch from is *origin* so this command is equivalent to `git fetch origin`
+1. `git log origin/dev` and/or `git diff ..origin/dev`: this will show you what has changed in the remote repo since you last pulled. If you are happy to merge those new changes into your local ***dev*** branch then go ahead. If you do not want the current state of the remote repo, for whatever reason, you can leave it the way it is because you only ***fetched*** it. An example of fetching and merging is below. Since this is just an example repo there is no need to merge.
+1. `git branch -b new-branch-name` creates a new branch identical to the current branch and 'checks out' that new branch
 
 ## View the difference between files changed on this branch before staging
 Double check your work before you add it to the "staging" area.  
