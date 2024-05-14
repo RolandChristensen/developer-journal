@@ -73,7 +73,7 @@ If this is your first push to the remote repo follow these instructions:
 1. `git remote add origin {The URL you copied}`: lets Git know where to direct any "push", "pull", or "fetch".
 1. `git push -u origin {branch-name}`: pushes your local branch (branch-name) to the remote repository (origin). Example: `git push -u origin main` (As a rule, when working with others, you should not push directly to the "main" branch, but instead create a feature branch to work from.)
 
-## Creating a branch for new work
+## Creating a feature branch
 Isolate your new code from the shared branch everyone is working from, until the new branch has been thoroughly tested.  
 This assumes you are going to merge into a branch named ***dev***, but you can substitute ***dev*** for any branch name such as ***uat***, or even ***main*** (if you are absolutely sure).  
 
