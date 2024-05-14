@@ -20,7 +20,7 @@ Below are common scenarios used in day to day development.
 [Renaming a branch](#Renaming-a-branch)  
 [Create GitHub repo](#Create-GitHub-repo)  
 [Push local branch to a remote repository](#Push-local-branch-to-a-remote-repository)  
-[Creating a feature branch](#Creating-a-feture-branch)  
+[Creating a feature branch](#Creating-a-feature-branch)  
 [View the difference between files changed on this branch before staging](#View-the-difference-between-files-changed-on-this-branch-before-staging)  
 [View the changes between staged files and the last commit](#View-the-changes-between-staged-files-and-the-last-commit)  
 
