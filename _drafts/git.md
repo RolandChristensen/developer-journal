@@ -20,6 +20,7 @@ Below are common scenarios used in day to day development.
 [Renaming a branch](#Renaming-a-branch)  
 [Create GitHub repo](#Create-GitHub-repo)  
 [Push local branch to a remote repository](#Push-local-branch-to-a-remote-repository)  
+[Create a dev branch](#Create-a-dev-branch)  
 [Creating a feature branch](#Creating-a-feature-branch)  
 [View the difference between files changed on this branch before staging](#View-the-difference-between-files-changed-on-this-branch-before-staging)  
 [View the changes between staged files and the last commit](#View-the-changes-between-staged-files-and-the-last-commit)  
@@ -66,12 +67,25 @@ If you have previously issued the "git remote add origin" command then you simpl
 
 `git push -u origin {branch-name}`: pushes your local branch (branch-name) to the remote repository (origin).
 
-If this is your first push to the remote repo follow these instructions:  
+If this is your very first push to the remote repo follow these instructions:  
 
 1. Navigate to the GitHub repo you want to push changes to, such as: h__ps://github.com/{your-github-username}/{repo-name}
 1. Copy the URL to the repo
 1. `git remote add origin {The URL you copied}`: lets Git know where to direct any "push", "pull", or "fetch".
-1. `git push -u origin {branch-name}`: pushes your local branch (branch-name) to the remote repository (origin). Example: `git push -u origin main` (As a rule, when working with others, you should not push directly to the "main" branch, but instead create a feature branch to work from.)
+1. `git push -u origin {branch-name}`: pushes your local branch (branch-name) to the remote repository (origin). Example: `git push -u origin main` (As a rule, when working with others, you should not push directly to the "main" branch, but instead use environments and feature branches to work from.)
+
+## Create a dev branch
+Use environments to isolate recent changes from multiple services in order to integration test your code safely before deploying to production.
+
+If you are following this document, you have just created a repo with a ***main*** branch and added the initial code of a new project.
+
+1. Verify you are on the main branch and have no outstanding changes. `git status` and `git log`
+2. `git checkout -b dev` creates a new branch called ***dev*** based off of the ***main*** branch.
+3. `git push -u origin dev` pushes the new dev branch to the remote repository.
+
+From this point forward developers will be working off of the ***dev*** branch. The ***main*** branch will no longer be handled locally.
+
+These previous instructions were done locally on the command line, but you could just as easily have done this on the remote (GitHub). You could have created a new repo and created a ***dev*** branch to clone into your local and never have had ***main*** on your local.
 
 ## Creating a feature branch
 Isolate your new code from the shared branch everyone is working from, until the new branch has been thoroughly tested.  
