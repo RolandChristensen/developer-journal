@@ -1,5 +1,34 @@
 Git and GitHub related notes
 
+# Reset Hard
+
+1. `git reflog` - examine and copy this to see what happens after these instructions
+1. Add this line to a file: "I really want this deleted, but I added and committed it."
+1. Add and commit that file.
+1. Add this line below the line in the same file: "This I added, but did not commit, but I wish I hadn't added it."
+1. Add the file, but do not commit.
+1. Add this line to another file: "I added this but did not add or commit it."
+
+```
+$ git status
+On branch dev
+Your branch is ahead of 'origin/dev' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   README.md
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   dummy-file-1.md
+```
+
+1. `git fetch`
+1. `git reset --hard origin/dev`
+1. `git reflog` - to compare to the original
+
 # Git Source Control Practice Exercises
 Source control is essential for programming and Git combined with GitHub is a great solution.  
 Below are common scenarios used regularly. Use this page as a quick reference for well used scenarios.
