@@ -11,8 +11,8 @@ Git and GitHub related notes
 
 ```
 $ git status
-On branch dev
-Your branch is ahead of 'origin/dev' by 1 commit.
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
   (use "git push" to publish your local commits)
 
 Changes to be committed:
@@ -26,18 +26,16 @@ Changes not staged for commit:
 ```
 
 1. `git fetch`
-1. `git reset --hard origin/dev`
+1. `git reset --hard origin/main`
 1. `git reflog` - to compare to the original
 
 # Git Source Control Practice Exercises
 Source control is essential for programming and Git combined with GitHub is a great solution.  
-Below are common scenarios used regularly. Use this page as a quick reference for well used scenarios.
+Use this page as a quick reference for often used scenarios.
 
-Use this page as a quick reference for well used scenarios.  
-
-Use this linked [repository](https://github.com/RolandChristensen/git-guided-examples) to practice these scenarios.  
+Use this linked [repository](https://github.com/RolandChristensen/git-guided-examples) to practice these scenarios and more.  
 The repo contains ***additional tutorial files*** going into more detail on source control topics.  
-If you find yourself in trouble and can't figure out how to undo it, this repo is also a good place to reproduce the problem and learn to undo it in a safe place.
+If you find yourself in trouble and can't figure out how to undo a mistake, this repo is also a good place to reproduce the problem and learn to undo it in a safe place.
 
 This documents Git using the command line, but the skills outlined can be reproduced by other tools you use to interface with Git.  
 I work on Windows professionally, so use Visual Studio Code or Visual Studio which have great extensions for Git. That said, I still go to the command line frequently. 
@@ -56,7 +54,7 @@ Below are common scenarios used in day to day development.
 
 
 ## Starting a git repo with existing code
-For an in depth tutorial, see the "***create-repo.md***"file in this [repository](https://github.com/RolandChristensen/git-guided-examples).  
+For an in depth tutorial, see the "***create-repo.md***" file in this [repository](https://github.com/RolandChristensen/git-guided-examples).  
 
 1. `git init` to initialize a new repo
 2. Add `.gitignore` file to keep unnecessary files and secrets out of source control
@@ -79,7 +77,7 @@ There are three states of tracked files. The ***Working Directory***, the ***Sta
 ## Renaming a branch
 `$ git branch -m oldName newName`  
 
-Example: Many prefer to use *main* instead of *master* for the top-most branch, to be empathetic.  
+Example: Many prefer to use *main* instead of *master* for the top-most branch.  
 `git branch -m master main`
 
 ## Create GitHub repo
@@ -94,35 +92,30 @@ For an in depth tutorial, see the "***create-repo.md***".
 ## Push local branch to a remote repository
 If you have previously issued the "git remote add origin" command then you simply need to push.  
 
-`git push -u origin {branch-name}`: pushes your local branch (branch-name) to the remote repository (origin).
+`git push origin {branch-name}`: pushes your local branch (branch-name) to the remote repository (origin).  
 
 If this is your very first push to the remote repo follow these instructions:  
 
 1. Navigate to the GitHub repo you want to push changes to, such as: h__ps://github.com/{your-github-username}/{repo-name}
 1. Copy the URL to the repo
 1. `git remote add origin {The URL you copied}`: lets Git know where to direct any "push", "pull", or "fetch".
-1. `git push -u origin {branch-name}`: pushes your local branch (branch-name) to the remote repository (origin). Example: `git push -u origin main` (As a rule, when working with others, you should not push directly to the "main" branch, but instead use environments and feature branches to work from.)
-
-## Create a dev branch
-Use environments to isolate recent changes from multiple services in order to integration test your code safely before deploying to production.
-
-If you are following this document, you have just created a repo with a ***main*** branch and added the initial code of a new project.
-
-1. Verify you are on the main branch and have no outstanding changes. `git status` and `git log`
-2. `git checkout -b dev` creates a new branch called ***dev*** based off of the ***main*** branch.
-3. `git push -u origin dev` pushes the new dev branch to the remote repository.
-
-From this point forward developers will be working off of the ***dev*** branch. The ***main*** branch will no longer be handled locally.
-
-These previous instructions were done locally on the command line, but you could just as easily have done this on the remote (GitHub). You could have created a new repo and created a ***dev*** branch to clone into your local and never have had ***main*** on your local.
+1. `git push -u origin {branch-name}`: pushes your local branch (branch-name) to the remote repository (origin). Example: `git push -u origin main` (As a rule, when working with others, you will not push directly to the "main" branch, but instead use feature branches to work from.) The "-u" flag sets origin as the upstream remote for your branch. This will save you time in the future, because you will simply need to use `git push` or `git pull` when on this branch and will not need to type the "origin {branch-name" part. This makes sense if you are going to be using this branch a lot. If you are using short lived feature branches, this will not save any time.
 
 ## Creating a feature branch
 Isolate your new code from the shared branch everyone is working from, until the new branch has been thoroughly tested.  
-This assumes you are going to merge into a branch named ***dev***, but you can substitute ***dev*** for any branch name such as ***uat***, or even ***main*** (if you are absolutely sure).  
+This assumes you are going to merge into a branch named ***main***, but you can substitute ***main*** for any branch name such as ***dev*** if you are using a more complex branching strategy. With complexity, comes more chances to make mistakes, but plenty of organizations use complex strategies.  
 
-1. `git status` to verify you are on dev branch. If not, `$ git checkout dev`.
+If you are not worried about the current state of your main branch, follow the directions below. If you have well defined quality gates employed to prevent merging code that has not been thouroughly tested, you should usually not be worried to get the latest state of the main branch.
+1. `git status` to verify you are on the main branch. If not, `$ git checkout main`.
+1. `git pull` to pull down all the most recent changes from the remote to your local repository.
+1. `git branch -b new-branch-name` creates a new branch identical to the current branch and 'checks out' that new branch. The branch name should correspond to the feature you are starting, often a ticket number.
+
+If, for some reason, you are concerned about pulling the current branch as it is, follow the directions below to inspect the state of the branch before 
+
+1. `git status` to verify you are on the main branch. If not, `$ git checkout main`.
 1. `git fetch`: to see any changes from the remote repo before creating your new branch. The default remote to fetch from is *origin* so this command is equivalent to `git fetch origin`
-1. `git log origin/dev` and/or `git diff ..origin/dev`: this will show you what has changed in the remote repo since you last pulled. If you are happy to merge those new changes into your local ***dev*** branch then go ahead. If you do not want the current state of the remote repo, for whatever reason, you can leave it the way it is because you only ***fetched*** it. An example of fetching and merging is below. Since this is just an example repo there is no need to merge.
+1. `git log origin/main` and/or `git diff ..origin/main`: this will show you what has changed in the remote repo since you last pulled. If you are happy to merge those new changes into your local ***main*** branch then go ahead. If you do not want the current state of the remote repo, for whatever reason, you can leave it the way it is because you only ***fetched*** it.
+    * If you are sure you are happy to merge, `git merge origin/{branch-name}`. Example: `git merge origin/main`
 1. `git branch -b new-branch-name` creates a new branch identical to the current branch and 'checks out' that new branch
 
 ## View the difference between files changed on this branch before staging
@@ -153,9 +146,26 @@ Make commits self-contained, testable units.
 * `git log --oneline main..branch-name` displays only commits
 
 ## Merge branch into another branch
+Note: this is a bad idea when working with others. You should not be merging changes into "main" without going through a code review and additional quality gates.  
+
 1. `git checkout main` switch to the branch you want to merge the changes into
 1. `git merge branch-name` merge the branch into the current branch you are on
 1. `git branch -d branch-name` delete the branch now that you are done with it
+
+
+
+
+
+
+
+Todo: got to here on review.
+
+
+
+
+
+
+
 
 ## You forgot to delete branches and can't remember if you have merged them
 You don't want to delete the branch unless you are sure you have merged them.
