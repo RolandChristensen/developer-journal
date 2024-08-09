@@ -16,7 +16,7 @@ I use Visual Studio and Visual Studio Code extensions for Git, but still go to t
 Below are common scenarios used in day to day development.  
 
 [Repo Creation](#Repo-Creation)  
-[The Three States](#The-Three-States)
+[The Three States](#The-Three-States)  
 [Renaming a branch](#Renaming-a-branch)  
 [Push local branch to a remote repository](#Push-local-branch-to-a-remote-repository)  
 [Create a dev branch](#Create-a-dev-branch)  
