@@ -1,65 +1,66 @@
 Git and GitHub related notes
 
-# Reset Hard
-
-1. `git reflog` - examine and copy this to see what happens after these instructions
-1. Add this line to a file: "I really want this deleted, but I added and committed it."
-1. Add and commit that file.
-1. Add this line below the line in the same file: "This I added, but did not commit, but I wish I hadn't added it."
-1. Add the file, but do not commit.
-1. Add this line to another file: "I added this but did not add or commit it."
-
-```
-$ git status
-On branch main
-Your branch is ahead of 'origin/main' by 1 commit.
-  (use "git push" to publish your local commits)
-
-Changes to be committed:
-  (use "git restore --staged <file>..." to unstage)
-        modified:   README.md
-
-Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git restore <file>..." to discard changes in working directory)
-        modified:   dummy-file-1.md
-```
-
-1. `git fetch`
-1. `git reset --hard origin/main`
-1. `git reflog` - to compare to the original
-
-# Git Source Control Practice Exercises
-Source control is essential for programming and Git combined with GitHub is a great solution.  
+# Git and GitHub Source Control
+Source control is essential for programming and Git combined with GitHub is a good solution.  
 Use this page as a quick reference for often used scenarios.
 
-Use this linked [repository](https://github.com/RolandChristensen/git-guided-examples) to practice these scenarios and more.  
-The repo contains ***additional tutorial files*** going into more detail on source control topics.  
-If you find yourself in trouble and can't figure out how to undo a mistake, this repo is also a good place to reproduce the problem and learn to undo it in a safe place.
+To make it stick in your mind, create your own tutorials and quizes.  
+Use this [repository](https://github.com/RolandChristensen/git-guided-examples) to create practice exercises and quizes.  
+The repo will go into more detail on source control topics and give you a safe place to practice.  
+If you find yourself in trouble and can't figure out how to undo a mistake, this repo is also a good place to reproduce the problem and learn to undo it safely.
 
 This documents Git using the command line, but the skills outlined can be reproduced by other tools you use to interface with Git.  
-I work on Windows professionally, so use Visual Studio Code or Visual Studio which have great extensions for Git. That said, I still go to the command line frequently. 
+I use Visual Studio and Visual Studio Code extensions for Git, but still go to the command line frequently and create scripts which demand knowledge of the command line.
 
 # Quick Start Scenarios
 Below are common scenarios used in day to day development.  
 
-[Starting a git repo with existing code](#Starting-a-git-repo-with-existing-code)  
+[Repo Creation](#Repo-Creation)  
 [Renaming a branch](#Renaming-a-branch)  
-[Create GitHub repo](#Create-GitHub-repo)  
 [Push local branch to a remote repository](#Push-local-branch-to-a-remote-repository)  
 [Create a dev branch](#Create-a-dev-branch)  
 [Creating a feature branch](#Creating-a-feature-branch)  
 [View the difference between files changed on this branch before staging](#View-the-difference-between-files-changed-on-this-branch-before-staging)  
 [View the changes between staged files and the last commit](#View-the-changes-between-staged-files-and-the-last-commit)  
 
+# Repo Creation
+For an in depth tutorial, see the "***create-repo.md***" file in this [repository](https://github.com/RolandChristensen/git-guided-examples).  
+1. You can create a new *blank canvas* repo on GitHub and clone it to your local machine.
+1. You can create a project on your local machine, decide you want to keep it, then create a repo using the existing code, and finally push it to GitHub.
+    * You could be trying out different approaches then settle on the final archetechtural design you want to finally push to the remote.
+
+## Create New Repo
+1. Navigate your browser to: h__ps://github.com/{YourGitHubUserName}
+1. Click the *Repositories* tab at the top of the page.
+1. Click the *New* button.  
+    * The Create a New Repository page appears.
+1. Enter a Repository Name: "temp-git-repo".
+    * Fill in the rest of the form as needed for the project.
+1. Push the *Create Repository* button.
+
+## Clone a Repo (The new one just created)
+1. Create a folder on your local computer to hold the repository.
+1. Copy the URL to the GitHub remote repository.
+    * Navigate to the GitHub repo you want to clone, such as: h__ps://github.com/{your-github-username}/{repo-name}
+    * If you have not added any files yet, you will see the "Quick setup" page and can copy the URL skipping the following few steps.
+        * Otherwise, Click the ***<> Code*** dropdown
+        * Click the ***Copy url to clipboard*** button (the one that looks like two boxes on top of each other)
+1. Open Git Bash (Shift + Right click the folder created above and choose "open Git Bash here" from the context menu)
+1. Type "git clone" and then right click Git Bash and choose ***paste*** from the context menu. 
+    * Example: `git clone https://github.com/{your-username}/{repo-name}.git`
 
 ## Starting a git repo with existing code
-For an in depth tutorial, see the "***create-repo.md***" file in this [repository](https://github.com/RolandChristensen/git-guided-examples).  
-
-1. `git init` to initialize a new repo
-2. Add `.gitignore` file to keep unnecessary files and secrets out of source control
-3. `git add .`, `$ git add file-name`, `$ git add directory-name` to stage files to be tracked
-4. `git commit -m "First commit of existing code"`
+1. Open Git Bash in the project folder (Shift + Right click the folder and choose "open Git Bash here" from the context menu).
+1. `git init -b main` to initialize a new repo and change the default branch name to "main".
+1. Add `.gitignore` file to keep unnecessary files and secrets out of source control.
+1. `git add .`, `$ git add file-name`, `$ git add directory-name` to stage files to be tracked.
+1. `git commit -m "First commit of existing code"`
+1. Follow the instructions in the "Create New Repo" above.
+1. Copy the URL on the "Quick Setup" page that appears. (https://github.com/{your-github-username}/{repo-name}.git)
+    * Click the ***Copy url to clipboard*** button (the one that looks like two boxes on top of each other)
+1. `git remote add origin https://github.com/{your-username}/{repo-name}.git`: lets Git know where to direct any "push", "pull", or "fetch".
+1. `git push -u origin main`: pushes the changes to the remote repository on the "main" branch. (As a general rule, you should not push directly to the "main" branch, but instead create a feature branch to work off of. The initial push is the only exception to this rule.)
+    * The "-u" flag sets origin as the upstream remote for your branch. This will save you time in the future, because you can simply use `git pull`, `git fetch`, or `git push` when on this branch and will not need to type the "origin {branch-name}" part.
 
 ### The Three States
 For an in depth tutorial, see the "***three-states.md***" file in this [repository](https://github.com/RolandChristensen/git-guided-examples)..  
@@ -79,15 +80,6 @@ There are three states of tracked files. The ***Working Directory***, the ***Sta
 
 Example: Many prefer to use *main* instead of *master* for the top-most branch.  
 `git branch -m master main`
-
-## Create GitHub repo
-For an in depth tutorial, see the "***create-repo.md***". 
-
-1. Navigate your browser to: h__ps://github.com/{YourGitHubUserName}
-1. Click the *Repositories* tab at the top of the page.
-1. Click the *New* button. 
-1. Fill in the rest of the form as needed. 
-1. Push the *Create Repository* button.
 
 ## Push local branch to a remote repository
 If you have previously issued the "git remote add origin" command then you simply need to push.  
