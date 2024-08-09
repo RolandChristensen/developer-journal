@@ -16,6 +16,7 @@ I use Visual Studio and Visual Studio Code extensions for Git, but still go to t
 Below are common scenarios used in day to day development.  
 
 [Repo Creation](#Repo-Creation)  
+[The Three States](#The-Three-States)
 [Renaming a branch](#Renaming-a-branch)  
 [Push local branch to a remote repository](#Push-local-branch-to-a-remote-repository)  
 [Create a dev branch](#Create-a-dev-branch)  
@@ -62,7 +63,7 @@ For an in depth tutorial, see the "***create-repo.md***" file in this [repositor
 1. `git push -u origin main`: pushes the changes to the remote repository on the "main" branch. (As a general rule, you should not push directly to the "main" branch, but instead create a feature branch to work off of. The initial push is the only exception to this rule.)
     * The "-u" flag sets origin as the upstream remote for your branch. This will save you time in the future, because you can simply use `git pull`, `git fetch`, or `git push` when on this branch and will not need to type the "origin {branch-name}" part.
 
-### The Three States
+# The Three States
 For an in depth tutorial, see the "***three-states.md***" file in this [repository](https://github.com/RolandChristensen/git-guided-examples)..  
 
 There are three states of tracked files. The ***Working Directory***, the ***Staging Area***, and the code ***Repository***.
@@ -76,10 +77,12 @@ There are three states of tracked files. The ***Working Directory***, the ***Sta
     * Use "***git log***" or "***git reflog***" to see files that have been committed to the currently checked out ***branch*** of the ***repository*** 
 
 ## Renaming a branch
-`$ git branch -m oldName newName`  
+At work, I include a ticket number in my feature branch name and have transposed numbers before.  
+`git branch -m oldName newName`  
+`git branch -M oldName newName`: "-M" is used to force the rename if the new name has already been used.  
 
 Example: Many prefer to use *main* instead of *master* for the top-most branch.  
-`git branch -m master main`
+`git branch -m master main`  
 
 ## Push local branch to a remote repository
 If you have previously issued the "git remote add origin" command then you simply need to push.  
