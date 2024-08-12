@@ -16,13 +16,18 @@ I use Visual Studio and Visual Studio Code extensions for Git, but still go to t
 Below are common scenarios used in day to day development.  
 
 [Repo Creation](#Repo-Creation)  
+* [Create New Repo](#Create-New-Repo)
+* [Clone a Repo](#Clone-a-Repo)
+* [Starting a git repo with existing code](#Starting-a-git-repo-with-existing-code)
 [The Three States](#The-Three-States)  
+[Avoiding code merge conflicts](#Avoiding-code-merge-conflicts)
+[Creating a feature branch](#Creating-a-feature-branch)  
 [Renaming a branch](#Renaming-a-branch)  
 [Push local branch to a remote repository](#Push-local-branch-to-a-remote-repository)  
 [Create a dev branch](#Create-a-dev-branch)  
-[Creating a feature branch](#Creating-a-feature-branch)  
 [View the difference between files changed on this branch before staging](#View-the-difference-between-files-changed-on-this-branch-before-staging)  
 [View the changes between staged files and the last commit](#View-the-changes-between-staged-files-and-the-last-commit)  
+
 
 # Repo Creation
 For an in depth tutorial, see the "***create-repo.md***" file in this [repository](https://github.com/RolandChristensen/git-guided-examples).  
@@ -40,7 +45,8 @@ I will go through two ways to create a repo.
     * Fill in the rest of the form as needed for the project.
 1. Push the *Create Repository* button.
 
-## Clone a Repo (The new one just created)
+## Clone a Repo
+To clone the new repo just created above:
 1. Create a folder on your local computer to hold the repository.
 1. Copy the URL to the GitHub remote repository.
     * Navigate to the GitHub repo you want to clone, such as: h__ps://github.com/{your-github-username}/{repo-name}
@@ -64,6 +70,7 @@ I will go through two ways to create a repo.
 1. `git push -u origin main`: pushes the changes to the remote repository on the "main" branch. (As a general rule, you should not push directly to the "main" branch, but instead create a feature branch to work off of. The initial push is the only exception to this rule.)
     * The "-u" flag sets origin as the upstream remote for your branch. This will save you time in the future, because you can simply use `git pull`, `git fetch`, or `git push` when on this branch and will not need to type the "origin {branch-name}" part.
 
+
 # The Three States
 For an in depth tutorial, see the "***three-states.md***" file in this [repository](https://github.com/RolandChristensen/git-guided-examples)..  
 
@@ -76,6 +83,37 @@ There are three states of tracked files. The ***Working Directory***, the ***Sta
     * Use `git status` to see files added to the ***staging area***
 3. ***Repository***: Using the `git commit -m "Useful message` command indicates that you are very confident the changes work as expected and adds the files to the ***repository*** or ***.git directory*** under the current ***branch*** you have checked out. 
     * Use "***git log***" or "***git reflog***" to see files that have been committed to the currently checked out ***branch*** of the ***repository*** 
+
+
+# Avoiding code merge conflicts
+To improve code quality and reduce any headaches when merging, follow the rules below.
+
+* Start with a ***clean working directory*** before beginning new work.  
+* ***Pull/merge*** the latest main branch just before starting a new feature.  
+* Create a ***feature branch*** based off the recently pulled main branch.  
+* Do not have two developers work on code that will touch the same *files* simultaneously.  
+    * During planning sessions, coordinate work that will be touching the same *file(s)* to be worked on consecutively rather than simultaneously.  
+    * *All developers*, who are about to pick up new work, should be aware of what is being worked on and what *files* are likely to be modified.  
+    * Note: C# has *partial classes* that will split a class into two or more separate files allowing multiple people to work on a class simultaneously without risking a merge conflict.  
+
+
+# Creating a feature branch
+Isolate your new code from the shared branch everyone is working from, until the new branch has been thoroughly tested.  
+This assumes you are going to merge into a branch named ***main***, but you can substitute ***main*** for any branch name such as ***dev*** if you are using a more complex branching strategy. With complexity, comes more chances to make mistakes, but plenty of organizations use complex strategies.  
+
+If you are not worried about the current state of your main branch, follow the directions below. If you have well defined quality gates employed to prevent merging code that has not been thouroughly tested, you should usually not be worried to get the latest state of the main branch.
+1. `git status` to verify you are on the main branch. If not, `$ git checkout main`.
+1. `git pull` to pull down all the most recent changes from the remote to your local repository.
+1. `git branch -b new-branch-name` creates a new branch identical to the current branch and 'checks out' that new branch. The branch name should correspond to the feature you are starting, often a ticket number.
+
+If, for some reason, you are concerned about pulling the current branch as it is, follow the directions below to inspect the state of the branch before 
+
+1. `git status` to verify you are on the main branch. If not, `$ git checkout main`.
+1. `git fetch`: to see any changes from the remote repo before creating your new branch. The default remote to fetch from is *origin* so this command is equivalent to `git fetch origin`
+1. `git log origin/main` and/or `git diff ..origin/main`: this will show you what has changed in the remote repo since you last pulled. If you are happy to merge those new changes into your local ***main*** branch then go ahead. If you do not want the current state of the remote repo, for whatever reason, you can leave it the way it is because you only ***fetched*** it.
+    * If you are sure you are happy to merge, `git merge origin/{branch-name}`. Example: `git merge origin/main`
+1. `git branch -b new-branch-name` creates a new branch identical to the current branch and 'checks out' that new branch
+
 
 ## Renaming a branch
 At work, I include a ticket number in my feature branch name and have transposed numbers before.  
@@ -96,23 +134,6 @@ If this is your very first push to the remote repo follow these instructions:
 1. Copy the URL to the repo
 1. `git remote add origin {The URL you copied}`: lets Git know where to direct any "push", "pull", or "fetch".
 1. `git push -u origin {branch-name}`: pushes your local branch (branch-name) to the remote repository (origin). Example: `git push -u origin main` (As a rule, when working with others, you will not push directly to the "main" branch, but instead use feature branches to work from.) The "-u" flag sets origin as the upstream remote for your branch. This will save you time in the future, because you will simply need to use `git push` or `git pull` when on this branch and will not need to type the "origin {branch-name" part. This makes sense if you are going to be using this branch a lot. If you are using short lived feature branches, this will not save any time.
-
-## Creating a feature branch
-Isolate your new code from the shared branch everyone is working from, until the new branch has been thoroughly tested.  
-This assumes you are going to merge into a branch named ***main***, but you can substitute ***main*** for any branch name such as ***dev*** if you are using a more complex branching strategy. With complexity, comes more chances to make mistakes, but plenty of organizations use complex strategies.  
-
-If you are not worried about the current state of your main branch, follow the directions below. If you have well defined quality gates employed to prevent merging code that has not been thouroughly tested, you should usually not be worried to get the latest state of the main branch.
-1. `git status` to verify you are on the main branch. If not, `$ git checkout main`.
-1. `git pull` to pull down all the most recent changes from the remote to your local repository.
-1. `git branch -b new-branch-name` creates a new branch identical to the current branch and 'checks out' that new branch. The branch name should correspond to the feature you are starting, often a ticket number.
-
-If, for some reason, you are concerned about pulling the current branch as it is, follow the directions below to inspect the state of the branch before 
-
-1. `git status` to verify you are on the main branch. If not, `$ git checkout main`.
-1. `git fetch`: to see any changes from the remote repo before creating your new branch. The default remote to fetch from is *origin* so this command is equivalent to `git fetch origin`
-1. `git log origin/main` and/or `git diff ..origin/main`: this will show you what has changed in the remote repo since you last pulled. If you are happy to merge those new changes into your local ***main*** branch then go ahead. If you do not want the current state of the remote repo, for whatever reason, you can leave it the way it is because you only ***fetched*** it.
-    * If you are sure you are happy to merge, `git merge origin/{branch-name}`. Example: `git merge origin/main`
-1. `git branch -b new-branch-name` creates a new branch identical to the current branch and 'checks out' that new branch
 
 ## View the difference between files changed on this branch before staging
 Double check your work before you add it to the "staging" area.  
