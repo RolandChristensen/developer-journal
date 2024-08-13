@@ -18,10 +18,11 @@ Below are common scenarios used in day to day development.
 [Repo Creation](#Repo-Creation)  
 * [Create New Repo](#Create-New-Repo)
 * [Clone a Repo](#Clone-a-Repo)
-* [Starting a git repo with existing code](#Starting-a-git-repo-with-existing-code)
+* [Starting a Git Repo with Existing Code](#Starting-a-Git-Repo-with-Existing-Code)
 
 [The Three States](#The-Three-States)  
 [Avoiding code merge conflicts](#Avoiding-code-merge-conflicts)  
+
 [Developing a New Feature](#Developing-a-New-Feature)
 * [Start with a Clean Working Tree](#Start-with-a-Clean-Working-Tree)
 * [Sync your Local Repository with the Remote](#Sync-your-Local-Repository-with-the-Remote)
@@ -29,6 +30,8 @@ Below are common scenarios used in day to day development.
 * [Development Source Control Process](#Development-Source-Control-Process)
 * [Push Branch to the Remote](#Push-Branch-to-the-Remote)
 * [Create a Pull Request](#Create-a-Pull-Request)
+* [Modifying Pull Request](#Modifying-Pull-Request)
+* [Merge Pull Request](#Merge-Pull-Request)
 
 [Renaming a branch](#Renaming-a-branch)  
 [Push local branch to a remote repository](#Push-local-branch-to-a-remote-repository)  
@@ -65,7 +68,7 @@ To clone the new repo just created above:
 1. Type "git clone" and then right click Git Bash and choose ***paste*** from the context menu. 
     * Example: `git clone https://github.com/{your-username}/{repo-name}.git`
 
-## Starting a git repo with existing code
+## Starting a Git Repo with Existing Code
 1. Open Git Bash in the project folder (Shift + Right click the folder and choose "open Git Bash here" from the context menu).
 1. `git init -b main` to initialize a new repo and change the default branch name to "main".
 1. Add `.gitignore` file to keep unnecessary files and secrets out of source control.
@@ -100,7 +103,7 @@ When working with other developers, to improve code quality and reduce any heada
 * ***Pull/merge*** the latest main branch just before starting a new feature.  
 * Create a ***feature branch*** based off the recently pulled main branch.
 * Once a ***feature branch*** is created, finish it as quickly as possible to reduce the number of changes that will be merged into the remote ***main*** while you are working.
-* Do not work on multiple branches simultaneously, unless absolutely needed (such as a hotfix).
+* Do not work on multiple branches that touch the same *files* simultaneously, unless absolutely needed (such as a hotfix).
 * Do not have two developers work on code that will touch the same *files* simultaneously.  
     * During planning sessions, coordinate work that will be touching the same *file(s)* to be worked on consecutively rather than simultaneously.  
     * *All developers*, who are about to pick up new work, should be aware of what is being worked on and what *files* are likely to be modified.  
@@ -119,8 +122,8 @@ Verify Git reported "nothing to commit, working tree clean".
 
 If you have uncommited files, you will need to figure out what should be done with them:  
 * Undo changes, because they are not needed.
-* Add and commit them to the appropriate branch, if the changes are needed and complete.
 * Stash the changes, if they are needed and incomplete, so you can recover them later. (Search for "Stash" to find instructions below)
+* Add and commit them to the appropriate branch, if the changes are needed and complete.
 
 ## Sync your Local Repository with the Remote
 This assumes you are going to merge into a branch named ***main***, but you can substitute ***main*** for any branch name such as ***dev*** if you are using a more complex branching strategy. With complexity, comes more chances to make mistakes, but plenty of organizations use complex strategies.  
@@ -189,17 +192,60 @@ When done with the feature, you will want to ***push*** the feature branch to th
     * The "-u" flag sets origin as the upstream remote for your branch. This will save you time in the future, because you can simply use `git pull`, `git fetch`, or `git push` when on this branch and will not need to type the "origin {branch-name}" part.
 
 ## Create a Pull Request
-Getting others to review your work improves the quality of the work.  
+Getting others to review your work improves the quality of the work and increases your knowledge.  
 I am not going to go into the details of setting GitHub rulesets and actions here, but only go through the basics.
 
 1. Navigate to the GitHub repo you are developing the new feature for, such as: h__ps://github.com/{your-github-username}/{repo-name}.
 1. You should see a message stating "{branch-name} had recent pushes {some amount of time ago}" with a ***Compare & pull request*** button.
     * If not, select the branch from the ***branches*** dropdown.
 1. Click the ***Compare & pull request*** button.
-1. Add a title that describes the changes.
-1. Add a good description of the changes (A link to a user story works).
+1. Fill out the form with valid information and using the standards for the project you are working on.
 1. Add people who should review. Good quality gates include requiring one or more senior reviewers along with a specific number of total reviewers.
 1. Click the ***Create pull request*** button.
+
+If you have been careful you will see this message, "This branch has no conflicts with the base branch", on the resulting page.
+
+The ***pull request*** (PR) has a couple of ways to view the changes (diffs) between the feature branch you pushed and the branch you want to merge it into.  
+The ***Files Changed*** tab will give you an easy to read list of changes.  
+* From the ***Files Changed*** you can leave comments on files.
+* You can select specific sections of code and leave a comment on that section.
+* From the ***Review Changes*** dropdown you can also ***Approve*** or ***Request Changes***
+
+## Modifying Pull Request
+If there are comments that need addressing or requested changes, you will need to address those.  
+
+1. If you have started another feature, you will need to make sure you can ***checkout*** the branch you are trying to merge without unintended consequences.
+    * You should not start a feature that has files that will conflict with the ***pull request*** until it has been merged to be as safe as possible.
+    * If you notice you have made changes to a file on the new branch that could cause a merge conflict with the same file on the current ***pull request***, you are in the danger zone and should consider what to do *very carefully*.
+    * If you have any ***staged*** or ***untracked*** files you should ***Stash*** those before checking out the ***pull request*** branch to avoid any accidental inclusions of changes you did not intend.
+1. If you have a clean working directory, `git checkout {feature-branch-name}` 
+1. Code the changes complete with unit tests. (There is often a pressure to go faster than normal when redoing work. Take a deep breath and make sure you do it right.)
+1. `git add .`, `$ git add file-name`, or `$ git add directory-name` to stage files to be tracked.
+1. `git commit -m "Useful commit message that describes the change"`
+1. Repeat until all changes are done.
+
+When all changes are done:
+1. `git push` to ***push*** the branch to the remote (Note: this assumes you used the "-u" flage when you first pushed otherwise use `git push origin {feature-branch-name}`.
+1. When you return to the ***pull request*** GitHub will recheck the branches ability to be merged, update the commit history, and update the diffs. (You may need to push the "refresh" button, if you see it.)
+1. You will want to add a comment and tag the person who made comments or requested the change to recheck the ***pull request***.
+
+## Merge Pull Request
+If the ***pull request*** is ***approved*** by everyone required and all other quality gates such as unit tests and static analysis tools have passed:
+
+1. Go to the ***Conversations*** tab
+1. Click the ***Merge pull request*** dropdown and select one of the following or simply click the button to choose the default.
+    * ***Create a merge commit*** will add all of the commits to the main branch and add a ***merge commit*** to mark the merge.
+    * ***Squash and merge*** will squash all of your commits into a single one, keeping your commit history on the base branch cleaner and more manageable.
+    * ***Rebase and merge*** will give you a cleaner history on your base branch. Your base branch will display a linear list of commits and will not include any extra ***merge commits*** each time you merge as the first option would. This can be problematic and you should plan your team workflows in advance to use rebase effectively.
+1. Click the ***Confirm merge*** button
+1. In general, you should then click the ***Delete branch*** button, unless your team has a different process for the deletion of feature branches.
+
+On your local machine you will want to merge the pull request into your local ***main*** branch and delete the feature branch:
+1. `git checkout main`
+1. `git pull`
+1. `git branch -d {feature-branch-name}` to delete the feature branch.
+
+Congratulations!
 
 
 
