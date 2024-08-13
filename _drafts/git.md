@@ -18,7 +18,8 @@ Below are common scenarios used in day to day development.
 [Repo Creation](#Repo-Creation)  
 * [Create New Repo](#Create-New-Repo)
 * [Clone a Repo](#Clone-a-Repo)
-* [Starting a git repo with existing code](#Starting-a-git-repo-with-existing-code)  
+* [Starting a git repo with existing code](#Starting-a-git-repo-with-existing-code)
+
 [The Three States](#The-Three-States)  
 [Avoiding code merge conflicts](#Avoiding-code-merge-conflicts)
 [Developing a New Feature](#Developing-a-New-Feature)
@@ -28,6 +29,7 @@ Below are common scenarios used in day to day development.
 * [Development Source Control Process](#Development-Source-Control-Process)
 * [Push Branch to the Remote](#Push-Branch-to-the-Remote)
 * [Create a Pull Request](#Create-a-Pull-Request)
+
 [Renaming a branch](#Renaming-a-branch)  
 [Push local branch to a remote repository](#Push-local-branch-to-a-remote-repository)  
 [Create a dev branch](#Create-a-dev-branch)  
