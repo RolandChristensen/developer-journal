@@ -26,7 +26,7 @@ Below are common scenarios used in day to day development.
 [Developing a New Feature](#Developing-a-New-Feature)
 * [Start with a Clean Working Tree](#Start-with-a-Clean-Working-Tree)
 * [Sync your Local Repository with the Remote](#Sync-your-Local-Repository-with-the-Remote)
-* [Creating a feature branch](#Creating-a-feature-branch)
+* [Creating a feature branch](#Creating-a-Feature-Branch)
 * [Development Source Control Process](#Development-Source-Control-Process)
 * [Push Branch to the Remote](#Push-Branch-to-the-Remote)
 * [Create a Pull Request](#Create-a-Pull-Request)
@@ -144,7 +144,7 @@ If, for some reason, you are concerned about pulling the current branch as it is
 1. `git log origin/main` and/or `git diff ..origin/main`: this will show you what has changed in the remote repo since you last pulled. If you are happy to merge those new changes into your local ***main*** branch then go ahead. If you do not want the current state of the remote repo, for whatever reason, you can leave it the way it is because you only ***fetched*** it.
 1. If you are sure you are happy to merge, `git merge origin/{branch-name}`. Example: `git merge origin/main`
 
-## Creating a feature branch
+## Creating a Feature Branch
 Isolate your new code from the shared branch everyone is working from, until the new branch has been thoroughly tested.  
 I will use the name "feature-name" for all these instructions.  
 
