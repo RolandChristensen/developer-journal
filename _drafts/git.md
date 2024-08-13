@@ -33,9 +33,7 @@ Below are common scenarios used in day to day development.
 * [Modifying Pull Request](#Modifying-Pull-Request)
 * [Merge Pull Request](#Merge-Pull-Request)
 
-[Renaming a branch](#Renaming-a-branch)  
-[Push local branch to a remote repository](#Push-local-branch-to-a-remote-repository)  
-[Create a dev branch](#Create-a-dev-branch)  
+[Renaming a Branch](#Renaming-a-Branch)  
 [View the difference between files changed on this branch before staging](#View-the-difference-between-files-changed-on-this-branch-before-staging)  
 [View the changes between staged files and the last commit](#View-the-changes-between-staged-files-and-the-last-commit)  
 
@@ -180,7 +178,8 @@ Choosing when to commit should be deliberate.
 * A commit should be a fully functional, testable unit of code, complete with unit tests to test it.
 
 The basic process is:
-1. Develop a fully functional, testable unit of code, complete with unit tests to tests it.
+1. Develop a fully functional, testable unit of code, complete with unit tests.
+1. `git diff` to view the changes you have made to double check your work. (There are much better tools for viewing diffs, Visual Studio and Visual Studio Code have great extensions.)
 1. `git add .`, `$ git add file-name`, or `$ git add directory-name` to stage files to be tracked.
 1. `git commit -m "Useful commit message that describes the change"`
 1. Repeat until the feature is done.
@@ -245,31 +244,18 @@ On your local machine you will want to merge the pull request into your local **
 1. `git pull`
 1. `git branch -d {feature-branch-name}` to delete the feature branch.
 
-Congratulations!
 
 
-
-## Renaming a branch
-At work, I include a ticket number in my feature branch name and have transposed numbers before.  
+# Renaming a Branch
+At work, I include a ticket number in my feature branch name and have transposed numbers before. You can rename a local branch with the following command:  
 `git branch -m oldName newName`  
-`git branch -M oldName newName`: "-M" is used to force the rename if the new name has already been used.  
 
 Example: Many prefer to use *main* instead of *master* for the top-most branch.  
 `git branch -m master main`  
 
-## Push local branch to a remote repository
-If you have previously issued the "git remote add origin" command then you simply need to push.  
 
-`git push origin {branch-name}`: pushes your local branch (branch-name) to the remote repository (origin).  
 
-If this is your very first push to the remote repo follow these instructions:  
-
-1. Navigate to the GitHub repo you want to push changes to, such as: h__ps://github.com/{your-github-username}/{repo-name}
-1. Copy the URL to the repo
-1. `git remote add origin {The URL you copied}`: lets Git know where to direct any "push", "pull", or "fetch".
-1. `git push -u origin {branch-name}`: pushes your local branch (branch-name) to the remote repository (origin). Example: `git push -u origin main` (As a rule, when working with others, you will not push directly to the "main" branch, but instead use feature branches to work from.) The "-u" flag sets origin as the upstream remote for your branch. This will save you time in the future, because you will simply need to use `git push` or `git pull` when on this branch and will not need to type the "origin {branch-name" part. This makes sense if you are going to be using this branch a lot. If you are using short lived feature branches, this will not save any time.
-
-## View the difference between files changed on this branch before staging
+# Git Diff Before Staging
 Double check your work before you add it to the "staging" area.  
 `$ git diff`  
 
@@ -279,7 +265,9 @@ The following assumes you use the *vimdiff* tool:
 
 The diff in the command line is useful, but there are much better tools for viewing diffs (Visual Studio Git extension for one)
 
-## View the changes between staged files and the last commit
+
+
+# View Diff Between Staged Files and Last Commit
 `git diff --staged` or `$ git diff --cached`
 
 ## Committing staged changes to the branch 
