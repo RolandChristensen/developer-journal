@@ -21,7 +21,7 @@ Below are common scenarios used in day to day development.
 * [Starting a git repo with existing code](#Starting-a-git-repo-with-existing-code)
 
 [The Three States](#The-Three-States)  
-[Avoiding code merge conflicts](#Avoiding-code-merge-conflicts)
+[Avoiding code merge conflicts](#Avoiding-code-merge-conflicts)  
 [Developing a New Feature](#Developing-a-New-Feature)
 * [Start with a Clean Working Tree](#Start-with-a-Clean-Working-Tree)
 * [Sync your Local Repository with the Remote](#Sync-your-Local-Repository-with-the-Remote)
