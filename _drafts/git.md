@@ -21,7 +21,7 @@ Below are common scenarios used in day to day development.
 * [Starting a Git Repo with Existing Code](#Starting-a-Git-Repo-with-Existing-Code)
 
 [The Three States](#The-Three-States)  
-[Avoiding code merge conflicts](#Avoiding-code-merge-conflicts)  
+[Avoiding Merge Conflicts](#Avoiding-Merge-Conflicts)  
 
 [Developing a New Feature](#Developing-a-New-Feature)
 * [Start with a Clean Working Tree](#Start-with-a-Clean-Working-Tree)
@@ -96,7 +96,7 @@ There are three states of tracked files. The ***Working Directory***, the ***Sta
     * Use "***git log***" or "***git reflog***" to see files that have been committed to the currently checked out ***branch*** of the ***repository*** 
 
 
-# Avoiding code merge conflicts
+# Avoiding Merge Conflicts
 When working with other developers, to improve code quality and reduce any headaches when merging, follow these simple rules.
 
 * Start with a ***clean working directory*** before beginning new work.
