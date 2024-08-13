@@ -18,10 +18,16 @@ Below are common scenarios used in day to day development.
 [Repo Creation](#Repo-Creation)  
 * [Create New Repo](#Create-New-Repo)
 * [Clone a Repo](#Clone-a-Repo)
-* [Starting a git repo with existing code](#Starting-a-git-repo-with-existing-code)
+* [Starting a git repo with existing code](#Starting-a-git-repo-with-existing-code)  
 [The Three States](#The-Three-States)  
 [Avoiding code merge conflicts](#Avoiding-code-merge-conflicts)
-[Creating a feature branch](#Creating-a-feature-branch)  
+[Developing a New Feature](#Developing-a-New-Feature)
+* [Start with a Clean Working Tree](#Start-with-a-Clean-Working-Tree)
+* [Sync your Local Repository with the Remote](#Sync-your-Local-Repository-with-the-Remote)
+* [Creating a feature branch](#Creating-a-feature-branch)
+* [Development Source Control Process](#Development-Source-Control-Process)
+* [Push Branch to the Remote](#Push-Branch-to-the-Remote)
+* [Create a Pull Request](#Create-a-Pull-Request)
 [Renaming a branch](#Renaming-a-branch)  
 [Push local branch to a remote repository](#Push-local-branch-to-a-remote-repository)  
 [Create a dev branch](#Create-a-dev-branch)  
@@ -86,33 +92,113 @@ There are three states of tracked files. The ***Working Directory***, the ***Sta
 
 
 # Avoiding code merge conflicts
-To improve code quality and reduce any headaches when merging, follow the rules below.
+When working with other developers, to improve code quality and reduce any headaches when merging, follow these simple rules.
 
-* Start with a ***clean working directory*** before beginning new work.  
+* Start with a ***clean working directory*** before beginning new work.
 * ***Pull/merge*** the latest main branch just before starting a new feature.  
-* Create a ***feature branch*** based off the recently pulled main branch.  
+* Create a ***feature branch*** based off the recently pulled main branch.
+* Once a ***feature branch*** is created, finish it as quickly as possible to reduce the number of changes that will be merged into the remote ***main*** while you are working.
+* Do not work on multiple branches simultaneously, unless absolutely needed (such as a hotfix).
 * Do not have two developers work on code that will touch the same *files* simultaneously.  
     * During planning sessions, coordinate work that will be touching the same *file(s)* to be worked on consecutively rather than simultaneously.  
     * *All developers*, who are about to pick up new work, should be aware of what is being worked on and what *files* are likely to be modified.  
-    * Note: C# has *partial classes* that will split a class into two or more separate files allowing multiple people to work on a class simultaneously without risking a merge conflict.  
+    * Note: C# has *partial classes* that will split a class into two or more separate files allowing multiple people to work on a class simultaneously without risking merge conflicts.  
 
 
-# Creating a feature branch
-Isolate your new code from the shared branch everyone is working from, until the new branch has been thoroughly tested.  
+# Developing a New Feature
+To reduce the chances of merge conflicts, accidentally overwriting code, or introducing unexpected changes follow these source control best practices.
+
+## Start with a Clean Working Tree
+Do a simple verification that you do not have any uncommited changes on your ***main*** branch (staged or unstaged changes).
+
+`git status` will tell you what branch you are on, if you have any staged or unstaged changes, and whether you need to ***pull*** any changes on the remote.  
+Verify you are on branch ***main***. If not, `$ git checkout main`.  
+Verify Git reported "nothing to commit, working tree clean".  
+
+If you have uncommited files, you will need to figure out what should be done with them:  
+* Undo changes, because they are not needed.
+* Add and commit them to the appropriate branch, if the changes are needed and complete.
+* Stash the changes, if they are needed and incomplete, so you can recover them later. (Search for "Stash" to find instructions below)
+
+## Sync your Local Repository with the Remote
 This assumes you are going to merge into a branch named ***main***, but you can substitute ***main*** for any branch name such as ***dev*** if you are using a more complex branching strategy. With complexity, comes more chances to make mistakes, but plenty of organizations use complex strategies.  
 
-If you are not worried about the current state of your main branch, follow the directions below. If you have well defined quality gates employed to prevent merging code that has not been thouroughly tested, you should usually not be worried to get the latest state of the main branch.
+`git status` will tell you if you are up to date with 'origin/main' or not. If not, you will need to ***pull*** or ***fetch***.  
+
+Keeping your local repository up-to-date is critical to avoid overwriting someone elses work.  
+If you have well defined quality gates employed to prevent merging code that has not been thouroughly tested, you should usually not be worried to get the latest state of the main branch.  
+
+If you are not worried about the current state of your remote main branch, follow the directions below. 
 1. `git status` to verify you are on the main branch. If not, `$ git checkout main`.
 1. `git pull` to pull down all the most recent changes from the remote to your local repository.
-1. `git branch -b new-branch-name` creates a new branch identical to the current branch and 'checks out' that new branch. The branch name should correspond to the feature you are starting, often a ticket number.
 
-If, for some reason, you are concerned about pulling the current branch as it is, follow the directions below to inspect the state of the branch before 
+If, for some reason, you are concerned about pulling the current branch as it is, follow the directions below to inspect the state of the branch before merging.  
 
 1. `git status` to verify you are on the main branch. If not, `$ git checkout main`.
-1. `git fetch`: to see any changes from the remote repo before creating your new branch. The default remote to fetch from is *origin* so this command is equivalent to `git fetch origin`
+1. `git fetch`: to see any changes from the remote repo before merging them into your local branch. The default remote to fetch from is *origin* so this command is equivalent to `git fetch origin`
 1. `git log origin/main` and/or `git diff ..origin/main`: this will show you what has changed in the remote repo since you last pulled. If you are happy to merge those new changes into your local ***main*** branch then go ahead. If you do not want the current state of the remote repo, for whatever reason, you can leave it the way it is because you only ***fetched*** it.
-    * If you are sure you are happy to merge, `git merge origin/{branch-name}`. Example: `git merge origin/main`
-1. `git branch -b new-branch-name` creates a new branch identical to the current branch and 'checks out' that new branch
+1. If you are sure you are happy to merge, `git merge origin/{branch-name}`. Example: `git merge origin/main`
+
+## Creating a feature branch
+Isolate your new code from the shared branch everyone is working from, until the new branch has been thoroughly tested.  
+I will use the name "feature-name" for all these instructions.  
+
+I will show two ways of doing this:
+1. Create the feature branch locally.
+2. Create the feature branch on the remote.
+
+The advantage of creating the branch on the remote is that others can see that you have a branch created for the work to be done. 
+
+### To Create a Branch Locally
+1. `git status` to verify you are on the main branch. If not, `$ git checkout main`.
+1. `git branch -b new-branch-name` creates a new branch identical to the current branch and 'checks out' that new branch. The branch name should correspond to the feature you are starting. Often a ticket number is included.
+
+### To Create a Branch on GitHub
+1. Navigate to the GitHub repo you are developing the new feature for, such as: h__ps://github.com/{your-github-username}/{repo-name}
+1. Click the ***Branches*** button underneath the name of the repo
+    * The ***Branches*** page will appear.
+1. Click the ***New branch*** button.
+    * The ***Create a branch*** dialog will appear.
+1. Type in the name of the branch for the feature. The branch name should correspond to the feature you are starting. Often a ticket number is included.
+1. If the ***Source*** dropdown does not show the ***main*** branch is selected, select it from the branches drop down.
+1. Click the ***Create new branch*** button
+
+Now that the branch is created on the remote, we will finish on your local machine:
+1. `git branch -r` to see all the remote branches.
+1. `git pull` to get the new branch on your local machine. For safety, you may want to use `git fetch` instead.
+    * The output should contain a line similar to this: `* [new branch]  feature-name  -> origin/feature-name` the name of which should be the name you created on the remote.
+1. `git checkout {feature-branch-name}` Example: `git checkout feature-name`
+
+## Development Source Control Process
+Choosing when to commit should be deliberate. 
+* If you plan your work in advance, you should be able to divide the work up into commits in advance of doing the work.  
+* A commit should be a fully functional, testable unit of code, complete with unit tests to test it.
+
+The basic process is:
+1. Develop a fully functional, testable unit of code, complete with unit tests to tests it.
+1. `git add .`, `$ git add file-name`, or `$ git add directory-name` to stage files to be tracked.
+1. `git commit -m "Useful commit message that describes the change"`
+1. Repeat until the feature is done.
+
+## Push Branch to the Remote
+When done with the feature, you will want to ***push*** the feature branch to the remote.  
+
+1. `git push -u origin {feature-branch-name}` to ***push*** the branch to the remote.
+    * The "-u" flag sets origin as the upstream remote for your branch. This will save you time in the future, because you can simply use `git pull`, `git fetch`, or `git push` when on this branch and will not need to type the "origin {branch-name}" part.
+
+## Create a Pull Request
+Getting others to review your work improves the quality of the work.  
+I am not going to go into the details of setting GitHub rulesets and actions here, but only go through the basics.
+
+1. Navigate to the GitHub repo you are developing the new feature for, such as: h__ps://github.com/{your-github-username}/{repo-name}.
+1. You should see a message stating "{branch-name} had recent pushes {some amount of time ago}" with a ***Compare & pull request*** button.
+    * If not, select the branch from the ***branches*** dropdown.
+1. Click the ***Compare & pull request*** button.
+1. Add a title that describes the changes.
+1. Add a good description of the changes (A link to a user story works).
+1. Add people who should review. Good quality gates include requiring one or more senior reviewers along with a specific number of total reviewers.
+1. Click the ***Create pull request*** button.
+
 
 
 ## Renaming a branch
