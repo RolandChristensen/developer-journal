@@ -39,7 +39,7 @@ Below are common scenarios used in day to day development.
 [Double Check Your Work](#Double-Check-Your-Work)
 * [Git Diff Before Staging](#Git-Diff-Before-Staging)
 * [Git Diff Between Staged Files and Last Commit](#Git-Diff-Between-Staged-Files-and-Last-Commit)
-* [View Commits on Feature Branch since it was Checked Out](#View-Commits-on-Feature-Branch-since-it-was-Checked-Out)
+* [Git Log to View Commits on Feature Branch since it was Checked Out](#Git-Log-to-View-Commits-on-Feature-Branch-since-it-was-Checked-Out)
 
 [Renaming a Branch](#Renaming-a-Branch)  
 
@@ -108,10 +108,11 @@ This command will move changed files in the ***Working Directory*** to the ***St
 
 ## Git Commit
 This command will move changed files in the ***Staging Area*** to the ***Repository*** of the current branch.  
-Make commits fully functional, testable units of code, complete with unit tests.  
+Planning your changes in advance before diving into coding will help you organize your work and plan your *commits* well.  
+Make commits fully functional, testable units of code, complete with unit tests. As the word implies *commits* are a way of saying you are confident and ready to *commit* to the change you made.  
 `git commit -m "Useful commit message, so you will know what was done without needing to go through the diff to see what changed"`
 
-Amending a commit is useful for afterthoughts. The better you get at planning your work in advance and double checking your work before committing, the less you will use this.  
+Amending a commit is useful for afterthoughts. It makes for a more readable *commit log* to amend small changes, like adding comments, rather than creating a new commit. The better you get at planning your work in advance and double checking your work before committing, the less you will use this.  
 `git commit --amend -m "Commit message that encompasses all changes, not just the amended changes"`  
 Amending can also be used to change the *commit message* only, as long as you don't have any files ***staged***.  
 `$ git commit --amend --no-edit` to amend a commit without changing the message.  
@@ -207,7 +208,7 @@ Choosing when to commit should be deliberate.
 
 The basic process is:
 1. Develop a fully functional, testable unit of code, complete with unit tests.
-1. `git diff` to view the changes you have made to double check your work. (There are much better tools for viewing diffs, Visual Studio and Visual Studio Code have great extensions.)
+1. `git diff` to view the changes you have made to double check your work before committing. (There are much better tools for viewing diffs, Visual Studio and Visual Studio Code have great extensions.)
 1. `git add .`, `$ git add file-name`, or `$ git add directory-name` to stage files to be tracked.
 1. `git commit -m "Useful commit message that describes the change"`
 1. Repeat until the feature is done.
@@ -292,9 +293,9 @@ The diff in the command line is useful, but there are much better tools for view
 Once staged, you may want to see the difference between staged files and the last commit before committing.
 `git diff --staged` or `$ git diff --cached`
 
-## View Commits on Feature Branch since it was Checked Out
+## Git Log to View Commits on Feature Branch since it was Checked Out
 If you planned well and used good messages, you should be able to clearly see the design of the code in the ***commit log***.
-`git log --oneline main..branch-name` displays only the commits you created since the feature branch was checked out.
+`git log --oneline main..branch-name` displays only the commits you created since the feature branch was checked out. The `--oneline` flag abbreviates the log to one line, ommitting the author and date information.
 
 
 
