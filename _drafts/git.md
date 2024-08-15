@@ -21,6 +21,9 @@ Below are common scenarios used in day to day development.
 * [Starting a Git Repo with Existing Code](#Starting-a-Git-Repo-with-Existing-Code)
 
 [The Three States](#The-Three-States)  
+* [Git Add](#Git-Add)
+* [Git Commit](#Git-Commit)
+
 [Avoiding Merge Conflicts](#Avoiding-Merge-Conflicts)  
 
 [Developing a New Feature](#Developing-a-New-Feature)
@@ -33,9 +36,13 @@ Below are common scenarios used in day to day development.
 * [Modifying Pull Request](#Modifying-Pull-Request)
 * [Merge Pull Request](#Merge-Pull-Request)
 
+[Double Check Your Work](#Double-Check-Your-Work)
+* [Git Diff Before Staging](#Git-Diff-Before-Staging)
+* [Git Diff Between Staged Files and Last Commit](#Git-Diff-Between-Staged-Files-and-Last-Commit)
+* [View Commits on Feature Branch since it was Checked Out](#View-Commits-on-Feature-Branch-since-it-was-Checked-Out)
+
 [Renaming a Branch](#Renaming-a-Branch)  
-[View the difference between files changed on this branch before staging](#View-the-difference-between-files-changed-on-this-branch-before-staging)  
-[View the changes between staged files and the last commit](#View-the-changes-between-staged-files-and-the-last-commit)  
+
 
 
 # Repo Creation
@@ -80,18 +87,39 @@ To clone the new repo just created above:
     * The "-u" flag sets origin as the upstream remote for your branch. This will save you time in the future, because you can simply use `git pull`, `git fetch`, or `git push` when on this branch and will not need to type the "origin {branch-name}" part.
 
 
+
 # The Three States
-For an in depth tutorial, see the "***three-states.md***" file in this [repository](https://github.com/RolandChristensen/git-guided-examples)..  
+For an in depth tutorial, see the "***three-states.md***" file in this [repository](https://github.com/RolandChristensen/git-guided-examples).  
 
 There are three states of tracked files. The ***Working Directory***, the ***Staging Area***, and the code ***Repository***.
-
-1. ***Working Directory***: When you modify a file that is tracked by git, it will add it to the ***modified*** or ***working directory*** of its database. 
-    * Use the `git status` command to see the files tracked in the ***working directory***
+1. ***Working Directory***: When you add a file or modify a file that is tracked by git, it will add it to the ***modified*** or ***working directory*** of its database. 
+    * Use the `git status` command to see the changed files that are tracked in the ***working directory***
     * Adding the "***.gitignore***" file is the way to stop tracking any file you do not want in source control and will remove it from the ***working directory***
-2. ***Staging Area***: Using the `git add {operand}` command will move files to the ***staging area*** or ***index*** of Git's database. 
+2. ***Staging Area***: Using the `git add {operand}` command will move file changes to the ***staging area*** or ***index*** of Git's database. 
     * Use `git status` to see files added to the ***staging area***
-3. ***Repository***: Using the `git commit -m "Useful message` command indicates that you are very confident the changes work as expected and adds the files to the ***repository*** or ***.git directory*** under the current ***branch*** you have checked out. 
-    * Use "***git log***" or "***git reflog***" to see files that have been committed to the currently checked out ***branch*** of the ***repository*** 
+3. ***Repository***: Using the `git commit -m "Useful message"` command indicates that you are very confident the changes work as expected and adds the files to the ***repository*** or ***.git directory*** under the current ***branch*** you have checked out. 
+    * Use `git log` or `git reflog` to see file changes that have been committed to the currently checked out ***branch*** of the ***repository*** 
+
+## Git Add
+This command will move changed files in the ***Working Directory*** to the ***Staging Area***.  
+`git add {filename.ext}` or `git add {path/to/file.ext}` to ***stage*** a single file.  
+`git add {path/to/directory/}` to ***stage*** a directory.  
+`git add .` to ***stage*** all changes. (If there are a large number of files, seriously consider adding them one at a time.)
+
+## Git Commit
+This command will move changed files in the ***Staging Area*** to the ***Repository*** of the current branch.  
+Make commits fully functional, testable units of code, complete with unit tests.  
+`git commit -m "Useful commit message, so you will know what was done without needing to go through the diff to see what changed"`
+
+Amending a commit is useful for afterthoughts. The better you get at planning your work in advance and double checking your work before committing, the less you will use this.  
+`git commit --amend -m "Commit message that encompasses all changes, not just the amended changes"`  
+Amending can also be used to change the *commit message* only, as long as you don't have any files ***staged***.  
+`$ git commit --amend --no-edit` to amend a commit without changing the message.  
+
+Note: you can skip the `$ git add {operand}` part if you are dealing with a manageable number of changes by using the `-a` flag in the commit command.  
+`$git commit -a -m "Story 101: made a single line change to file x to do y."`: Adds and commits all changes in one command.
+
+
 
 
 # Avoiding Merge Conflicts
@@ -214,7 +242,7 @@ The ***Files Changed*** tab will give you an easy to read list of changes.
 If there are comments that need addressing or requested changes, you will need to address those.  
 
 1. If you have started another feature, you will need to make sure you can ***checkout*** the branch you are trying to merge without unintended consequences.
-    * You should not start a feature that has files that will conflict with the ***pull request*** until it has been merged to be as safe as possible.
+    * If possible, you should not start a feature that has files that will conflict with the ***pull request*** until it has been merged to be as safe as possible.
     * If you notice you have made changes to a file on the new branch that could cause a merge conflict with the same file on the current ***pull request***, you are in the danger zone and should consider what to do *very carefully*.
     * If you have any ***staged*** or ***untracked*** files you should ***Stash*** those before checking out the ***pull request*** branch to avoid any accidental inclusions of changes you did not intend.
 1. If you have a clean working directory, `git checkout {feature-branch-name}` 
@@ -239,10 +267,34 @@ If the ***pull request*** is ***approved*** by everyone required and all other q
 1. Click the ***Confirm merge*** button
 1. In general, you should then click the ***Delete branch*** button, unless your team has a different process for the deletion of feature branches.
 
-On your local machine you will want to merge the pull request into your local ***main*** branch and delete the feature branch:
+On your local machine you will want to fetch and merge the pull request into your local ***main*** branch and delete the feature branch:
 1. `git checkout main`
-1. `git pull`
+1. `git pull`: fetches and merges ***main*** branch from the remote
 1. `git branch -d {feature-branch-name}` to delete the feature branch.
+
+
+
+# Double Check Your Work
+It is a good practice to double check everything you do before ***staging*** or ***committing***.  
+It is also a good idea to review your ***commits*** before the final push to the remote.
+
+## Git Diff Before Staging
+Double check your work before you add it to the "staging" area.  
+`$ git diff`  
+
+The following assumes you use the *vimdiff* tool:  
+1. Arrow down, arrow up, page down, page up to navigate changes from all files.
+2. Enter "q" to exit the diff tool.
+
+The diff in the command line is useful, but there are much better tools for viewing diffs (Visual Studio Git extension for one)
+
+## Git Diff Between Staged Files and Last Commit
+Once staged, you may want to see the difference between staged files and the last commit before committing.
+`git diff --staged` or `$ git diff --cached`
+
+## View Commits on Feature Branch since it was Checked Out
+If you planned well and used good messages, you should be able to clearly see the design of the code in the ***commit log***.
+`git log --oneline main..branch-name` displays only the commits you created since the feature branch was checked out.
 
 
 
@@ -255,27 +307,10 @@ Example: Many prefer to use *main* instead of *master* for the top-most branch.
 
 
 
-# Git Diff Before Staging
-Double check your work before you add it to the "staging" area.  
-`$ git diff`  
-
-The following assumes you use the *vimdiff* tool:  
-1. Arrow down, arrow up, page down, page up to navigate changes from all files.
-2. Enter "q" to exit the diff tool.
-
-The diff in the command line is useful, but there are much better tools for viewing diffs (Visual Studio Git extension for one)
 
 
 
-# View Diff Between Staged Files and Last Commit
-`git diff --staged` or `$ git diff --cached`
 
-## Committing staged changes to the branch 
-Make commits self-contained, testable units.  
-`git commit -m "Useful commit message, so you can find these changes in the future"`
-
-## Ammending a previous commit
-`git commit -a -m "Commit message that encompasses all changes, not just the amended changes"`
 
 ## Viewing all commits
 * `git log` view the commits with the author and date of change
@@ -446,7 +481,7 @@ Note: you may find that you need to configure your email and name.
 
 `$ git status` will show that there are no staged files after the commit.
 
-Note: you can skip the `$ git add ...` part if you dealing with a manageable nunber of changes by using the `-a` flag in the commit command.  
+Note: you can skip the `$ git add ...` part if you dealing with a manageable number of changes by using the `-a` flag in the commit command.  
 `$git commit -a -m "Story 101: Added special.svg for download icon."`: Adds and commits all changes.
 
 # Git Log
