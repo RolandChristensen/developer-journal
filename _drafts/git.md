@@ -21,8 +21,10 @@ Below are common scenarios used in day to day development.
 * [Starting a Git Repo with Existing Code](#Starting-a-Git-Repo-with-Existing-Code)
 
 [The Three States](#The-Three-States)  
+* [Git Status](#Git-Status)
 * [Git Add](#Git-Add)
 * [Git Commit](#Git-Commit)
+* [Git Log](#Git-Log)
 
 [Avoiding Merge Conflicts](#Avoiding-Merge-Conflicts)  
 
@@ -42,6 +44,9 @@ Below are common scenarios used in day to day development.
 * [Git Log to View Commits on Feature Branch since it was Checked Out](#Git-Log-to-View-Commits-on-Feature-Branch-since-it-was-Checked-Out)
 
 [Renaming a Branch](#Renaming-a-Branch)  
+
+[Merge Branches](#Merge-Branches)
+* [How to Tell if a Branch has been Merged](#How-to-Tell-if-a-Branch-has-been-Merged)
 
 
 
@@ -98,13 +103,22 @@ There are three states of tracked files. The ***Working Directory***, the ***Sta
 2. ***Staging Area***: Using the `git add {operand}` command will move file changes to the ***staging area*** or ***index*** of Git's database. 
     * Use `git status` to see files added to the ***staging area***
 3. ***Repository***: Using the `git commit -m "Useful message"` command indicates that you are very confident the changes work as expected and adds the files to the ***repository*** or ***.git directory*** under the current ***branch*** you have checked out. 
-    * Use `git log` or `git reflog` to see file changes that have been committed to the currently checked out ***branch*** of the ***repository*** 
+    * Use `git log` to see file changes that have been committed to the currently checked out ***branch*** of the ***repository*** 
+
+## Git Status
+`git status` is used to see modified tracked files in the ***Working Directory***.  
+Modified files in the ***Working Directory*** show up under the heading "Changes not staged for commit:".
+
+`git status` also shows you modified tracked files in the ***Staged Area***.  
+Modified files in the ***Staged Area*** are under the heading "Changes to be committed:".
 
 ## Git Add
 This command will move changed files in the ***Working Directory*** to the ***Staging Area***.  
 `git add {filename.ext}` or `git add {path/to/file.ext}` to ***stage*** a single file.  
 `git add {path/to/directory/}` to ***stage*** a directory.  
 `git add .` to ***stage*** all changes. (If there are a large number of files, seriously consider adding them one at a time.)
+
+After adding files to the ***Staging Area*** you can verify the staging by using `git status`.
 
 ## Git Commit
 This command will move changed files in the ***Staging Area*** to the ***Repository*** of the current branch.  
@@ -120,6 +134,13 @@ Amending can also be used to change the *commit message* only, as long as you do
 Note: you can skip the `$ git add {operand}` part if you are dealing with a manageable number of changes by using the `-a` flag in the commit command.  
 `$git commit -a -m "Story 101: made a single line change to file x to do y."`: Adds and commits all changes in one command.
 
+## Git Log
+`git log` shows you all of the ***commits*** in the ***Repository*** / ***.git directory*** for the branch you are currently on.  
+`git log {branch-name}` shows you all of the ***commits*** for the branch indicated.  
+`git log --oneline {branch-name}` shows you the ***commits*** in an abbreviated way, ommitting the author and date of changes.  
+
+Assuming you created a branch named "branch-name" based off the "main" branch,  
+`git log --oneline main..branch-name` only shows the commits on the branch since it was created.  
 
 
 
@@ -167,8 +188,8 @@ If you are not worried about the current state of your remote main branch, follo
 If, for some reason, you are concerned about pulling the current branch as it is, follow the directions below to inspect the state of the branch before merging.  
 
 1. `git status` to verify you are on the main branch. If not, `$ git checkout main`.
-1. `git fetch`: to see any changes from the remote repo before merging them into your local branch. The default remote to fetch from is *origin* so this command is equivalent to `git fetch origin`
-1. `git log origin/main` and/or `git diff ..origin/main`: this will show you what has changed in the remote repo since you last pulled. If you are happy to merge those new changes into your local ***main*** branch then go ahead. If you do not want the current state of the remote repo, for whatever reason, you can leave it the way it is because you only ***fetched*** it.
+1. `git fetch` to see any changes from the remote repo before merging them into your local branch. The default remote to fetch from is *origin* so this command is equivalent to `git fetch origin`
+1. `git log origin/main` and/or `git diff ..origin/main` will show you what has changed in the remote repo since you last pulled. If you are happy to merge those new changes into your local ***main*** branch then go ahead. If you do not want the current state of the remote repo, for whatever reason, you can leave it the way it is because you only ***fetched*** it.
 1. If you are sure you are happy to merge, `git merge origin/{branch-name}`. Example: `git merge origin/main`
 
 ## Creating a Feature Branch
@@ -308,25 +329,51 @@ Example: Many prefer to use *main* instead of *master* for the top-most branch.
 
 
 
+# Merge Branches
+Note: this is a bad idea when working with others. You should not be merging changes into "main" without going through a code review and additional quality gates. However, when working on a local repo by yourself, this is perfectly fine.  
 
+1. `git checkout main` switch to the branch you want to merge the changes into.
+1. `git merge branch-name` merge the branch into the current branch you are on.
+1. `git branch -d branch-name` delete the branch now that you are done with it.
 
+## How to Tell if a Branch has been Merged
+Scenario: you are checking to see what branches are on your local repository.  
+`git branch` to see all the branches on your local and there is a branch in the list that shouldn't be there.  
+You may remember working on the feature, but cannot rememeber if you merged it or not.  
+You don't want to delete the branch unless you are sure you have merged it.  
 
+A quick sanity check will help to ease your mind.
+1. `git checkout {parent-branch-name}` to checkout the parent branch you should have merged the feature branch into.
+1. `git branch --merged` to see all the branches that have been merged into the current checked out branch. This will tell you if you merged the branch, but not if there are additional commits or unfinished work on the feature branch that are not merged.
 
+Depending on your workflow the above may be enough for you to decide to delete it. That is up to you.  
+For a complete and thorough check, please continue reading.
 
-## Viewing all commits
-* `git log` view the commits with the author and date of change
-* `git log --oneline` the commits are abbreviated on one line
+First, you will want to check if you have any unfinished work in the questioned branch.  
+1. `git checkout {branch-you-are-not-sure-about}`
+1. `git status` to see if you have unfinished work.
 
-## View only the commits on the branch since it was created
-* `git log --oneline main..branch-name` displays only commits
+If you have unfinished work, carefully examine what it is and decide if you need to finish it. (Search for "git diff" on this page for help.)  
 
-## Merge branch into another branch
-Note: this is a bad idea when working with others. You should not be merging changes into "main" without going through a code review and additional quality gates.  
+If you do not have unfinished work, you will still want to check if you have any "committed" work that has not been merged.  
+To check this locally you will need to be sure you have ***pulled*** the parent branch from the remote. It is possible that you merged the branch remotely, but have not ***pulled*** those changes down.
+1. `git checkout {parent-branch-name}`
+1. `git pull` or `git pull origin {parent-branch-name}` if you have not set the "upstream remote".
+1. `git log {parent-branch-name}..{branch-you-are-not-sure-about}` to see any commits on the feature branch that are not on the parent branch. Depending on your workflow, it could be that after merging you did additional work on the branch and have changes on it.
 
-1. `git checkout main` switch to the branch you want to merge the changes into
-1. `git merge branch-name` merge the branch into the current branch you are on
-1. `git branch -d branch-name` delete the branch now that you are done with it
+If the output of the "log" command above is empty you have merged everthing into the parent branch and you can delete the branch in question.  
+`git branch -d {branch-you-are-NOW-sure-about}`
 
+Otherwise, you will want to examine the commits on the feature branch to see what changes have been made and whether they need to be merged.  
+If you are good at writing useful messages, you will most likely be able to tell what is in the commit and make a decision.
+`git log --oneline` to see the commit messages. 
+
+If you still have any questions about a commit, follow these directions to examine the commit diff.  
+1. `git log` to see the commits
+1. Drag your cursor to select the hash of the commit in question.
+1. Right click the selected area and select **Copy** from the context menu.
+1. `git show {hash-you-copied}` displays a diff of all the changes. (Right click and paste hash).
+1. Repeat for all the commits until you can make a decision about deleting this branch or finishing the work.
 
 
 
@@ -342,16 +389,7 @@ Todo: got to here on review.
 
 
 
-## You forgot to delete branches and can't remember if you have merged them
-You don't want to delete the branch unless you are sure you have merged them.
-1. `git branch` to see all the branches on your local
-2. `git checkout {parent-branch-name}` to checkout the parent branch you should have merged the feature branch into
-    * This guide assumes you have pulled all changes from the remote into your local parent branch. Elsewhere on this page, you will find instructions to do this, if you haven't already.
-4. `git branch --merged` to see all the branches that have been merged into the current checked out branch
-    * Depending on your workflow and the branch in question, it could be that after merging you did additional work, so you may need to check the branch to see if you have any changes on it.
-5. `git log parent-branch-name..feature-branch-name` to see any commits on the feature branch that are not on the parent branch
-    * If the output is empty you have merged everthing into the parent branch and you can delete the branch in question.
-6. `git branch -d {feature-branch-name}`
+
 
 ## You forgot to checkout a new branch and started working on a new feature while still on *main*
 As long as you have not commited any changes you can simply checkout a new branch.
@@ -365,6 +403,8 @@ If you have committed changes follow the directions below to *reset* the HEAD wi
     * Verify the changed files are *staged* by using `git status`
 3. `git checkout -b new-branch-name` to 
 
+
+
 ## You cannot continue working on a feature/branch due to a blocking issue or because a hotfix demands your attention
     * All commits will remain on this branch when you change branches, so you do not need to worry about them
     * Any uncommited changes need to be *stashed*
@@ -373,6 +413,8 @@ If you have committed changes follow the directions below to *reset* the HEAD wi
         3. When ready to resume work on the original branch you abandoned to work on the other feature
         4. `$ git checkout original-branch-name`
         5. `$ git stash pop` to get the last stash pulled off the top of the stack
+
+
 
 ## A/B Local Testing Using Branches. (Using branches to try out different algorithms)
     * If you want to try two different approaches to the same problem, create two branches off the same branch then try out each approach and gather data to decide.
@@ -429,7 +471,7 @@ This post is just about local development using Git, so I will not discuss addin
 # Git Status 
 To see what files have been changed or added to the repo since the last commit:  
 
-`$ git status`
+`git status`
 
 All the files that have been added or modified are displayed. Since you used existing source, you should see every file and folder in the root folder you added.  
 You will most likely have files that you do not want care to track or push to a remote repository, so we will want to add a .gitignore file.  
@@ -439,15 +481,15 @@ I recommend adding a .gitignore file now, since we are using existing source.
 The easiest approach is to search the internet for a .gitignore file for the type of project you are using and add the .gitignore file to the root folder.  
 Otherwise, do some research to figure out how to write your own and carefully add each file, folder, or file pattern you want to ignore now.  
 
-Regardless, it is a good idea to carefully monitor all the files using `$git status` afte any change and ignore any files that are not necessary and waste space.  
+Regardless, it is a good idea to carefully monitor all the files using `git status` after any change and ignore any files that are not necessary and waste space.  
 Look for files that have a noticable pattern you can ignore instead of each file individually, such as files that have a UUID or date as part of the filename.  
 
-Once done do another `$git status` and see the difference between the last status and this one.
+Once done do another `git status` and see the difference between the last status and this one.
 
 # Git Add
 This command will add files to the staging area (a.k.a. this command will stage files).  
 In other words each file added or staged is ready to be committed, which means that it will be ready to be pushed to a remote server.
-Try each one of these commands in order and do a `$ git status` after each one to see the difference.  
+Try each one of these commands in order and do a `git status` after each one to see the difference.  
 `$ git add {filename.ext}` or `$ git add {path/to/file.ext}`: to add a single file.  
 `$ git add {path/to/directory/}`: to add a directory.  
 
@@ -486,7 +528,7 @@ Note: you can skip the `$ git add ...` part if you dealing with a manageable num
 `$git commit -a -m "Story 101: Added special.svg for download icon."`: Adds and commits all changes.
 
 # Git Log
-`$ git log`: Lists the commits and looks something like this:  
+`git log`: Lists the commits and looks something like this:  
 
 ```
 $ git log
@@ -507,7 +549,7 @@ The line `commit 278d94fc06df6555dfb9cf0cc9ce94824e361811` with the hash is impo
 The commit message is displayed below the rest and is the best indicator of what you are resetting. This is why a good commit message is important.  
 
 Just to test things out, make a small change to any file and repeat the add and commit procedure outlined above.  
-When you `$ git log` again you will see two commits, each with a unique descriptive name.  
+When you `git log` again you will see two commits, each with a unique descriptive name.  
 
 Maybe even repeat the process a couple more times, so you can learn about undoing things.  
 
@@ -614,7 +656,7 @@ Date:   Wed Mar 13 09:32:37 2024 -0600
 ```
 
 Note: you can use *amend* to update the message only.  
-`$ git commit --amend -m "Initial commit"`
+`git commit --amend -m "Initial commit"`
 ```
 $ git log
 commit b580f83e01153cffbaa145d7bc37548885e500f8 (HEAD -> main)
@@ -656,7 +698,7 @@ $ git branch
 1. To test how this works add a comment or other trivial code to a file in the current branch, such as "\\ This is a comment on branch branch-name".
 2. `$ git add .` and `$ git commit -m "Add comment to branch branch-name"` 
 3. Use `$ git branch checkout branch-name` to switch to another branch and when you check the code you should see the comment disappear.
-4. `$ git log` to see the commits. You should see commits from *main* up to the point you checked out the branch, but not see any commits on other branches like the one you just checked out.
+4. `git log` to see the commits. You should see commits from *main* up to the point you checked out the branch, but not see any commits on other branches like the one you just checked out.
 5. Checkout the other *test branch* and add another comment to practice.
 
 ## Merging Branches
@@ -675,7 +717,7 @@ Fast-forward
  cypress/e2e/test-querying-page.cy.js | 3 +++
  1 file changed, 3 insertions(+)
 ```
-3. `$ git log` to see the changes on the main branch now include the changes we made on the branch.
+3. `git log` to see the changes on the main branch now include the changes we made on the branch.
 
 ## Deleting Branches
 Once you have merged or decided you will not accept the changes made on a branch you will want to delete them to clean up.  
