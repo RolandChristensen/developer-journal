@@ -337,9 +337,8 @@ Note: this is a bad idea when working with others. You should not be merging cha
 1. `git branch -d branch-name` delete the branch now that you are done with it.
 
 ## How to Tell if a Branch has been Merged
-Scenario: you are checking to see what branches are on your local repository.  
-`git branch` to see all the branches on your local and there is a branch in the list that shouldn't be there.  
-You may remember working on the feature, but cannot rememeber if you merged it or not.  
+Scenario: you are checking to see what branches are on your local repository, `git branch`, to see all the branches on your local and there is a branch in the list that shouldn't be there.  
+You may remember working on the feature, but cannot remember if you merged it or not.  
 You don't want to delete the branch unless you are sure you have merged it.  
 
 A quick sanity check will help to ease your mind.
