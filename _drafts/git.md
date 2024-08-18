@@ -129,10 +129,11 @@ Make commits fully functional, testable units of code, complete with unit tests.
 Amending a commit is useful for afterthoughts. It makes for a more readable *commit log* to amend small changes, like adding comments, rather than creating a new commit. The better you get at planning your work in advance and double checking your work before committing, the less you will use this.  
 `git commit --amend -m "Commit message that encompasses all changes, not just the amended changes"`  
 Amending can also be used to change the *commit message* only, as long as you don't have any files ***staged***.  
-`$ git commit --amend --no-edit` to amend a commit without changing the message.  
+`git commit --amend --no-edit` to amend a commit without changing the message.  
 
-Note: you can skip the `$ git add {operand}` part if you are dealing with a manageable number of changes by using the `-a` flag in the commit command.  
-`$git commit -a -m "Story 101: made a single line change to file x to do y."`: Adds and commits all changes in one command.
+Note: you can skip the `git add {operand}` part if you dealing with a manageable number of changes by using the "-a" flag to add ***tracked*** files in the commit command.  
+`git commit -a -m "Story 101: made a single line change to file x to do y."`: Adds and commits all changes in one command.  
+The "-a" flag does not work with ***untracked*** files, but only files that have been *added* before, which is probably for the best because it makes you look at each file to make sure you shouldn't add it to the .gitignore file.  
 
 ## Git Log
 `git log` shows you all of the ***commits*** in the ***Repository*** / ***.git directory*** for the branch you are currently on.  
@@ -142,6 +143,32 @@ Note: you can skip the `$ git add {operand}` part if you are dealing with a mana
 Assuming you created a branch named "branch-name" based off the "main" branch,  
 `git log --oneline main..branch-name` only shows the commits on the branch since it was created.  
 
+## Git Reset
+You can reverse the process to back changes out of any of the three states.  
+To back a ***commit*** out of the ***Repository*** to the ***Staging Area***, you want to ***reset*** the ***HEAD*** pointer to point to the last commit you want to keep.  
+Using ***reset*** with the `--soft` flag will keep your changes and move them back to the ***Staging Area***. If you use the `--hard` flag all changes will be forever lost.  
+
+1. `git log` to get the hash of the last commit you want to keep. If the commit messages are not clear enough for you to find the appropriate one, you may have to do a deeper dive and look at the diffs.
+1. Drag your cusor to select the hash of the last commit you want to leave in the ***repository***.
+1. Right click the selected area and select copy from the context menu.
+1. Press "q" to quit the log.
+1. `git reset --soft {hash-you-copied}` to back the commits, after the one you copied the hash from, out to the ***Staging Area***. (Right click Git Bash and select paste from the context menu to paste the hash.)
+1. Verify the change by using `git log` and `git status` to see the changes.
+
+## Git Restore
+To back out changes in the ***Staging Area*** to the ***Working Directory***, "restore" the files with the "--staged" flag.  
+`git restore --staged {file.ext}` or `git restore --staged {path/to/file.ext}` to back out a file.  
+`git restore --staged .` to back out everything all at once.  
+You can also use globbing (wildcards) such as "*" to match files with ***restore***.  
+
+To back out changes in the ***Working Directory***, "restore" the files.  
+This is like a big *undo* command for all changes made on a single ***tracked*** file.  
+`git restore {file.ext}"` or `git restore {path/to/file.ext}"` to back out a single file.  
+`git restore .` to do the mightiest of *undos* to your work. (It should be obvious that you had better be absolutely sure you want to do this.)  
+Note: this will not delete files, but only undo all changes on ***tracked*** files. To delete files from the ***Working Directory***, simply delete them using the file system.  
+
+## Git RM (Remove)
+...
 
 
 # Avoiding Merge Conflicts
@@ -165,7 +192,7 @@ To reduce the chances of merge conflicts, accidentally overwriting code, or intr
 Do a simple verification that you do not have any uncommited changes on your ***main*** branch (staged or unstaged changes).
 
 `git status` will tell you what branch you are on, if you have any staged or unstaged changes, and whether you need to ***pull*** any changes on the remote.  
-Verify you are on branch ***main***. If not, `$ git checkout main`.  
+Verify you are on branch ***main***. If not, `git checkout main`.  
 Verify Git reported "nothing to commit, working tree clean".  
 
 If you have uncommited files, you will need to figure out what should be done with them:  
@@ -203,7 +230,7 @@ I will show two ways of doing this:
 The advantage of creating the branch on the remote is that others can see that you have a branch created for the work to be done. 
 
 ### To Create a Branch Locally
-1. `git status` to verify you are on the main branch. If not, `$ git checkout main`.
+1. `git status` to verify you are on the main branch. If not, `git checkout main`.
 1. `git branch -b new-branch-name` creates a new branch identical to the current branch and 'checks out' that new branch. The branch name should correspond to the feature you are starting. Often a ticket number is included.
 
 ### To Create a Branch on GitHub
@@ -311,7 +338,7 @@ The following assumes you use the *vimdiff* tool:
 The diff in the command line is useful, but there are much better tools for viewing diffs (Visual Studio Git extension for one)
 
 ## Git Diff Between Staged Files and Last Commit
-Once staged, you may want to see the difference between staged files and the last commit before committing.
+Once staged, you may want to see the difference between staged files and the last commit before committing.  
 `git diff --staged` or `$ git diff --cached`
 
 ## Git Log to View Commits on Feature Branch since it was Checked Out
@@ -391,16 +418,16 @@ Todo: got to here on review.
 
 
 ## You forgot to checkout a new branch and started working on a new feature while still on *main*
-As long as you have not commited any changes you can simply checkout a new branch.
+As long as you have not commited any changes you can simply checkout a new branch.  
 `git checkout -b new-branch-name`
 
 If you have committed changes follow the directions below to *reset* the HEAD with the `--soft` flag to the point where you started making changes.  
-`--soft` will keep your changes. If you use the `--hard` flag all changes will be forever lost                              I.
+The `--soft` flag will keep your changes. If you use the `--hard` flag all changes will be forever lost.  
 1. `git log` or `$ git reflog` to get the hash of the commit to go back to in the *log*, or note the HEAD@{#} to go back in the *reflog*
-    * Press 'q' to quit the log
-2. `git reset --soft {hash}` or `git reset --soft HEAD@{#}` to back the commit to *stage*
+1. Press 'q' to quit the log
+1. `git reset --soft {hash}` or `git reset --soft HEAD@{#}` to back the commit out to the *staging area*
     * Verify the changed files are *staged* by using `git status`
-3. `git checkout -b new-branch-name` to 
+3. `git checkout -b new-branch-name` to checkout a new feature branch.
 
 
 
@@ -518,13 +545,14 @@ In the commit add a useful message by adding the `-m` flag to the commit.
 `$ git commit -m "Initial commit"`
 
 Note: you may find that you need to configure your email and name.  
-`$ git config --global user.email "Email@email.com"`  
-`$ git config --global user.name "FName LName"`  
+`git config --global user.email "Email@email.com"`  
+`git config --global user.name "FName LName"`  
 
-`$ git status` will show that there are no staged files after the commit.
+`git status` will show that there are no staged files after the commit.
 
-Note: you can skip the `$ git add ...` part if you dealing with a manageable number of changes by using the `-a` flag in the commit command.  
-`$git commit -a -m "Story 101: Added special.svg for download icon."`: Adds and commits all changes.
+Note: you can skip the `git add {operand}` part if you dealing with a manageable number of changes by using the "-a" flag to add ***tracked*** files in the commit command.  
+`git commit -a -m "Story 101: made a single line change to file x to do y."`: Adds and commits all changes in one command.  
+The "-a" flag does not work with ***untracked*** files, but only files that have been *added* before, which is probably for the best because it makes you look at each file to make sure you shouldn't add it to the .gitignore file.  
 
 # Git Log
 `git log`: Lists the commits and looks something like this:  
