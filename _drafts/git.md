@@ -25,6 +25,9 @@ Below are common scenarios used in day to day development.
 * [Git Add](#Git-Add)
 * [Git Commit](#Git-Commit)
 * [Git Log](#Git-Log)
+* [Git Reset](#Git-Reset)
+* [Git Restore](#Git-Restore)
+* [Git RM](#Git-RM)
 
 [Avoiding Merge Conflicts](#Avoiding-Merge-Conflicts)  
 
@@ -441,21 +444,6 @@ Todo: got to here on review.
 
 
 
-
-
-
-
-## You forgot to checkout a new branch and started working on a new feature while still on *main*
-As long as you have not commited any changes you can simply checkout a new branch.  
-`git checkout -b new-branch-name`
-
-If you have committed changes follow the directions below to *reset* the HEAD with the `--soft` flag to the point where you started making changes.  
-The `--soft` flag will keep your changes. If you use the `--hard` flag all changes will be forever lost.  
-1. `git log` or `$ git reflog` to get the hash of the commit to go back to in the *log*, or note the HEAD@{#} to go back in the *reflog*
-1. Press 'q' to quit the log
-1. `git reset --soft {hash}` or `git reset --soft HEAD@{#}` to back the commit out to the *staging area*
-    * Verify the changed files are *staged* by using `git status`
-3. `git checkout -b new-branch-name` to checkout a new feature branch.
 
 
 
