@@ -156,8 +156,8 @@ To back a ***commit*** out of the ***Repository*** to the ***Staging Area***, yo
 Using ***reset*** with the `--soft` flag will keep your changes and move them back to the ***Staging Area***. If you use the `--hard` flag all changes will be forever lost.  
 
 1. `git log` to get the hash of the last commit you want to keep. If the commit messages are not clear enough for you to find the appropriate one, you may have to do a deeper dive and look at the diffs.
-1. Drag your cusor to select the hash of the last commit you want to leave in the ***repository***.
-1. Right click the selected area and select copy from the context menu.
+1. Drag your cusor to select the hash of the last commit you want to leave in the ***Repository***. The ***commit*** above the hash you copy will be removed from the ***Repository***.
+1. Right click the selected area and select **Copy** from the context menu.
 1. Press "q" to quit the log.
 1. `git reset --soft {hash-you-copied}` to back the commits, after the one you copied the hash from, out to the ***Staging Area***. (Right click Git Bash and select paste from the context menu to paste the hash.)
 1. Verify the change by using `git log` and `git status` to see the changes.
@@ -426,12 +426,16 @@ If you are good at writing useful messages, you will most likely be able to tell
 `git log --oneline` to see the commit messages. 
 
 If you still have any questions about a commit, follow these directions to examine the commit diff.  
-1. `git log` to see the commits
+1. `git log` to see the commits.
 1. Drag your cursor to select the hash of the commit in question.
 1. Right click the selected area and select **Copy** from the context menu.
-1. `git show {hash-you-copied}` displays a diff of all the changes. (Right click and paste hash).
+1. Press "q" to quit the log.
+1. `git show {hash-you-copied}` displays a diff of all the changes. (Right click and select **Paste** from context menu.)
 1. Repeat for all the commits until you can make a decision about deleting this branch or finishing the work.
 
+
+
+# Hotfix Forces You to Stop Working on a Feature
 
 
 
