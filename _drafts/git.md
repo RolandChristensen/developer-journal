@@ -98,12 +98,16 @@ For an in depth tutorial, see the "***three-states.md***" file in this [reposito
 
 There are three states of tracked files. The ***Working Directory***, the ***Staging Area***, and the code ***Repository***.
 1. ***Working Directory***: When you add a file or modify a file that is tracked by git, it will add it to the ***modified*** or ***working directory*** of its database. 
-    * Use the `git status` command to see the changed files that are tracked in the ***working directory***
-    * Adding the "***.gitignore***" file is the way to stop tracking any file you do not want in source control and will remove it from the ***working directory***
+    * Use the `git status` command to see the changed files that are tracked in the ***working directory***.
+    * Adding the "***.gitignore***" file is the way to stop tracking any file you do not want in source control and will remove it from the ***working directory***.
+    * To undo all changes made to a file in the ***Working Directory***, use the `git restore {path/to/file.ext}` command.
 2. ***Staging Area***: Using the `git add {operand}` command will move file changes to the ***staging area*** or ***index*** of Git's database. 
-    * Use `git status` to see files added to the ***staging area***
+    * Use `git status` to see files added to the ***staging area***.
+    * To back changes out of *staging*, use the `git restore --staged {path/to/file.ext}` command.
 3. ***Repository***: Using the `git commit -m "Useful message"` command indicates that you are very confident the changes work as expected and adds the files to the ***repository*** or ***.git directory*** under the current ***branch*** you have checked out. 
-    * Use `git log` to see file changes that have been committed to the currently checked out ***branch*** of the ***repository*** 
+    * Use `git log` to see file changes that have been committed to the currently checked out ***branch*** of the ***repository***
+    * To back changes out of a ***commit***, use the `git reset --soft {commit-hash}` command.
+    * To completely remove a ***commit*** and completely lose all the work done, use the `git reset --hard {commit-hash}` command. 
 
 ## Git Status
 `git status` is used to see modified tracked files in the ***Working Directory***.  
@@ -167,8 +171,32 @@ This is like a big *undo* command for all changes made on a single ***tracked***
 `git restore .` to do the mightiest of *undos* to your work. (It should be obvious that you had better be absolutely sure you want to do this.)  
 Note: this will not delete files, but only undo all changes on ***tracked*** files. To delete files from the ***Working Directory***, simply delete them using the file system.  
 
-## Git RM (Remove)
-...
+## Git RM
+For an in depth tutorial, see this [repository](https://github.com/RolandChristensen/git-guided-examples) repositories README and search for "Git RM".  
+RM stands for remove, and Git RM is used to remove a file from the ***Repository***. It does not remove the file or files from the file system, but removes file(s) from the ***Repository***.    
+To keep files from being tracked and out of your ***Working Directory*** you will want to add the files to a .gitignore file.  
+
+Scenario: You accidentally ***committed*** a file that you do not want in source control such as a configuration file with passwords in it.  
+
+To remove the file from the ***Repository***:  
+1. `git rm --cached {path/to/secrets-file.ext}`
+1. `git status` to see the results
+    * The file is *staged* in the ***Staging Area*** to be deleted.
+        * You will need to *commit* this change, so that it will be *removed* from the ***repository***.
+    * The file is also in your ***Working Directory***.
+        * To stop tracking this file we will add it to the .gitignore file.
+  
+To stop the file from being *tracked*:
+1. Add the full path to the file (path/to/secrets-file.ext) in the .gitignore file.
+1. `git status` to see the results
+    * The file "secrets-file.ext" should no longer be in the ***Working Directory***.
+    * The file ".gitignore" should be in the ***Working Directory***.
+    * The file "secrets-file.ext" should still be *staged* for deletion.
+  
+To complete the process: 
+1. `git add .gitignore`
+1. `git commit -m "Removed file 'secrets-file.ext' from repository"`
+
 
 
 # Avoiding Merge Conflicts
