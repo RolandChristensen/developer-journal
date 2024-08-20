@@ -90,7 +90,7 @@ To clone the new repo just created above:
 1. Open Git Bash in the project folder (Shift + Right click the folder and choose "open Git Bash here" from the context menu).
 1. `git init -b main` to initialize a new repo and change the default branch name to "main".
 1. Add `.gitignore` file to keep unnecessary files and secrets out of source control.
-1. `git add .`, `$ git add file-name`, `$ git add directory-name` to stage files to be tracked.
+1. `git add .`, `git add file-name`, `git add directory-name` to stage files to be tracked.
 1. `git commit -m "First commit of existing code"`
 1. Follow the instructions in the "Create New Repo" above.
 1. Copy the URL on the "Quick Setup" page that appears. (https://github.com/{your-github-username}/{repo-name}.git)
@@ -245,12 +245,12 @@ Keeping your local repository up-to-date is critical to avoid overwriting someon
 If you have well defined quality gates employed to prevent merging code that has not been thouroughly tested, you should usually not be worried to get the latest state of the main branch.  
 
 If you are not worried about the current state of your remote main branch, follow the directions below. 
-1. `git status` to verify you are on the main branch. If not, `$ git checkout main`.
+1. `git status` to verify you are on the main branch. If not, `git checkout main`.
 1. `git pull` to pull down all the most recent changes from the remote to your local repository.
 
 If, for some reason, you are concerned about pulling the current branch as it is, follow the directions below to inspect the state of the branch before merging.  
 
-1. `git status` to verify you are on the main branch. If not, `$ git checkout main`.
+1. `git status` to verify you are on the main branch. If not, `git checkout main`.
 1. `git fetch` to see any changes from the remote repo before merging them into your local branch. The default remote to fetch from is *origin* so this command is equivalent to `git fetch origin`
 1. `git log origin/main` and/or `git diff ..origin/main` will show you what has changed in the remote repo since you last pulled. If you are happy to merge those new changes into your local ***main*** branch then go ahead. If you do not want the current state of the remote repo, for whatever reason, you can leave it the way it is because you only ***fetched*** it.
 1. If you are sure you are happy to merge, `git merge origin/{branch-name}`. Example: `git merge origin/main`
@@ -293,7 +293,7 @@ Choosing when to commit should be deliberate.
 The basic process is:
 1. Develop a fully functional, testable unit of code, complete with unit tests.
 1. `git diff` to view the changes you have made to double check your work before committing. (There are much better tools for viewing diffs, Visual Studio and Visual Studio Code have great extensions.)
-1. `git add .`, `$ git add file-name`, or `$ git add directory-name` to stage files to be tracked.
+1. `git add .`, `git add file-name`, or `git add directory-name` to stage files to be tracked.
 1. `git commit -m "Useful commit message that describes the change"`
 1. Repeat until the feature is done.
 
@@ -332,7 +332,7 @@ If there are comments that need addressing or requested changes, you will need t
     * If you have any ***staged*** or ***untracked*** files you should ***Stash*** those before checking out the ***pull request*** branch to avoid any accidental inclusions of changes you did not intend.
 1. If you have a clean working directory, `git checkout {feature-branch-name}` 
 1. Code the changes complete with unit tests. (There is often a pressure to go faster than normal when redoing work. Take a deep breath and make sure you do it right.)
-1. `git add .`, `$ git add file-name`, or `$ git add directory-name` to stage files to be tracked.
+1. `git add .`, `git add file-name`, or `git add directory-name` to stage files to be tracked.
 1. `git commit -m "Useful commit message that describes the change"`
 1. Repeat until all changes are done.
 
@@ -365,7 +365,7 @@ It is also a good idea to review your ***commits*** before the final push to the
 
 ## Git Diff Before Staging
 Double check your work before you add it to the "staging" area.  
-`$ git diff`  
+`git diff`  
 
 The following assumes you use the *vimdiff* tool:  
 1. Arrow down, arrow up, page down, page up to navigate changes from all files.
@@ -375,7 +375,7 @@ The diff in the command line is useful, but there are much better tools for view
 
 ## Git Diff Between Staged Files and Last Commit
 Once staged, you may want to see the difference between staged files and the last commit before committing.  
-`git diff --staged` or `$ git diff --cached`
+`git diff --staged` or `git diff --cached`
 
 ## Git Log to View Commits on Feature Branch since it was Checked Out
 If you planned well and used good messages, you should be able to clearly see the design of the code in the ***commit log***.
@@ -537,7 +537,7 @@ Date:   Wed Mar 13 09:32:37 2024 -0600
     Initial commit
 ```
 The most recent commit is on top marked by (HEAD -> main) That is the HEAD of the main branch.  
-The line `commit 278d94fc06df6555dfb9cf0cc9ce94824e361811` with the hash is important for using `$ git reset` to get back to a specific commit if you made a mistake.  
+The line `commit 278d94fc06df6555dfb9cf0cc9ce94824e361811` with the hash is important for using `git reset` to get back to a specific commit if you made a mistake.  
 The commit message is displayed below the rest and is the best indicator of what you are resetting. This is why a good commit message is important.  
 
 Just to test things out, make a small change to any file and repeat the add and commit procedure outlined above.  
@@ -552,8 +552,8 @@ Remember: Don't Panic!!! You can always undo anything.
 
 ## Reset using hashes found in Git log
 Using the above git log I can use the hash found in the "Initial commit" to go all the way back to that commit.  
-`$ git reset --hard {hash}`  
-Example `$ git reset --hard bf9e7a85f94ac80efb7bbb58df192787a26ce599`  
+`git reset --hard {hash}`  
+Example `git reset --hard bf9e7a85f94ac80efb7bbb58df192787a26ce599`  
 ```
 $ git reset --hard bf9e7a85f94ac80efb7bbb58df192787a26ce599
 HEAD is now at bf9e7a8 Initial commit
@@ -571,8 +571,8 @@ Date:   Wed Mar 13 09:32:37 2024 -0600
 ```
 
 ## Git Reflog (Reference logs)
-`$ git reflog` shows the logs of any changes to the tip or HEAD of the branch including *resets*.  
-Note: `$ git reflog` is equivalent to `$ get reflog show HEAD` as *show* and *HEAD* are the default values.  
+`git reflog` shows the logs of any changes to the tip or HEAD of the branch including *resets*.  
+Note: `git reflog` is equivalent to `get reflog show HEAD` as *show* and *HEAD* are the default values.  
 ```
 $ git reflog
 bf9e7a8 (HEAD -> main) HEAD@{0}: reset: moving to bf9e7a85f94ac80efb7bbb58df192787a26ce599
@@ -591,8 +591,8 @@ bf9e7a8 HEAD@{1}: reset: moving to bf9e7a85f94ac80efb7bbb58df192787a26ce599
 bf9e7a8 HEAD@{3}: commit (initial): Initial commit
 ```  
 You can get back to any place in the log by noting the HEAD@{#}  
-`$ git reset --hard HEAD@{#}`  
-Example: `$ git reset --hard HEAD@{1}` to get back to the point where you reset the last commit.  
+`git reset --hard HEAD@{#}`  
+Example: `git reset --hard HEAD@{1}` to get back to the point where you reset the last commit.  
 ```
 $ git reset --hard HEAD@{1}
 HEAD is now at bf9e7a8 Initial commit
@@ -634,7 +634,7 @@ Now, to ammend the last commit:
 This approach is used to update local changes only!  
 
 1. Find a place to add a harmless, but useful comment in the code.
-2. Update the last commit with something like: `$ git commit --amend -m "Some new commit message"`
+2. Update the last commit with something like: `git commit --amend -m "Some new commit message"`
 
 Below is the output of Git log for my example repo, still only showing one commit, but containing the comment change with the new commit message.  
 ```
@@ -659,7 +659,7 @@ Date:   Wed Mar 13 09:32:37 2024 -0600
 ```
 
 You can use the `--no-edit` flag to amend a commit without changing the message.  
-`$ git commit --amend --no-edit`
+`git commit --amend --no-edit`
 
 Add another harmless, but useful comment and try it out.  
 
@@ -667,18 +667,18 @@ Add another harmless, but useful comment and try it out.
 Use branches to separate work into logical changes (issues/stories/features).  
 You can also use branches in local development to try out different approaches to the same issue, keeping both isolated from each other. Once you make a decision, you can remove one branch easily keeping the best solution untouched.  
 
-`$ git branch`: lists all branches. (Equivalent to `$ git branch --list` since `--list` is the default flag.  
+`git branch`: lists all branches. (Equivalent to `git branch --list` since `--list` is the default flag.  
 
 ## Creating Branches
 A branch takes all the code you are currently working with and split it into two identical branches.  
 You then switch to the new branch to make changes, leaving the original intact for safety.  
 
-`$ git branch branch-name`: creates a new branch named "branch-name" based on the branch you are currently on.  
-`$ git checkout branch-name`: switches to the branch, so all changes will be recorded on that branch going forward.  
-`$ git checkout -b branch-name-alt`: creates a new branch with "branch-name" and switches to that branch in one command.  
+`git branch branch-name`: creates a new branch named "branch-name" based on the branch you are currently on.  
+`git checkout branch-name`: switches to the branch, so all changes will be recorded on that branch going forward.  
+`git checkout -b branch-name-alt`: creates a new branch with "branch-name" and switches to that branch in one command.  
 
 Example: after using the commands above to create two branches named "test-branch" and "test-branch-alt".  
-Executing `$ git branch` displays all the branches including *main*.  The asterisk lets you know which branch you are currently working on. 
+Executing `git branch` displays all the branches including *main*.  The asterisk lets you know which branch you are currently working on. 
 
 ```
 $ git branch
@@ -688,20 +688,20 @@ $ git branch
 ```
 
 1. To test how this works add a comment or other trivial code to a file in the current branch, such as "\\ This is a comment on branch branch-name".
-2. `$ git add .` and `$ git commit -m "Add comment to branch branch-name"` 
-3. Use `$ git branch checkout branch-name` to switch to another branch and when you check the code you should see the comment disappear.
+2. `git add .` and `git commit -m "Add comment to branch branch-name"` 
+3. Use `git branch checkout branch-name` to switch to another branch and when you check the code you should see the comment disappear.
 4. `git log` to see the commits. You should see commits from *main* up to the point you checked out the branch, but not see any commits on other branches like the one you just checked out.
 5. Checkout the other *test branch* and add another comment to practice.
 
 ## Merging Branches
 Eventually, you will decide that one of these branches is the solution you want to go with and the other can be discarded.  
 
-1. `$ git checkout main`: to merge you go to the branch you want to merge changes into.
+1. `git checkout main`: to merge you go to the branch you want to merge changes into.
 ```
 $ git checkout main
 Switched to branch 'main'
 ```
-2. `$ git merge test-branch`: merge the
+2. `git merge test-branch`: merge the
 ```
 $ git merge test-branch
 Updating 899b6ac..1ddb9d2
@@ -714,7 +714,7 @@ Fast-forward
 ## Deleting Branches
 Once you have merged or decided you will not accept the changes made on a branch you will want to delete them to clean up.  
 
-`$ git branch -d branch-name`: deletes the branch.
+`git branch -d branch-name`: deletes the branch.
 
 Go ahead and delete any extra braches now and do a Git branch between them to verify they are gone.  
 
@@ -723,7 +723,7 @@ My favorite algebra teacher instilled in me the need for double checking my work
 
 To try it out add a comment somewhere, delete a comment somewhere, and change a comment somewhere.  
 Before adding the changes, do a diff to make sure there where no accidental changes made.  
-`$ git diff`: displays a diff of the changes made to files.  
+`git diff`: displays a diff of the changes made to files.  
 
 The Git Terminal uses color coding and is easier to read than this.  
 Deletions are in red and are preceeded by a '-' sign.  
