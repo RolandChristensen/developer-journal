@@ -6,8 +6,8 @@ date: 2024-08-20
 Source control is essential for programming and Git combined with GitHub is a good solution.  
 Use this page as a quick reference for often used scenarios.
 
-To make it stick in your mind, create your own tutorials and quizes.  
-Use this [repository](https://github.com/RolandChristensen/git-guided-examples) to create practice exercises and quizes.  
+To make it stick in your mind, create your own tutorials and quizzes.  
+Use this [repository](https://github.com/RolandChristensen/git-guided-examples) to create practice exercises and quizzes.  
 The repo will go into more detail on source control topics and give you a safe place to practice.  
 If you find yourself in trouble and can't figure out how to undo a mistake, this repo is also a good place to reproduce the problem and learn to undo it safely.
 
@@ -15,7 +15,7 @@ This documents Git using the command line, but the skills outlined can be reprod
 I use Visual Studio and Visual Studio Code extensions for Git, but still go to the command line frequently and create scripts which demand knowledge of the command line.
 
 # Quick Start Scenarios
-Below are common scenarios used in day to day development.  
+Below are common scenarios used in day-to-day development.  
 
 [Repo Creation](#Repo-Creation)  
 * [Create New Repo](#Create-New-Repo)
@@ -66,7 +66,7 @@ For an in depth tutorial, see the "***create-repo.md***" file in this [repositor
 I will go through two ways to create a repo.  
 1. Create a new *blank canvas* repo on GitHub and clone it to your local machine.
 1. Create a project on your local machine, decide you want to keep it, then create a repo using the existing code, and finally push it to GitHub.
-    * You could be trying out different approaches then settle on the final archetechtural design you want to finally push to the remote.
+    * You could be trying out different approaches then settle on the final architectural design you want to finally push to the remote.
 
 ## Create New Repo
 1. Navigate your browser to: h__ps://github.com/{YourGitHubUserName}
@@ -159,7 +159,7 @@ The "-a" flag does not work with ***untracked*** files, but only files that have
 ## Git Log
 `git log` shows you all of the ***commits*** in the ***Repository*** / ***.git directory*** for the branch you are currently on.  
 `git log {branch-name}` shows you all of the ***commits*** for the branch indicated.  
-`git log --oneline {branch-name}` shows you the ***commits*** in an abbreviated way, ommitting the author and date of changes.  
+`git log --oneline {branch-name}` shows you the ***commits*** in an abbreviated way, omitting the author and date of changes.  
 
 Assuming you created a branch named "branch-name" based off the "main" branch,  
 `git log --oneline main..branch-name` only shows the commits on the branch since it was created.  
@@ -170,7 +170,7 @@ To back a ***commit*** out of the ***Repository*** to the ***Staging Area***, yo
 Using ***reset*** with the `--soft` flag will keep your changes and move them back to the ***Staging Area***. If you use the `--hard` flag all changes will be forever lost.  
 
 1. `git log` to get the hash of the last commit you want to keep. If the commit messages are not clear enough for you to find the appropriate one, you may have to do a deeper dive and look at the diffs.
-1. Drag your cusor to select the hash of the last commit you want to leave in the ***Repository***. The ***commit*** above the hash you copy will be removed from the ***Repository***.
+1. Drag your cursor to select the hash of the last commit you want to leave in the ***Repository***. The ***commit*** above the hash you copy will be removed from the ***Repository***.
 1. Right click the selected area and select **Copy** from the context menu.
 1. Press "q" to quit the log.
 1. `git reset --soft {hash-you-copied}` to back the commits, after the one you copied the hash from, out to the ***Staging Area***. (Right click Git Bash and select paste from the context menu to paste the hash.)
@@ -185,7 +185,7 @@ You can also use globbing (wildcards) such as "*" to match files with ***restore
 To back out changes in the ***Working Directory***, "restore" the files.  
 This is like a big *undo* command for all changes made on a single ***tracked*** file.  
 `git restore {file.ext}"` or `git restore {path/to/file.ext}"` to back out a single file.  
-`git restore .` to do the mightiest of *undos* to your work. (It should be obvious that you had better be absolutely sure you want to do this.)  
+`git restore .` to *undo* all changes in all files in the ***Working Directory***, the mightiest *undo*. (It should be obvious that you had better be absolutely sure you want to do this.)  
 Note: this will not delete files, but only undo all changes on ***tracked*** files. To delete files from the ***Working Directory***, simply delete them using the file system.  
 
 ## Git RM
@@ -234,13 +234,13 @@ When working with other developers, to improve code quality and reduce any heada
 To reduce the chances of merge conflicts, accidentally overwriting code, or introducing unexpected changes follow these source control best practices.
 
 ## Start with a Clean Working Tree
-Do a simple verification that you do not have any uncommited changes on your ***main*** branch (staged or unstaged changes).
+Do a simple verification that you do not have any uncommitted changes on your ***main*** branch (staged or unstaged changes).
 
 `git status` will tell you what branch you are on, if you have any staged or unstaged changes, and whether you need to ***pull*** any changes on the remote.  
 Verify you are on branch ***main***. If not, `git checkout main`.  
 Verify Git reported "nothing to commit, working tree clean".  
 
-If you have uncommited files, you will need to figure out what should be done with them:  
+If you have uncommitted files, you will need to figure out what should be done with them:  
 * Undo changes, because they are not needed.
 * Stash the changes, if they are needed and incomplete, so you can recover them later. (Search for "Stash" to find instructions below)
 * Add and commit them to the appropriate branch, if the changes are needed and complete.
@@ -251,7 +251,7 @@ This assumes you are going to merge into a branch named ***main***, but you can 
 `git status` will tell you if you are up to date with 'origin/main' or not. If not, you will need to ***pull*** or ***fetch***.  
 
 Keeping your local repository up-to-date is critical to avoid overwriting someone elses work.  
-If you have well defined quality gates employed to prevent merging code that has not been thouroughly tested, you should usually not be worried to get the latest state of the main branch.  
+If you have well defined quality gates employed to prevent merging code that has not been thoroughly tested, you should usually not be worried to get the latest state of the main branch.  
 
 If you are not worried about the current state of your remote main branch, follow the directions below. 
 1. `git status` to verify you are on the main branch. If not, `git checkout main`.
@@ -346,7 +346,7 @@ If there are comments that need addressing or requested changes, you will need t
 1. Repeat until all changes are done.
 
 When all changes are done:
-1. `git push` to ***push*** the branch to the remote (Note: this assumes you used the "-u" flage when you first pushed otherwise use `git push origin {feature-branch-name}`.
+1. `git push` to ***push*** the branch to the remote (Note: this assumes you used the "-u" flag when you first pushed otherwise use `git push origin {feature-branch-name}`.
 1. When you return to the ***pull request*** GitHub will recheck the branches ability to be merged, update the commit history, and update the diffs. (You may need to push the "refresh" button, if you see it.)
 1. You will want to add a comment and tag the person who made comments or requested the change to recheck the ***pull request***.
 
@@ -388,7 +388,7 @@ Once staged, you may want to see the difference between staged files and the las
 
 ## Git Log to View Commits on Feature Branch since it was Checked Out
 If you planned well and used good messages, you should be able to clearly see the design of the code in the ***commit log***.
-`git log --oneline main..branch-name` displays only the commits you created since the feature branch was checked out. The `--oneline` flag abbreviates the log to one line, ommitting the author and date information.
+`git log --oneline main..branch-name` displays only the commits you created since the feature branch was checked out. The `--oneline` flag abbreviates the log to one line, omitting the author and date information.
 
 
 
@@ -432,7 +432,7 @@ To check this locally you will need to be sure you have ***pulled*** the parent 
 1. `git pull` or `git pull origin {parent-branch-name}` if you have not set the "upstream remote".
 1. `git log {parent-branch-name}..{branch-you-are-not-sure-about}` to see any commits on the feature branch that are not on the parent branch. Depending on your workflow, it could be that after merging you did additional work on the branch and have changes on it.
 
-If the output of the "log" command above is empty you have merged everthing into the parent branch and you can delete the branch in question.  
+If the output of the "log" command above is empty you have merged everything into the parent branch and you can delete the branch in question.  
 `git branch -d {branch-you-are-NOW-sure-about}`
 
 Otherwise, you will want to examine the commits on the feature branch to see what changes have been made and whether they need to be merged.  
@@ -454,10 +454,10 @@ You are working on a new feature, but are asked to switch to a hotfix that needs
 Before starting you want to make sure you are starting with a clean ***Working Directory*** and ***Staging Area***.  
 
 All commits on the branch you are working on will remain when you change branches, so you do not need to worry about them.  
-Any uncommited changes need to be ***stashed***.
+Any uncommitted changes need to be ***stashed***.
 
 ## Git Stash
-1. `git stash --include-untracked` to stash files that are currently tracked and untracked files. The "--include-untracked" flag will include the ***Working Directory***, which is probably a good idea to avoid checking changes into the hotfix branch inadvertantly.  
+1. `git stash --include-untracked` to stash files that are currently tracked and untracked files. The "--include-untracked" flag will include the ***Working Directory***, which is probably a good idea to avoid checking changes into the hotfix branch inadvertently.  
 1. `git checkout main` to switch to parent branch you will be merging the hotfix into.
 1. Follow the instructions in the [Developing a New Feature](#Developing-a-New-Feature) section and do not cut corners. Do not let the pressure to go fast interfere with the quality of the work.
 
@@ -494,4 +494,3 @@ For this demonstration, we are going to assume we chose plan B.
 1. Verify the files look as you expect and check the `git log` to verify the commit log looks as expected.
 1. `git branch -D new-feature-a` to delete plan A. Using the uppercase "-D" flag will force delete the branch. Note: using the lowercase "-d" flag will not delete the branch, because Git is trying to prevent you from making a mistake due to changes that have not been merged.
 1. `git branch -d new-feature-b` to delete the branch you merged into *new-feature-name* branch.
-
