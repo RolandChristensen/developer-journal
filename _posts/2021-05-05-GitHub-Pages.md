@@ -5,7 +5,7 @@ date: 2021-05-05
 
 This documentation is for creating a static web page on GitHub. A quick search will give you the official "GitHub Docs" documentation. I will only cover things that were not clear in the documentation and try to make things pithy for future use.
 
-# Quick Guide for Creating a Static Site for a Repo
+## Quick Guide for Creating a Static Site for a Repo
 1. Edit the settings for the repo.
 	- Click "Settings" on Top Control for Repo.
 	- Click "Pages" on Left Hand Control.
@@ -16,7 +16,7 @@ This documentation is for creating a static web page on GitHub. A quick search w
 3. Edit the file created above as you would any other static web site.
 4. When you merge the changes the site will automatically build for you.
 	
-# Quick Guide for Creating a Static Blog
+## Quick Guide for Creating a Static Blog
 1. Edit the settings for the repo.
 	- Click "Settings" on Top Control for Repo.
 	- Click "Pages" on Left Hand Control.
@@ -67,15 +67,15 @@ This documentation is for creating a static web page on GitHub. A quick search w
 		```
 6. When you merge the changes the site will automatically build for you.
 
-# Pitfalls
-## Use the Title Front Matter Instead of a Header
+## Pitfalls
+### Use the Title Front Matter Instead of a Header
 The first problem I had when I created the index.md for a blog, I did not understand where the title and headers would be displayed on the page. You will need to keep the title lengths under a minimum number to display correctly depending on the theme. The YAML Front Matter does not display in the preview of the file when you are editing it, so there is a temptation to add a header to the top of the markdown file created. Resist the temptation. The title key will create a lovely header on the finished web page.
 
 ![Example Layout of Minima Theme](https://rolandchristensen.github.io/developer-journal/images/2021-05-05-GitHub-Pages.png "Example of Using Title in YAML Front Matter and a Heading")
 
 As noted in the screen shot the plug-in "jekyll-titles-from-headings" is useful, but can cause problems. It will create a duplicate heading and title if you do not include a "title" key in the YAML front matter.
 
-## How to Add an Image
+### How to Add an Image
 The documentation found on the Jekyll site or GitHub pages does not seem to work. They say you should add an assets folder with images and reference the image with a relative path from the root directory. That is only half right at the time of writing this post. Adding a folder to hold any assets you want to link to is correct. However, you need to create a full path to the GitHub project assets folder.
 To get this to work you need to follow this pattern:
 ```
