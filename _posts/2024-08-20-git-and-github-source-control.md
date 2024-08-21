@@ -21,7 +21,7 @@ Below are common scenarios used in day-to-day development.
 * [Create New Repo](#create-new-repo)
 * [Clone a Repo](#clone-a-repo)
 * [Starting a Git Repo with Existing Code](#starting-a-git-repo-with-existing-code)
-* [Git Fork](#fit-fork)
+* [Git Fork](#git-fork)
 
 [The Three States](#the-three-states)  
 * [Git Status](#git-status)
