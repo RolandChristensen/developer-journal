@@ -14,10 +14,10 @@ Being in technology, I created a task board for my career development and add is
 * Keeping up to date with newer versions of the old technologies I use
 
 
-# GitHub Docs > GitHub Issues > Projects (Free version)
+## GitHub Docs > GitHub Issues > Projects (Free version)
 https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects
 
-# Create New Personal User Project
+## Create New Personal User Project
 1. Click Profile Picture
 2. Click "Your Profile" in menu
 3. Click "Projects" in the list of tabs near the top of the page
@@ -29,7 +29,7 @@ https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-a
 6. Choose project name
 7. Click "Create Project" button
 
-## Kanban Divergence 
+### Kanban Divergence 
 Kanban is Japanese for "Visual Signal".  
 Kanban lets you see your work clearly so you and the team can all stay on the same page.  
 Kanban does not use iterations. Kanban expects iterative improvements to happen at their own pace. Your team will find its own cadence.
@@ -52,13 +52,13 @@ You should also begin to create cards with reasonable sizes. Split up complex ta
 **Lead Time**: The time taken from the time you start working on it to the time it's done (in production).  
 **Cycle Time**: The time from when it is placed into the **Doing** (Today/Working/In Progress/...) column to the time it's done.  
 
-# Describe the Purpose of your Repo
+## Describe the Purpose of your Repo
 1. Click the **...** (Ellipsis  menu of your project) in the top right corner
 2. Click the **Settings** (Gear Icon)
 3. Add a description in the **Short Description** field
 4. Add a README
 
-# Adding Metadata (Custom Fields) to Your Items
+## Adding Metadata (Custom Fields) to Your Items
 * You can add custom fields (Metadata) to items such as:
     * Date fields
     * Number fields
@@ -70,13 +70,13 @@ You should also begin to create cards with reasonable sizes. Split up complex ta
     * The feature is not available to me that I can see, but I can create markdown check lists to simulate this
 * Create *views* to query project and save for future use
 
-# Adding Draft Issues to your project
+## Adding Draft Issues to your project
 You can quickly add a **draft issue** to outline work and then go back later to create **issues** from your drafts.
 1. In the **Backlog** click the **+ Add item** button
 2. Type a name for the draft
 3. Press Enter
 
-# Add Issues to your Project
+## Add Issues to your Project
 You can add existing **issues** in a repo or create new **issues** that will appear in your repo from the project board.
 1. In the **Backlog** click the **+ Add item** button
 2. Type "#" and wait for the list of items to appear
@@ -85,22 +85,22 @@ You can add existing **issues** in a repo or create new **issues** that will app
    * Create a new issue by clicking the **+ Create new issue** button.
    * You can select multiple items by selecting the **Add items from {repo name} ->** button
 
-# Creating a field to track priority
+## Creating a field to track priority
 The Kanban template has a priority field out-of-the-box, so you just need to select priorities on issues to see the priority swimlanes appear.
 
-## Kanban Swimlane Divergence
+### Kanban Swimlane Divergence
 Kanban uses priority swimlanes to organize the most important work, from top to bottom.  
 Three priorities (low, medium, high or p2, p1, p0) are the usual way to organize your work.  
 Medium is the default.  
 High is reserved for hot-fixes and projects that have a tight deadline.  
 Low is for work that is on the roadmap, but not the immediate destination.
 
-# Grouping Issues by Priority
+## Grouping Issues by Priority
 The Kanban template, by default, groups priorities into swimlanes.  
 On the **Priority board** tab click the down arrow to view the properties of the view.  
 In the list is the **Group by** property with **Priority** as the grouping.
 
-# Adding a Board Layout
+## Adding a Board Layout
 Board layout organizes items by their status, so you can view their progress.  
 The Kanban template has a couple tabs that use the **Board** layout by default, "Backlog", and "Priority Board".  
 Click the down arrow on the **Backlog** tab to see the **Layout** group.  
@@ -108,7 +108,7 @@ There are three layouts **Table**, **Board**, and **Roadmap**.
     * The **Table** layout is used on the **Team Items** board.
     * Of course, you can see the **Roadmap** layout on the **Roadmap** board.
 
-# Configure Built-in Automation
+## Configure Built-in Automation
 1. Click the "..." ellipsis menu on your project
 2. Select **Workflows** from the menu (A list of default workflows appears)
 3. From the list select **Auto-add to project**
@@ -118,7 +118,7 @@ There are three layouts **Table**, **Board**, and **Roadmap**.
      * The **Automating Projects > Adding Items Automatically** section goes into more detail
      * The default will automatically add pull requests and open bugs onto the board
   
-# Best Practices for Projects
+## Best Practices for Projects
 * Break down large issues into smaller issues
 * Communicate
 * Make use of description, README, and status updates
@@ -127,7 +127,7 @@ There are three layouts **Table**, **Board**, and **Roadmap**.
 * Use automation
 * Use different field types
 
-## Break Down Large Issues into Smaller Issues
+### Break Down Large Issues into Smaller Issues
 Breaking down stories into smaller pieces, rather than combining all work needed into a large one:  
 
 Pros
@@ -145,7 +145,7 @@ To track the smaller issues:
 * Use Milestones
 * Use Labels
 
-### Use Task Lists to organize multiple smaller stories
+#### Use Task Lists to organize multiple smaller stories
 There is a task list feature under development, in beta, that is in the documentation, but I don't have access to.  
 
 Below creates a task list in an issue and will be recognized as a list of tasks in the information displayed about the issue.
@@ -169,7 +169,7 @@ Markdown example:
 You can link to other issues, pull requests, or bugs in your task list using full URLs, or the #{issue-number} shorthand syntax.  
 After you type the "#" a list of issues will appear to select from.  
 
-### Use Milestones to organize multiple smaller stories
+#### Use Milestones to organize multiple smaller stories
 You can create a **Milestone** (an expected due date) that you can apply to multiple issues and pull requests.  
 1. Navigate to repository
 2. Click either **Issues** or **Pull Requests**
@@ -203,7 +203,7 @@ From the **Roadmap** tab on the Kanban template you can add a marker to see the 
 3. Select **Milestones** from the dropdown
      * The milestones appear with a label in your timeline
 
-### Use Labels to organize multiple smaller stories
+#### Use Labels to organize multiple smaller stories
 Create a new label with a unique identifier to group stories together:  
 1. Navigate to the **Issues** or **Pull Requests** of a repo
 2. Click the **Labels** button beside the filters (Not the labels dropdown filter)
@@ -222,11 +222,11 @@ Filter by the label:
 2. Click the **Label** dropdown (Not the **Labels** button by the filters)
 3. Select the label to display from the dropdown
 
-## Communicate
+### Communicate
 Use @mentions to keep them in the loop.  
 Assign issues to people so everyone knows their responsibilities.
 
-## Make use of the description, README, and status updates
+### Make use of the description, README, and status updates
 Clearly describe the project.  
 * Describe the project
 * Describe the project views and how you use them
@@ -244,7 +244,7 @@ Clearly describe the project.
     * RACI Matrix
 * Share project updates by using status updates.
 
-## Use Views
+### Use Views
 Use project views to see all the angles of the project.  
 * From the **Backlog** you can see all issues that are not started as well as what is in progress
 * The **Priority board** shows you all the high priority items at the top to help you decide what comes next
@@ -253,18 +253,18 @@ Use project views to see all the angles of the project.
 * The **In Review** board shows you items that are nearing completion, but need review by other team members
 * The **My items** board will show you items assigned to you
 
-## Have a Single Source of Truth
+### Have a Single Source of Truth
 Maintain a single field for important data such as target ship dates. Do not put it in descriptions or comments.  
 Projects automatically stay up to date with GitHub data, such as assignees, milestones, and labels.  
 
-## Use Automation
+### Use Automation
 * Use Built-in Automations
     * Archiving items automatically
     * Adding items automatically
 * GitHub Actions: https://docs.github.com/en/actions
 * GraphQL API enables you to automate routine project management tasks.
 
-### Using Built-in Automations
+#### Using Built-in Automations
 Update the **Status** of items based on certain events.  
 * Set status to **Backlog** when an item is added to your project
     * The status is automatically set when you add issues or drafts from the backlog view
@@ -286,7 +286,7 @@ To enable or disable built-in workflows.
 6. Under "set value, choose the value that you want to set the status to (Backlog, Ready, In progress, In review, or Done)
 7. Save
 
-### Archiving Items Automatically
+#### Archiving Items Automatically
 There is a 1,200-item limit for projects. Archive to keep that limit from being reached.  
 There is a 10,000 total item limit, so you will also want to permanently delete items regularly.  
 
@@ -299,7 +299,7 @@ There is a 10,000 total item limit, so you will also want to permanently delete 
      * This says all issues (`is:issue`), will be archived if they are closed (`is:closed`) for 2 weeks (`updated:<@today-2w`)
      * GitHub says this workflow will run every 12 hours
   
-### Adding Items Automatically
+#### Adding Items Automatically
 The free tier limits you to 1. Pro would get you 5.  
 You can add a work item when you add something to a repo.  
 
@@ -321,11 +321,11 @@ You can duplicate an auto-add to monitor up to four different repositories.
 
 Check the other default workflows to see what works for you.
 
-### Automating Projects using Actions
+#### Automating Projects using Actions
 Example action: automatically add a pull request to the project board with a **Status** of **Todo** with a **Date Posted** field set to today, when you mark a PR as **Ready for review**  
 The workflow is specific to a repository, so each repo in a project will need to be set up.
 
-#### QuickStart for GitHub Actions
+##### QuickStart for GitHub Actions
 1. Go to the root of one of your repositories
 2. Create a file with the full path `.github/workflows/{github-actions-filename}.yml`
      * The file name will be the name of the Git Action: **GitHub Actions Filename** would be the name on the workflow.
@@ -354,7 +354,7 @@ The workflow is specific to a repository, so each repo in a project will need to
 
 Note: search for github emojis to find lists of available emojis.
 
-#### Viewing Workflow Results
+##### Viewing Workflow Results
 1. Navigate to the main page of your repository
 2. Click **Actions** on the top row of tabs
 3. Click the name of the workflow you created in step 2
@@ -362,7 +362,7 @@ Note: search for github emojis to find lists of available emojis.
 5. Click the **Explore GitHub Actions** button
 6. Drill down into any step
 
-#### More Starter Workflows
+##### More Starter Workflows
 Creating your own Continuous Integration (CI) workflows is easy using the *starter workflows* provided:  
 https://github.com/actions/starter-workflows  
 Sample workflows exist for:
@@ -404,19 +404,19 @@ Choosing a starter workflow:
       3. Click the **Run workflow** button
            * A completed workflow row will appear, which you can dive down into to see each step performed
         
-### Use the GraphQL API to Manage Projects
+#### Use the GraphQL API to Manage Projects
 You can use it to manage a project and in a GitHub Actions workflow.  
 https://docs.github.com/en/issues/planning-and-tracking-with-projects/automating-your-project/using-the-api-to-manage-projects
 
 Example: setting a pull request to "ready for review" adds a new task with **Status** field set to **Todo** and the current date is added to a custom **Date Posted** field.  
 https://docs.github.com/en/issues/planning-and-tracking-with-projects/automating-your-project/automating-projects-using-actions  
 
-### Use Different Field Types
+#### Use Different Field Types
 Use a single select field to enforce specific values.  
 * This makes filters reliable and easy
 * You can also group by the specific values easily
 
-# Finding Your Projects
+## Finding Your Projects
 1. Click your profile picture on the top right
 2. Click **Projects**
 
@@ -428,7 +428,7 @@ or
      * Select **Created by Me** on the left side to see all projects you have created
 4. From the **Projects** page you can filter to find one in a long list
 
-### Syntax for Filtering a List of Projects
+#### Syntax for Filtering a List of Projects
 `is:open`: projects that are open
 `is:closed`: duh
 `is:template`: marked as template
@@ -442,27 +442,27 @@ Change the sort order.
 `sort:updated-desc`: descending
 `sort:created-asc` or `sort:created-desc`
 
-## Adding Your Project to a Repository
+### Adding Your Project to a Repository
 1. Navigate to the repo
 2. Click **Projects**
 3. Click **Link a Project**
 4. Select the **Project** from the list
      * A Check mark appears next to the linked project
 
-## Finding Projects Linked to a Repository
+### Finding Projects Linked to a Repository
 1. Navigate to the repo
 2. Click **Projects**
      * You may need to search for it
 3. Click the project name to open it
 
-# Sharing Project Updates
+## Sharing Project Updates
 Keep a team up to date with high-level overviews.  
 Statuses: "On Track", "At Risk"  
 You can also set start dates and target dates.  
 
 Status updates appear on your project's side panel and the project's header with a full list of all updates.
 
-## Add a Status Update
+### Add a Status Update
 1. Navigate to the project
 2. In the top right click the **Add status button** or the "slide out panel" button to open the side panel
 3. Click the **Add update** button
