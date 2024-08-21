@@ -26,7 +26,7 @@ It should be noted that all tutorials quickly become error-prone as new versions
 I will attempt to keep this up-to-date, but if the versions are not as indicated problems may exist.  
 I am following the guides on docs.cypress.io and they are out-of-date as I write this. As always, I follow along and use analytical thinking and a search engine to resolve the discrepancies.
 
-# Initial Setup for Tests
+## Initial Setup for Tests
 
 1. Create folder for the Repo
 1. Open a terminal in the folder. (CMD, PowerShell, or built in terminal of Visual Studio Code will work)
@@ -59,7 +59,7 @@ I am following the guides on docs.cypress.io and they are out-of-date as I write
     * The UI will display the example.cypress.io page that will help you to write future tests if you read it. You should read it, but save that for another day.
     * Do not navigate away from this page, or figure out how to get back here, because we will expect this page for the next steps.
 
-# Testing Basics
+## Testing Basics
 For this tutorial, I am going to use "https://example.cypress.io/" and "https://docs.cypress.io/". This is a good first step. Trying to adapt what you learn here to a site that is meaningful to you will help to make these skills stick.
 
 Cypress desktop should be on the test you wrote earlier with the test "test-the-kitchen-sink.cy.js" on the left and the example page on the right.
@@ -100,7 +100,7 @@ module.exports = defineConfig({
 
 This is only a slight improvement and we will skip to the better example for an enterprise testing solution with multiple environments.
 
-## Set Base URL in Environment Specific Configuration Files
+### Set Base URL in Environment Specific Configuration Files
 Examples exist everywhere on the internet setting a bad *example*. :)  
 Use a base URL in an environment specific configuration file for use in the `cy.visit()` or `cy.request()` commands. Do not hard code full URLs.
 
@@ -179,7 +179,7 @@ module.exports = defineConfig({
   
 These environment specific files will hold environment specific values. Do not use this file for anything that does not change from environment to environment.
 
-## Testing Redirects
+### Testing Redirects
 Frequently we expect someone typing a base URL into the browser will be redirected to another page. The next couple of tests will verify the page title and URL are what we expect when the redirect happens.
 First we will follow good testing practice and change the `describe()` and `it()` to a good description of the test.
 1. Change the first parameter of the `describe()` function to `describe('Test the redirect from the base URL' () => {`
@@ -206,7 +206,7 @@ A best practice is to double check your tests by making sure you can make it fai
 Change the expected text by deleting a character or adding one.  
 **Note**: the test will not immediately fail, but will instead retry for a while before giving up. This is a good thing, because page loads will vary depending on the application and we should not expect instantaneous results.
 
-## Getting the URL of the page
+### Getting the URL of the page
 This will build on the previous test to verify that the URL in the browser is the redirect URL.
 1. Add a second `it()` to the `describe()` function with the description as shown. `it('has the redirected page URL', () => { })`
 1. Add the `cy.visit('/')` command as in the previous test.
@@ -237,7 +237,7 @@ One could say that the `cy.visit('/')` command in the second `it()` is redundant
 As before, if you haven't already, check what the Cypress window looks like to make sure the test has passed as expected.  
 Again, a best practice is to double check your tests by making sure you can make it fail, by either changing the actual application under test or the test to see it fail.
 
-## Back to the Kitchen Sink
+### Back to the Kitchen Sink
 Before continuing, let's change the base URL back to "https://example.cypress.io". Try this on your own to test yourself and build stronger memories before going back to [Set Base URL in Environment Specific Configuration Files](#set-base-url-in-environment-specific-configuration-files).
 
 Lets clean up the previous spec file "test-the-kitchen-sink.cy.js" for the new URL. Replace the contents with the following:
@@ -256,10 +256,10 @@ Finally, let's rename the spec file to make it specific to the test.
 
 As you should be able to tell from the description, we are now going to learn how to query the page for elements. Specifically, we are going to find the heading (h1) on a specific page and test the text is what we expect.
 
-## Querying Page for Elements
+### Querying Page for Elements
 Use the `cy.get()` command to get elements on the page. The parameter used in the get is a string that will allow you to find elements by tagname, class, attributes, links, id, and many other ways.
 
-### Querying By Tag Name and Testing Inner Text
+#### Querying By Tag Name and Testing Inner Text
 1. Change the `cy.visit('/')` to `cy.visit('/commands/querying')`.
     * This is a relative path that is tacked onto the end of the base URL.
     * Notice that it is smart enough to handle the slashes '/'. If you leave off or include leading slashes in the `visit()` or leave off or include the slash in the base URL, it will resolve the URL as expected.
@@ -270,7 +270,7 @@ Use the `cy.get()` command to get elements on the page. The parameter used in th
     * The `invoke('text')` command gets the inner text of the element (`<h1>inner text<h1>` in HTML or `h1Element.innerText` in JavaScript)
 1. Next add the assertion that the text should equal what we see on the page: `cy.get('h1').invoke('text').should('equal', 'Querying')`
 
-### Querying By Class, Typing Text, and Testing Value Attribute
+#### Querying By Class, Typing Text, and Testing Value Attribute
 To get an element by class name you precede the value by the '.' operator like `cy.get('.action-email')`. Frequently, there will be a list of class names in the class attribute in the HTML but only use one of the class names to find the element.  
 Example: the HTML looks like `<input class="form-control action-email">`, but we only use the "action-email" class to find the element.
 
