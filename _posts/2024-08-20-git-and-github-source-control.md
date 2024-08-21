@@ -18,46 +18,46 @@ I use Visual Studio and Visual Studio Code extensions for Git, but still go to t
 Below are common scenarios used in day-to-day development.  
 
 [Repo Creation](#repo-creation)  
-* [Create New Repo](#Create-New-Repo)
-* [Clone a Repo](#Clone-a-Repo)
-* [Starting a Git Repo with Existing Code](#Starting-a-Git-Repo-with-Existing-Code)
-* [Git Fork](#Git-Fork)
+* [Create New Repo](#create-new-repo)
+* [Clone a Repo](#clone-a-repo)
+* [Starting a Git Repo with Existing Code](#starting-a-git-repo-with-existing-code)
+* [Git Fork](#fit-fork)
 
-[The Three States](#The-Three-States)  
-* [Git Status](#Git-Status)
-* [Git Add](#Git-Add)
-* [Git Commit](#Git-Commit)
-* [Git Log](#Git-Log)
-* [Git Reset](#Git-Reset)
-* [Git Restore](#Git-Restore)
-* [Git RM](#Git-RM)
+[The Three States](#the-three-states)  
+* [Git Status](#git-status)
+* [Git Add](#git-add)
+* [Git Commit](#git-commit)
+* [Git Log](#git-log)
+* [Git Reset](#git-reset)
+* [Git Restore](#git-restore)
+* [Git RM](#git-rm)
 
-[Avoiding Merge Conflicts](#Avoiding-Merge-Conflicts)  
+[Avoiding Merge Conflicts](#avoiding-merge-conflicts)  
 
-[Developing a New Feature](#Developing-a-New-Feature)
-* [Start with a Clean Working Tree](#Start-with-a-Clean-Working-Tree)
-* [Sync your Local Repository with the Remote](#Sync-your-Local-Repository-with-the-Remote)
-* [Creating a feature branch](#Creating-a-Feature-Branch)
-* [Development Source Control Process](#Development-Source-Control-Process)
-* [Push Branch to the Remote](#Push-Branch-to-the-Remote)
-* [Create a Pull Request](#Create-a-Pull-Request)
-* [Modifying Pull Request](#Modifying-Pull-Request)
-* [Merge Pull Request](#Merge-Pull-Request)
+[Developing a New Feature](#developing-a-new-feature)
+* [Start with a Clean Working Tree](#start-with-a-clean-working-tree)
+* [Sync your Local Repository with the Remote](#sync-your-local-repository-with-the-remote)
+* [Creating a feature branch](#creating-a-feature-branch)
+* [Development Source Control Process](#development-source-control-process)
+* [Push Branch to the Remote](#push-branch-to-the-remote)
+* [Create a Pull Request](#create-a-pull-request)
+* [Modifying Pull Request](#modifying-pull-request)
+* [Merge Pull Request](#merge-pull-request)
 
-[Double Check Your Work](#Double-Check-Your-Work)
-* [Git Diff Before Staging](#Git-Diff-Before-Staging)
-* [Git Diff Between Staged Files and Last Commit](#Git-Diff-Between-Staged-Files-and-Last-Commit)
-* [Git Log to View Commits on Feature Branch since it was Checked Out](#Git-Log-to-View-Commits-on-Feature-Branch-since-it-was-Checked-Out)
+[Double Check Your Work](#double-check-your-work)
+* [Git Diff Before Staging](#git-diff-before-staging)
+* [Git Diff Between Staged Files and Last Commit](#git-diff-between-staged-files-and-last-commit)
+* [Git Log to View Commits on Feature Branch since it was Checked Out](#git-log-to-view-commits-on-feature-branch-since-it-was-checked-out)
 
-[Renaming a Branch](#Renaming-a-Branch)  
+[Renaming a Branch](#renaming-a-branch)  
 
-[Merge Branches](#Merge-Branches)
-* [How to Tell if a Branch has been Merged](#How-to-Tell-if-a-Branch-has-been-Merged)
+[Merge Branches](#merge-branches)
+* [How to Tell if a Branch has been Merged](#how-to-tell-if-a-branch-has-been-merged)
 
-[Hotfix Forces You to Stop Working on a Feature](#Hotfix-Forces-You-to-Stop-Working-on-a-Feature)
-* [Git Stash](#Git-Stash)
+[Hotfix Forces You to Stop Working on a Feature](#hotfix-forces-you-to-stop-working-on-a-feature)
+* [Git Stash](#git-stash)
 
-[Algorithm Testing Using Branches](#Algorithm-Testing-Using-Branches)
+[Algorithm Comparison Testing Using Branches](#algorithm-comparison-testing-using-branches)
 
 
 
@@ -470,7 +470,7 @@ Note: if you made changes to a file in the hotfix that you are also working on i
 
 
 
-# Algorithm Testing Using Branches
+# Algorithm Comparison Testing Using Branches
 Using branches to try out different algorithms is a nice way to see the results and quickly switch between to alternatives to see which one is best.  
 This is especially true of front end local A/B comparisons to compare styles.  
 Switching quickly between branches is also a good way to demo differences to stakeholders.  
