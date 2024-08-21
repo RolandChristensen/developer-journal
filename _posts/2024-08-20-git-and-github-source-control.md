@@ -14,7 +14,7 @@ If you find yourself in trouble and can't figure out how to undo a mistake, this
 This documents Git using the command line, but the skills outlined can be reproduced by other tools you use to interface with Git.  
 I use Visual Studio and Visual Studio Code extensions for Git, but still go to the command line frequently and create scripts which demand knowledge of the command line.
 
-# Quick Start Scenarios
+## Quick Start Scenarios
 Below are common scenarios used in day-to-day development.  
 
 [Repo Creation](#repo-creation)  
@@ -61,14 +61,14 @@ Below are common scenarios used in day-to-day development.
 
 
 
-# Repo Creation
+## Repo Creation
 For an in depth tutorial, see the "***create-repo.md***" file in this [repository](https://github.com/RolandChristensen/git-guided-examples).  
 I will go through two ways to create a repo.  
 1. Create a new *blank canvas* repo on GitHub and clone it to your local machine.
 1. Create a project on your local machine, decide you want to keep it, then create a repo using the existing code, and finally push it to GitHub.
     * You could be trying out different approaches then settle on the final architectural design you want to finally push to the remote.
 
-## Create New Repo
+### Create New Repo
 1. Navigate your browser to: h__ps://github.com/{YourGitHubUserName}
 1. Click the *Repositories* tab at the top of the page.
 1. Click the *New* button.  
@@ -77,7 +77,7 @@ I will go through two ways to create a repo.
     * Fill in the rest of the form as needed for the project.
 1. Push the *Create Repository* button.
 
-## Clone a Repo
+### Clone a Repo
 To clone the new repo just created above:
 1. Create a folder on your local computer to hold the repository.
 1. Copy the URL to the GitHub remote repository.
@@ -89,7 +89,7 @@ To clone the new repo just created above:
 1. Type "git clone" and then right click Git Bash and choose ***paste*** from the context menu. 
     * Example: `git clone https://github.com/{your-username}/{repo-name}.git`
 
-## Starting a Git Repo with Existing Code
+### Starting a Git Repo with Existing Code
 1. Open Git Bash in the project folder (Shift + Right click the folder and choose "open Git Bash here" from the context menu).
 1. `git init -b main` to initialize a new repo and change the default branch name to "main".
 1. Add `.gitignore` file to keep unnecessary files and secrets out of source control.
@@ -102,14 +102,14 @@ To clone the new repo just created above:
 1. `git push -u origin main`: pushes the changes to the remote repository on the "main" branch. (As a general rule, you should not push directly to the "main" branch, but instead create a feature branch to work off of. The initial push is the only exception to this rule.)
     * The "-u" flag sets origin as the upstream remote for your branch. This will save you time in the future, because you can simply use `git pull`, `git fetch`, or `git push` when on this branch and will not need to type the "origin {branch-name}" part.
 
-## Git Fork
+### Git Fork
 Use `git fork` when you do not have permission to contribute to the repository.
 
 A *clone* of a repository assumes you can create a pull request and modify the original repo, while a *fork* assumes you will be taking a fork in the road and all subsequent changes are separate from the parent repo. "Thanks for the start, I really appreciate it, but I want to take this in my own direction."
 
 
 
-# The Three States
+## The Three States
 For an in depth tutorial, see the "***three-states.md***" file in this [repository](https://github.com/RolandChristensen/git-guided-examples).  
 
 There are three states of tracked files. The ***Working Directory***, the ***Staging Area***, and the code ***Repository***.
@@ -125,14 +125,14 @@ There are three states of tracked files. The ***Working Directory***, the ***Sta
     * To back changes out of a ***commit***, use the `git reset --soft {commit-hash}` command.
     * To completely remove a ***commit*** and completely lose all the work done, use the `git reset --hard {commit-hash}` command. 
 
-## Git Status
+### Git Status
 `git status` is used to see modified tracked files in the ***Working Directory***.  
 Modified files in the ***Working Directory*** show up under the heading "Changes not staged for commit:".
 
 `git status` also shows you modified tracked files in the ***Staged Area***.  
 Modified files in the ***Staged Area*** are under the heading "Changes to be committed:".
 
-## Git Add
+### Git Add
 This command will move changed files in the ***Working Directory*** to the ***Staging Area***.  
 `git add {filename.ext}` or `git add {path/to/file.ext}` to ***stage*** a single file.  
 `git add {path/to/directory/}` to ***stage*** a directory.  
@@ -140,7 +140,7 @@ This command will move changed files in the ***Working Directory*** to the ***St
 
 After adding files to the ***Staging Area*** you can verify the staging by using `git status`.
 
-## Git Commit
+### Git Commit
 This command will move changed files in the ***Staging Area*** to the ***Repository*** of the current branch.  
 Planning your changes in advance before diving into coding will help you organize your work and plan your *commits* well.  
 Make commits fully functional, testable units of code, complete with unit tests. As the word implies *commits* are a way of saying you are confident and ready to *commit* to the change you made.  
@@ -156,7 +156,7 @@ Note: you can skip the `git add {operand}` part if you dealing with a manageable
 `git commit -a -m "Story 101: made a single line change to file x to do y."`: Adds and commits all changes in one command.  
 The "-a" flag does not work with ***untracked*** files, but only files that have been *added* before, which is probably for the best because it makes you look at each file to make sure you shouldn't add it to the .gitignore file.  
 
-## Git Log
+### Git Log
 `git log` shows you all of the ***commits*** in the ***Repository*** / ***.git directory*** for the branch you are currently on.  
 `git log {branch-name}` shows you all of the ***commits*** for the branch indicated.  
 `git log --oneline {branch-name}` shows you the ***commits*** in an abbreviated way, omitting the author and date of changes.  
@@ -164,7 +164,7 @@ The "-a" flag does not work with ***untracked*** files, but only files that have
 Assuming you created a branch named "branch-name" based off the "main" branch,  
 `git log --oneline main..branch-name` only shows the commits on the branch since it was created.  
 
-## Git Reset
+### Git Reset
 You can reverse the process to back changes out of any of the three states.  
 To back a ***commit*** out of the ***Repository*** to the ***Staging Area***, you want to ***reset*** the ***HEAD*** pointer to point to the last commit you want to keep.  
 Using ***reset*** with the `--soft` flag will keep your changes and move them back to the ***Staging Area***. If you use the `--hard` flag all changes will be forever lost.  
@@ -176,7 +176,7 @@ Using ***reset*** with the `--soft` flag will keep your changes and move them ba
 1. `git reset --soft {hash-you-copied}` to back the commits, after the one you copied the hash from, out to the ***Staging Area***. (Right click Git Bash and select paste from the context menu to paste the hash.)
 1. Verify the change by using `git log` and `git status` to see the changes.
 
-## Git Restore
+### Git Restore
 To back out changes in the ***Staging Area*** to the ***Working Directory***, "restore" the files with the "--staged" flag.  
 `git restore --staged {file.ext}` or `git restore --staged {path/to/file.ext}` to back out a file.  
 `git restore --staged .` to back out everything all at once.  
@@ -188,7 +188,7 @@ This is like a big *undo* command for all changes made on a single ***tracked***
 `git restore .` to *undo* all changes in all files in the ***Working Directory***, the mightiest *undo*. (It should be obvious that you had better be absolutely sure you want to do this.)  
 Note: this will not delete files, but only undo all changes on ***tracked*** files. To delete files from the ***Working Directory***, simply delete them using the file system.  
 
-## Git RM
+### Git RM
 For an in depth tutorial, see this [repository](https://github.com/RolandChristensen/git-guided-examples) repositories README and search for "Git RM".  
 RM stands for remove, and Git RM is used to remove a file from the ***Repository***. It does not remove the file or files from the file system, but removes file(s) from the ***Repository***.    
 To keep files from being tracked and out of your ***Working Directory*** you will want to add the files to a .gitignore file.  
@@ -216,7 +216,7 @@ To complete the process:
 
 
 
-# Avoiding Merge Conflicts
+## Avoiding Merge Conflicts
 When working with other developers, to improve code quality and reduce any headaches when merging, follow these simple rules.
 
 * Start with a ***clean working directory*** before beginning new work.
@@ -227,13 +227,13 @@ When working with other developers, to improve code quality and reduce any heada
 * Do not have two developers work on code that will touch the same *files* simultaneously.  
     * During planning sessions, coordinate work that will be touching the same *file(s)* to be worked on consecutively rather than simultaneously.  
     * *All developers*, who are about to pick up new work, should be aware of what is being worked on and what *files* are likely to be modified.  
-    * Note: C# has *partial classes* that will split a class into two or more separate files allowing multiple people to work on a class simultaneously without risking merge conflicts.  
+    * Note: C## has *partial classes* that will split a class into two or more separate files allowing multiple people to work on a class simultaneously without risking merge conflicts.  
 
 
-# Developing a New Feature
+## Developing a New Feature
 To reduce the chances of merge conflicts, accidentally overwriting code, or introducing unexpected changes follow these source control best practices.
 
-## Start with a Clean Working Tree
+### Start with a Clean Working Tree
 Do a simple verification that you do not have any uncommitted changes on your ***main*** branch (staged or unstaged changes).
 
 `git status` will tell you what branch you are on, if you have any staged or unstaged changes, and whether you need to ***pull*** any changes on the remote.  
@@ -245,7 +245,7 @@ If you have uncommitted files, you will need to figure out what should be done w
 * Stash the changes, if they are needed and incomplete, so you can recover them later. (Search for "Stash" to find instructions below)
 * Add and commit them to the appropriate branch, if the changes are needed and complete.
 
-## Sync your Local Repository with the Remote
+### Sync your Local Repository with the Remote
 This assumes you are going to merge into a branch named ***main***, but you can substitute ***main*** for any branch name such as ***dev*** if you are using a more complex branching strategy. With complexity, comes more chances to make mistakes, but plenty of organizations use complex strategies.  
 
 `git status` will tell you if you are up to date with 'origin/main' or not. If not, you will need to ***pull*** or ***fetch***.  
@@ -264,7 +264,7 @@ If, for some reason, you are concerned about pulling the current branch as it is
 1. `git log origin/main` and/or `git diff ..origin/main` will show you what has changed in the remote repo since you last pulled. If you are happy to merge those new changes into your local ***main*** branch then go ahead. If you do not want the current state of the remote repo, for whatever reason, you can leave it the way it is because you only ***fetched*** it.
 1. If you are sure you are happy to merge, `git merge origin/{branch-name}`. Example: `git merge origin/main`
 
-## Creating a Feature Branch
+### Creating a Feature Branch
 Isolate your new code from the shared branch everyone is working from, until the new branch has been thoroughly tested.  
 I will use the name "feature-name" for all these instructions.  
 
@@ -274,11 +274,11 @@ I will show two ways of doing this:
 
 The advantage of creating the branch on the remote is that others can see that you have a branch created for the work to be done. 
 
-### To Create a Branch Locally
+#### To Create a Branch Locally
 1. `git status` to verify you are on the main branch. If not, `git checkout main`.
 1. `git branch -b new-branch-name` creates a new branch identical to the current branch and 'checks out' that new branch. The branch name should correspond to the feature you are starting. Often a ticket number is included.
 
-### To Create a Branch on GitHub
+#### To Create a Branch on GitHub
 1. Navigate to the GitHub repo you are developing the new feature for, such as: h__ps://github.com/{your-github-username}/{repo-name}
 1. Click the ***Branches*** button underneath the name of the repo
     * The ***Branches*** page will appear.
@@ -294,7 +294,7 @@ Now that the branch is created on the remote, we will finish on your local machi
     * The output should contain a line similar to this: `* [new branch]  feature-name  -> origin/feature-name` the name of which should be the name you created on the remote.
 1. `git checkout {feature-branch-name}` Example: `git checkout feature-name`
 
-## Development Source Control Process
+### Development Source Control Process
 Choosing when to commit should be deliberate. 
 * If you plan your work in advance, you should be able to divide the work up into commits in advance of doing the work.  
 * A commit should be a fully functional, testable unit of code, complete with unit tests to test it.
@@ -306,13 +306,13 @@ The basic process is:
 1. `git commit -m "Useful commit message that describes the change"`
 1. Repeat until the feature is done.
 
-## Push Branch to the Remote
+### Push Branch to the Remote
 When done with the feature, you will want to ***push*** the feature branch to the remote.  
 
 1. `git push -u origin {feature-branch-name}` to ***push*** the branch to the remote.
     * The "-u" flag sets origin as the upstream remote for your branch. This will save you time in the future, because you can simply use `git pull`, `git fetch`, or `git push` when on this branch and will not need to type the "origin {branch-name}" part.
 
-## Create a Pull Request
+### Create a Pull Request
 Getting others to review your work improves the quality of the work and increases your knowledge.  
 I am not going to go into the details of setting GitHub rulesets and actions here, but only go through the basics.
 
@@ -332,7 +332,7 @@ The ***Files Changed*** tab will give you an easy to read list of changes.
 * You can select specific sections of code and leave a comment on that section.
 * From the ***Review Changes*** dropdown you can also ***Approve*** or ***Request Changes***
 
-## Modifying Pull Request
+### Modifying Pull Request
 If there are comments that need addressing or requested changes, you will need to address those.  
 
 1. If you have started another feature, you will need to make sure you can ***checkout*** the branch you are trying to merge without unintended consequences.
@@ -350,7 +350,7 @@ When all changes are done:
 1. When you return to the ***pull request*** GitHub will recheck the branches ability to be merged, update the commit history, and update the diffs. (You may need to push the "refresh" button, if you see it.)
 1. You will want to add a comment and tag the person who made comments or requested the change to recheck the ***pull request***.
 
-## Merge Pull Request
+### Merge Pull Request
 If the ***pull request*** is ***approved*** by everyone required and all other quality gates such as unit tests and static analysis tools have passed:
 
 1. Go to the ***Conversations*** tab
@@ -368,11 +368,11 @@ On your local machine you will want to fetch and merge the pull request into you
 
 
 
-# Double Check Your Work
+## Double Check Your Work
 It is a good practice to double check everything you do before ***staging*** or ***committing***.  
 It is also a good idea to review your ***commits*** before the final push to the remote.
 
-## Git Diff Before Staging
+### Git Diff Before Staging
 Double check your work before you add it to the "staging" area.  
 `git diff`  
 
@@ -382,17 +382,17 @@ The following assumes you use the *vimdiff* tool:
 
 The diff in the command line is useful, but there are much better tools for viewing diffs (Visual Studio Git extension for one)
 
-## Git Diff Between Staged Files and Last Commit
+### Git Diff Between Staged Files and Last Commit
 Once staged, you may want to see the difference between staged files and the last commit before committing.  
 `git diff --staged` or `git diff --cached`
 
-## Git Log to View Commits on Feature Branch since it was Checked Out
+### Git Log to View Commits on Feature Branch since it was Checked Out
 If you planned well and used good messages, you should be able to clearly see the design of the code in the ***commit log***.
 `git log --oneline main..branch-name` displays only the commits you created since the feature branch was checked out. The `--oneline` flag abbreviates the log to one line, omitting the author and date information.
 
 
 
-# Renaming a Branch
+## Renaming a Branch
 At work, I include a ticket number in my feature branch name and have transposed numbers before. You can rename a local branch with the following command:  
 `git branch -m oldName newName`  
 
@@ -401,14 +401,14 @@ Example: Many prefer to use *main* instead of *master* for the top-most branch.
 
 
 
-# Merge Branches
+## Merge Branches
 Note: this is a bad idea when working with others. You should not be merging changes into "main" without going through a code review and additional quality gates. However, when working on a local repo by yourself, this is perfectly fine.  
 
 1. `git checkout main` switch to the branch you want to merge the changes into.
 1. `git merge branch-name` merge the branch into the current branch you are on.
 1. `git branch -d branch-name` delete the branch now that you are done with it.
 
-## How to Tell if a Branch has been Merged
+### How to Tell if a Branch has been Merged
 Scenario: you are checking to see what branches are on your local repository, `git branch`, to see all the branches on your local and there is a branch in the list that shouldn't be there.  
 You may remember working on the feature, but cannot remember if you merged it or not.  
 You don't want to delete the branch unless you are sure you have merged it.  
@@ -449,14 +449,14 @@ If you still have any questions about a commit, follow these directions to exami
 
 
 
-# Hotfix Forces You to Stop Working on a Feature
+## Hotfix Forces You to Stop Working on a Feature
 You are working on a new feature, but are asked to switch to a hotfix that needs to go out A.S.A.P.  
 Before starting you want to make sure you are starting with a clean ***Working Directory*** and ***Staging Area***.  
 
 All commits on the branch you are working on will remain when you change branches, so you do not need to worry about them.  
 Any uncommitted changes need to be ***stashed***.
 
-## Git Stash
+### Git Stash
 1. `git stash --include-untracked` to stash files that are currently tracked and untracked files. The "--include-untracked" flag will include the ***Working Directory***, which is probably a good idea to avoid checking changes into the hotfix branch inadvertently.  
 1. `git checkout main` to switch to parent branch you will be merging the hotfix into.
 1. Follow the instructions in the [Developing a New Feature](#Developing-a-New-Feature) section and do not cut corners. Do not let the pressure to go fast interfere with the quality of the work.
@@ -470,7 +470,7 @@ Note: if you made changes to a file in the hotfix that you are also working on i
 
 
 
-# Algorithm Comparison Testing Using Branches
+## Algorithm Comparison Testing Using Branches
 Using branches to try out different algorithms is a nice way to see the results and quickly switch between to alternatives to see which one is best.  
 This is especially true of front end local A/B comparisons to compare styles.  
 Switching quickly between branches is also a good way to demo differences to stakeholders.  
