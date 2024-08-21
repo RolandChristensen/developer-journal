@@ -17,7 +17,7 @@ I use Visual Studio and Visual Studio Code extensions for Git, but still go to t
 # Quick Start Scenarios
 Below are common scenarios used in day-to-day development.  
 
-[Repo Creation](#Repo-Creation)  
+[Repo Creation](#repo-creation)  
 * [Create New Repo](#Create-New-Repo)
 * [Clone a Repo](#Clone-a-Repo)
 * [Starting a Git Repo with Existing Code](#Starting-a-Git-Repo-with-Existing-Code)
