@@ -1,5 +1,5 @@
 ---
-title: "GitHub and GitHub Source Control"
+title: "Git and GitHub Source Control"
 date: 2024-08-20
 ---
 
