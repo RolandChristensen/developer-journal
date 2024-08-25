@@ -65,8 +65,7 @@ Below are common scenarios used in day-to-day development.
 For an in depth tutorial, see the "***create-repo.md***" file in this [repository](https://github.com/RolandChristensen/git-guided-examples).  
 I will go through two ways to create a repo.  
 1. Create a new *blank canvas* repo on GitHub and clone it to your local machine.
-1. Create a project on your local machine, decide you want to keep it, then create a repo using the existing code, and finally push it to GitHub.
-    * You could be trying out different approaches then settle on the final architectural design you want to finally push to the remote.
+1. Create a project on your local machine, then create a repo using the existing code, and finally push it to GitHub.
 
 ### Create New Repo
 1. Navigate your browser to: h__ps://github.com/{YourGitHubUserName}
