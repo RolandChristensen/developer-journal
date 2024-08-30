@@ -88,6 +88,11 @@ To clone the new repo just created above:
 1. Type "git clone" and then right click Git Bash and choose ***paste*** from the context menu. 
     * Example: `git clone https://github.com/{your-username}/{repo-name}.git`
 
+### Fork instead of Clone
+*Fork* a repo when you cannot or will not be *contributing* to the repository, but want to use the repo as a starting point for the project you have in mind.
+
+A *clone* of a repository assumes you can create a pull request and modify the original repo, while a *fork* assumes you will be taking a fork in the road and all subsequent changes are separate from the parent repo. "Thanks for the start, I really appreciate it, but I want to take this in my own direction."
+
 ### Starting a Git Repo with Existing Code
 1. Open Git Bash in the project folder (Shift + Right click the folder and choose "open Git Bash here" from the context menu).
 1. `git init -b main` to initialize a new repo and change the default branch name to "main".
@@ -100,11 +105,6 @@ To clone the new repo just created above:
 1. `git remote add origin https://github.com/{your-username}/{repo-name}.git`: lets Git know where to direct any "push", "pull", or "fetch".
 1. `git push -u origin main`: pushes the changes to the remote repository on the "main" branch. (As a general rule, you should not push directly to the "main" branch, but instead create a feature branch to work off of. The initial push is the only exception to this rule.)
     * The "-u" flag sets origin as the upstream remote for your branch. This will save you time in the future, because you can simply use `git pull`, `git fetch`, or `git push` when on this branch and will not need to type the "origin {branch-name}" part.
-
-### Git Fork
-Use `git fork` when you do not have permission to contribute to the repository.
-
-A *clone* of a repository assumes you can create a pull request and modify the original repo, while a *fork* assumes you will be taking a fork in the road and all subsequent changes are separate from the parent repo. "Thanks for the start, I really appreciate it, but I want to take this in my own direction."
 
 
 
