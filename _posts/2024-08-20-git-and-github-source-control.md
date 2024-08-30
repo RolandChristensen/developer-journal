@@ -88,10 +88,20 @@ To clone the new repo just created above:
 1. Type "git clone" and then right click Git Bash and choose ***paste*** from the context menu. 
     * Example: `git clone https://github.com/{your-username}/{repo-name}.git`
 
-### Fork instead of Clone
+### Fork Instead of Clone
 *Fork* a repo when you cannot or will not be *contributing* to the repository, but want to use the repo as a starting point for the project you have in mind.
 
 A *clone* of a repository assumes you can create a pull request and modify the original repo, while a *fork* assumes you will be taking a fork in the road and all subsequent changes are separate from the parent repo. "Thanks for the start, I really appreciate it, but I want to take this in my own direction."
+
+1. Find a repo you want to *fork*.
+2. Navigate to the repo.
+3. Click the ***<> Code*** tab, if you are not already on it.
+4. Click the ***Fork*** near the top right of the page, under the tabs.
+    * This will open the ***Create a new fork*** page.
+    * The default options are most likely what you want, but take your time to make changes as you see fit.
+5. Click the ***Create fork*** button.
+
+The repo is now in your GitHub and you can ***clone*** it to your local and begin work.
 
 ### Starting a Git Repo with Existing Code
 1. Open Git Bash in the project folder (Shift + Right click the folder and choose "open Git Bash here" from the context menu).
