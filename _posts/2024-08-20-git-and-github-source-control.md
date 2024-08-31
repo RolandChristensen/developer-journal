@@ -89,7 +89,7 @@ To clone the new repo just created above:
     * Example: `git clone https://github.com/{your-username}/{repo-name}.git`
 
 ### Fork Instead of Clone
-*Fork* a repo when you cannot or will not be *contributing* to the repository, but want to use the repo as a starting point for the project you have in mind.
+*Fork* a repo when you cannot, or will not, *contribute* to the repository, but want to use the repo as a starting point for the project you have in mind.
 
 A *clone* of a repository assumes you can create a pull request and modify the original repo, while a *fork* assumes you will be taking a fork in the road and all subsequent changes are separate from the parent repo. "Thanks for the start, I really appreciate it, but I want to take this in my own direction."
 
