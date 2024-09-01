@@ -86,7 +86,7 @@ To clone the new repo just created above:
         * Click the ***Copy url to clipboard*** button (the one that looks like two boxes on top of each other)
 1. Open Git Bash (Shift + Right click the folder created above and choose "open Git Bash here" from the context menu)
 1. Type "git clone" and then right click Git Bash and choose ***paste*** from the context menu. 
-    * Example: `git clone https://github.com/{your-username}/{repo-name}.git`
+    * Example: `git clone h__ps://github.com/{your-username}/{repo-name}.git`
 
 ### Fork Instead of Clone
 *Fork* a repo when you cannot, or will not, *contribute* to the repository, but want to use the repo as a starting point for the project you have in mind.
@@ -110,9 +110,9 @@ The repo is now in your GitHub and you can ***clone*** it to your local and begi
 1. `git add .`, `git add file-name`, `git add directory-name` to stage files to be tracked.
 1. `git commit -m "First commit of existing code"`
 1. Follow the instructions in the "Create New Repo" above.
-1. Copy the URL on the "Quick Setup" page that appears. (https://github.com/{your-github-username}/{repo-name}.git)
+1. Copy the URL on the "Quick Setup" page that appears. (h__ps://github.com/{your-github-username}/{repo-name}.git)
     * Click the ***Copy url to clipboard*** button (the one that looks like two boxes on top of each other)
-1. `git remote add origin https://github.com/{your-username}/{repo-name}.git`: lets Git know where to direct any "push", "pull", or "fetch".
+1. `git remote add origin h__ps://github.com/{your-username}/{repo-name}.git`: lets Git know where to direct any "push", "pull", or "fetch".
 1. `git push -u origin main`: pushes the changes to the remote repository on the "main" branch. (As a general rule, you should not push directly to the "main" branch, but instead create a feature branch to work off of. The initial push is the only exception to this rule.)
     * The "-u" flag sets origin as the upstream remote for your branch. This will save you time in the future, because you can simply use `git pull`, `git fetch`, or `git push` when on this branch and will not need to type the "origin {branch-name}" part.
 
@@ -198,7 +198,6 @@ This is like a big *undo* command for all changes made on a single ***tracked***
 Note: this will not delete files, but only undo all changes on ***tracked*** files. To delete files from the ***Working Directory***, simply delete them using the file system.  
 
 ### Git RM
-For an in depth tutorial, see this [repository](https://github.com/RolandChristensen/git-guided-examples) repositories README and search for "Git RM".  
 RM stands for remove, and Git RM is used to remove a file from the ***Repository***. It does not remove the file or files from the file system, but removes file(s) from the ***Repository***.    
 To keep files from being tracked and out of your ***Working Directory*** you will want to add the files to a .gitignore file.  
 
