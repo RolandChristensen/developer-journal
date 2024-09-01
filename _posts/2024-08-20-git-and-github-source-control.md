@@ -62,7 +62,7 @@ Below are common scenarios used in day-to-day development.
 
 
 ## Repo Creation
-For an in depth tutorial, see the "***create-repo.md***" file in this [repository](https://github.com/RolandChristensen/git-guided-examples).  
+For an in depth tutorial, see the "***create-repo.md***" file in this [repository](https://github.com/RolandChristensen/git-guided-examples/blob/main/tutorials/create-repo.md).  
 I will go through two ways to create a repo.  
 1. Create a new *blank canvas* repo on GitHub and clone it to your local machine.
 1. Create a project on your local machine, then create a repo using the existing code, and finally push it to GitHub.
@@ -119,7 +119,7 @@ The repo is now in your GitHub and you can ***clone*** it to your local and begi
 
 
 ## The Three States
-For an in depth tutorial, see the "***three-states.md***" file in this [repository](https://github.com/RolandChristensen/git-guided-examples).  
+For an in depth tutorial, see the "***three-states.md***" file in this [repository](https://github.com/RolandChristensen/git-guided-examples/blob/main/tutorials/three-states.md).  
 
 There are three states of tracked files. The ***Working Directory***, the ***Staging Area***, and the code ***Repository***.
 1. ***Working Directory***: When you add a file or modify a file that is tracked by git, it will add it to the ***modified*** or ***working directory*** of its database. 
