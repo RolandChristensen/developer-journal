@@ -122,17 +122,19 @@ The repo is now in your GitHub and you can ***clone*** it to your local and begi
 For an in depth tutorial, see the "***three-states.md***" file in this [repository](https://github.com/RolandChristensen/git-guided-examples/blob/main/tutorials/three-states.md).  
 
 There are three states of tracked files. The ***Working Directory***, the ***Staging Area***, and the code ***Repository***.
-1. ***Working Directory***: When you add a file or modify a file that is tracked by git, it will add it to the ***modified*** or ***working directory*** of its database. 
+1. ***Working Directory***: When you add a new file or modify a file tracked by git, it will be added to the ***modified*** or ***working directory*** of the Git database. 
     * Use the `git status` command to see the changed files that are tracked in the ***working directory***.
     * Adding the "***.gitignore***" file is the way to stop tracking any file you do not want in source control and will remove it from the ***working directory***.
     * To undo all changes made to a file in the ***Working Directory***, use the `git restore {path/to/file.ext}` command.
-2. ***Staging Area***: Using the `git add {operand}` command will move file changes to the ***staging area*** or ***index*** of Git's database. 
+2. ***Staging Area***: The ***staging area***, or ***index*** of Git's database, is where you organize files into well defined, coherent, functional code that is fully tested and ready to *commit*.
+    * Use the `git add {operand}` command to move files from the ***working directory*** to the ***staging area***. 
     * Use `git status` to see files added to the ***staging area***.
     * To back changes out of *staging*, use the `git restore --staged {path/to/file.ext}` command.
-3. ***Repository***: Using the `git commit -m "Useful message"` command indicates that you are very confident the changes work as expected and adds the files to the ***repository*** or ***.git directory*** under the current ***branch*** you have checked out. 
+4. ***Repository***: The final state of your changes where you are very confident and have *committed* to the changes believing them to be well tested and ready for deployment. The ***repository*** or ***.git directory*** contains all the ***commits*** on the current ***branch***.
+    * Use the `git commit -m "Descriptive message"` command to move files from the ***staging area*** to the ***repository***. 
     * Use `git log` to see file changes that have been committed to the currently checked out ***branch*** of the ***repository***
     * To back changes out of a ***commit***, use the `git reset --soft {commit-hash}` command.
-    * To completely remove a ***commit*** and completely lose all the work done, use the `git reset --hard {commit-hash}` command. 
+    * To completely remove a ***commit*** from the ***repository*** and permanently lose all the work done, use the `git reset --hard {commit-hash}` command. Warning: you will delete all the changes, so be careful using the "--hard" flag.
 
 ### Git Status
 `git status` is used to see modified tracked files in the ***Working Directory***.  
