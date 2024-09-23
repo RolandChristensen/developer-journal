@@ -312,9 +312,17 @@ Choosing when to commit should be deliberate.
 The basic process is:
 1. Develop a fully functional, testable unit of code, complete with unit tests.
 1. `git diff` to view the changes you have made to double check your work before committing. (There are much better tools for viewing diffs, Visual Studio and Visual Studio Code have great extensions.)
-1. `git add .`, `git add file-name`, or `git add directory-name` to stage files to be tracked.
+1. `git add .`, `git add file-name`, or `git add directory-name` to stage files to be tracked. Staging files allows you to check the ***diff*** in order to double check your work as you go.
+1. Repeat steps 1-3 until the ***commit*** is done.
 1. `git commit -m "Useful commit message that describes the change"`
-1. Repeat until the feature is done.
+1. Repeat the above until the feature is done.
+
+### Sync Remote Changes
+If you pay attention to the GitHub ***pull requests (PRs)***, you will know what files have been changed and can make sure your changes work with those changes by merging them on your local. To avoid merge conflicts, do not ***commit*** any changes to a file that has also changed on the remote until you have merged them on your local branch. Ideally, the team should avoid having more than one person work on the same file at the same time.
+1. `git checkout main`
+1. `git pull`
+1. `git checkout {feature-branch-name}`
+1. `git rebase main` merges main into your feature branch and makes the "log of commits" correctly match the merge times.
 
 ### Push Branch to the Remote
 When done with the feature, you will want to ***push*** the feature branch to the remote.  
