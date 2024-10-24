@@ -13,6 +13,18 @@ https://en.wikipedia.org/wiki/TestOps
 * Control (Source control, collaboration tools, ownership)
 * Insights (data, coverage, risk analysis)
 
+## Service Oriented Architechture Testing
+***Front-end***  
+* Verify all States of controls (buttons, text fields, dropdowns, ...)
+    * Enabled / Disabled (Buttons, dropdowns, input text fields)
+    * Options of dropdowns
+    * Text field values
+    * Output only fields
+    * ...
+* Verify GET request fields are properly displayed on front-end
+* Verify POST, PUT request fields are properly routed into payload / query parameters
+* ...
+
 ## Test Automation Pyramid
 As you ascend the pyramid, the tests become more costly in resources for creation, maintenance, and time and computing resources to run.
 
