@@ -258,8 +258,6 @@ If you have uncommitted files, you will need to figure out what should be done w
 ### Sync your Local Repository with the Remote
 This assumes you are going to merge into a branch named ***main***, but you can substitute ***main*** for any branch name such as ***dev*** if you are using a more complex branching strategy. With complexity, comes more chances to make mistakes, but plenty of organizations use complex strategies.  
 
-`git status` will tell you if you are up to date with 'origin/main' or not. If not, you will need to ***pull*** or ***fetch***.  
-
 Keeping your local repository up-to-date is critical to avoid overwriting someone elses work.  
 If you have well defined quality gates employed to prevent merging code that has not been thoroughly tested, you should usually not be worried to get the latest state of the main branch.  
 
