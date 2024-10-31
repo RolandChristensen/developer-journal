@@ -320,7 +320,7 @@ If you pay attention to the GitHub ***pull requests (PRs)***, you will know what
 1. `git checkout main`
 1. `git pull`
 1. `git checkout {feature-branch-name}`
-1. `git rebase main` merges main into your feature branch and makes the "log of commits" correctly match the merge times.
+1. `git rebase main` merges main into your feature branch and makes the "log of commits" move the point at which you branched to move to the starting point of the merge to main in step 2. This makes the log more readable.
 
 ### Push Branch to the Remote
 When done with the feature, you will want to ***push*** the feature branch to the remote.  
